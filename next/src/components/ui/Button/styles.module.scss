@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  > span {
+    margin-left: -32px;
+  }
+  position: relative;
+  .ellipse {
+    margin: 1px 0;
+  }
+  .arrow, span {
+    transition: transform .3s var(--easing);
+  }
+  .arrow {
+    &:nth-child(1){
+      position: absolute;
+      left: 0;
+      transform: translateX(-100%);
+    }
+  }
+  &:hover,
+  &:focus-visible {
+    .arrow:first-child {
+      transform: translateX(13px);
+      transition-delay: .3s;
+    }
+    span {
+      transform: translateX(21px);
+      transition-delay: .1s;
+    }
+    .arrow:last-child {
+      transform: translateX(100%);
+    }
+  }
+}
