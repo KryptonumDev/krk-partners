@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styles from './styles.module.scss';
-import isExternalLink from '@/utils/is-external-link';
+import { isExternalLink } from '@/utils/is-external-link';
 import type { CtaType } from '@/global/types';
 
 type ButtonProps = (
