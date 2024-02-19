@@ -12,7 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { landings } = await query();
   const sitemap = [
     ...landings.map((route) => ({
-      url: `${domain}/landing/${route}`,
+      url: `${domain}/${route}`,
       lastModified: new Date(),
     })),
   ];
@@ -24,7 +24,7 @@ const query = async (): Promise<FetchProps> => {
   const data = await sanityFetch({
     query: /* groq */ `
       {
-        'landings': *[_type == 'landingPage'] {
+        'landings': *[_type == 'landingPage_Collection'] {
           'slug': slug.current
         }
       }
