@@ -36,4 +36,4 @@ export const regex: { email: RegExp; phone: RegExp; string: RegExp } = {
  * Global declaration of easing.
  * @constant
  */
-export const easing = [0.46, 0.03, 0.52, 0.96];
+export const easing = [0.65, 0.05, 0.36, 1];
