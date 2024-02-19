@@ -7,35 +7,19 @@
 }
 
 :root {
-  --primary-100: #fdfbf8;
-  --primary-200: #faf4f0;
-  --primary-300: #efe8e7;
-  --primary-400: #e5d8d4;
-  --primary-500: #b4a29c;
-  --primary-600: #9a827a;
-  --primary-700: #766965;
-  --primary-800: #53423c;
-  --primary-900: #332621;
+  --neutral-100: #fff;
+  --neutral-200: #f9fafc;
+  --neutral-300: #f0f2f7;
+  --neutral-400: #dfe1e5;
+  --neutral-500: #969799;
+  --neutral-600: #5e5f60;
+  --neutral-700: #333436;
+  --neutral-800: #171719;
 
-  --success-100: #edfaf8;
-  --success-200: #c8f1ea;
-  --success-300: #88e0d1;
-  --success-400: #71dac8;
-  --success-500: #4ed1ba;
-  --success-600: #47bea9;
-  --success-700: #379484;
-  --success-800: #2b7366;
-  --success-900: #21584e;
+  --primary-300: #539e73;
+  --primary-400: #377853;
 
-  --error-100: #fbf1f1;
-  --error-200: #edbdbd;
-  --error-300: #e49f9f;
-  --error-400: #df8d8d;
-  --error-500: #d77070;
-  --error-600: #bc4b4b;
-  --error-700: #995050;
-  --error-800: #882f2f;
-  --error-900: #5a2f2f;
+  --secondary-200: #376578;
 
   --pageMargin: clamp(16px, calc(40vw / 7.68), 40px);
   @media (max-width: 899px) and (min-width: 649px) {
