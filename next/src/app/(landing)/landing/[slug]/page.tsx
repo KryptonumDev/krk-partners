@@ -42,7 +42,7 @@ export async function generateMetadata({ params: { slug: paramsSlug } }: { param
 const query = async (slug: string): Promise<PageQueryProps> => {
   const data = await sanityFetch({
     query: /* groq */ `
-      *[_type == "landingPage" && slug.current == $slug][0] {
+      *[_type == "landingPage_Collection" && slug.current == $slug][0] {
         name,
         'slug': slug.current,
         ${Components_Query}
@@ -59,7 +59,7 @@ const query = async (slug: string): Promise<PageQueryProps> => {
 export async function generateStaticParams(): Promise<generateStaticParamsProps[]> {
   const data: generateStaticParamsProps[] = await sanityFetch({
     query: /* groq */ `
-      *[_type == "landingPage"] {
+      *[_type == "landingPage_Collection"] {
         'slug': slug.current,
       }
     `,

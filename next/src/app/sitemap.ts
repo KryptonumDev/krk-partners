@@ -28,7 +28,7 @@ const query = async (): Promise<FetchProps> => {
           'slug': slug.current
         }
       }
-    `
+    `,
   });
   return data as FetchProps;
 };
