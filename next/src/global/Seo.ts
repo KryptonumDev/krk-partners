@@ -9,16 +9,11 @@ type SeoProps = {
 };
 type QueryProps = {
   robotsIndex: boolean;
-  seo: {
-    og_Img: string;
-  };
+  og_Img: string;
 };
 
 const Seo = async ({ title, description, path, ...props }: SeoProps): Promise<Metadata> => {
-  const {
-    robotsIndex,
-    seo: { og_Img },
-  }: QueryProps = await query();
+  const { robotsIndex, og_Img }: QueryProps = await query();
 
   const seo = {
     title: title || 'KRK Partners',
@@ -65,9 +60,7 @@ const query = async (): Promise<QueryProps> => {
     query: /* groq */ `
       *[_id == "global"][0] {
         robotsIndex,
-        seo {
-          'og_Img': og_Img.asset -> url+"?w=1200"
-        }
+        "og_Img": seo.og_Img.asset -> url+"?w=1200"
       }
     `,
   });

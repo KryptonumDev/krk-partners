@@ -2,7 +2,7 @@ import Image from 'next/image';
 import type { ImgType } from '@/global/types';
 
 const defaultPlaceholder =
-  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP89eVDPQAJLQNfkP/zaAAAAABJRU5ErkJggg==';
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8+evPfwAJ0wPwl1TZDAAAAABJRU5ErkJggg==';
 
 type ImgProps = (
   | {
