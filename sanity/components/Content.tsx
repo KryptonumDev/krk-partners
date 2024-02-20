@@ -7,5 +7,6 @@ export default {
     { type: 'Comparison' },
     { type: 'Features' },
     { type: 'StatsGrid' },
+    { type: 'ListWithIconAndCta' },
   ],
 }

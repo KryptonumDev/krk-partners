@@ -18,6 +18,7 @@ import CaseStudy, { CaseStudy_Item } from './components/CaseStudy'
 import Comparison, { Comparison_TableHeader, Comparison_TableItems } from './components/Comparison'
 import Features, { Features_Item } from './components/Features'
 import StatsGrid from './components/StatsGrid'
+import ListWithIconAndCta, { ListWithIconAndCta_Item } from './components/ListWithIconAndCta'
 
 export const schemaTypes = [
   ...singleTypes,
@@ -35,4 +36,6 @@ export const schemaTypes = [
   Features,
   Features_Item,
   StatsGrid,
+  ListWithIconAndCta,
+  ListWithIconAndCta_Item,
 ]

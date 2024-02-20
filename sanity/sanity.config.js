@@ -37,7 +37,7 @@ export default defineConfig({
           .items([
             createListItem(S, 'global'),
             S.divider(),
-            createListItem(S, 'landingPage_Collection'),
+            createDocumentTypeListItem(S, 'landingPage_Collection'),
             ...singleTypes.map((item) => createListItem(S, item.name)),
           ]),
     }),
