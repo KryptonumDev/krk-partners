@@ -6,5 +6,6 @@ export default {
     { type: 'CaseStudy' },
     { type: 'Comparison' },
     { type: 'Features' },
+    { type: 'StatsGrid' },
   ],
 }

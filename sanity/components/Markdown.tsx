@@ -6,7 +6,7 @@ export function CustomMarkdownInput(props: any) {
     useMemo(() => {
       return {
         options: {
-          toolbar: ['guide', '|', 'bold', 'italic', 'link', 'image', '|', 'preview'],
+          toolbar: ['guide', '|', 'bold', 'italic', 'link', '|', 'preview'],
           minHeight: '30px',
           placeholder: '**Wyróżniony** tekst',
         },
