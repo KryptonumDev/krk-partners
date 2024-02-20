@@ -15,7 +15,7 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/:slug((?!szybkie-i-bezpieczne-pozyczki$).*)',
+        source: '/:slug((?!szybkie-i-bezpieczne-pozyczki$)(?!api).*)',
         destination: '/szybkie-i-bezpieczne-pozyczki',
         permanent: false,
       },
