@@ -5,5 +5,6 @@ export default {
   of: [
     { type: 'CaseStudy' },
     { type: 'Comparison' },
+    { type: 'Features' },
   ],
 }
