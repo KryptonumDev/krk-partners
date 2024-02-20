@@ -63,7 +63,16 @@ const Markdown = ({ Tag, components, children, className, ...props }: MarkdownPr
     />
   );
 
-  return className ? <div className={className}>{markdown}</div> : markdown;
+  return className || Object.keys(props).length > 0 ? (
+    <div
+      {...(className && { className: className })}
+      {...props}
+    >
+      {markdown}
+    </div>
+  ) : (
+    markdown
+  );
 };
 
 Markdown.h1 = (props: JSX.IntrinsicAttributes & MarkdownProps) => (
