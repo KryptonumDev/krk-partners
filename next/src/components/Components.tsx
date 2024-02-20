@@ -1,9 +1,11 @@
 import Faq, { Faq_Query, type FaqProps } from '@/components/_global/Faq';
 import CaseStudy, { CaseStudy_Query, type CaseStudyProps } from './_global/CaseStudy';
+import Comparison, { Comparison_Query, type ComparisonProps } from './_global/Comparison';
 
 type ComponentMap = {
   Faq: FaqProps;
   CaseStudy: CaseStudyProps;
+  Comparison: ComparisonProps;
 };
 
 export type ComponentProps = ComponentMap[keyof ComponentMap] & { _type: string };
@@ -19,6 +21,7 @@ const Components = ({ data }: { data: ComponentProps[] }) => {
         />
       ),
       CaseStudy: <CaseStudy {...(item as CaseStudyProps)} />,
+      Comparison: <Comparison {...(item as ComparisonProps)} />,
     };
     const DynamicComponent = componentMap[componentType];
     if (!DynamicComponent) return null;
@@ -32,5 +35,6 @@ export const Components_Query = /* groq */ `
   content[] {
     ${Faq_Query}
     ${CaseStudy_Query}
+    ${Comparison_Query}
   },
 `;

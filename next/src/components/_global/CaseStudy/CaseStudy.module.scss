@@ -1,7 +1,7 @@
 .CaseStudy {
   padding: clamp(24px, calc(40vw / 7.68), 40px) 0;
   max-width: calc(1100rem / 16);
-  margin-left: auto;
+  margin: 0 auto;
   header {
     margin-bottom: clamp(24px, calc(32vw / 7.68), 32px);
   }
