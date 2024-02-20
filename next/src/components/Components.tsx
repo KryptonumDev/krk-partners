@@ -3,6 +3,7 @@ import CaseStudy, { CaseStudy_Query, type CaseStudyProps } from './_global/CaseS
 import Comparison, { Comparison_Query, type ComparisonProps } from './_global/Comparison';
 import Features, { Features_Query, type FeaturesProps } from './_global/Features';
 import StatsGrid, { StatsGrid_Query, type StatsGridProps } from './_global/StatsGrid';
+import ListWithIconAndCta, { ListWithIconAndCta_Query, type ListWithIconAndCtaProps } from './ListWithIconAndCta';
 
 type ComponentMap = {
   Faq: FaqProps;
@@ -10,6 +11,7 @@ type ComponentMap = {
   Comparison: ComparisonProps;
   Features: FeaturesProps;
   StatsGrid: StatsGridProps;
+  ListWithIconAndCta: ListWithIconAndCtaProps;
 };
 
 export type ComponentProps = ComponentMap[keyof ComponentMap] & { _type: string };
@@ -28,6 +30,7 @@ const Components = ({ data }: { data: ComponentProps[] }) => {
       Comparison: <Comparison {...(item as ComparisonProps)} />,
       Features: <Features {...(item as FeaturesProps)} />,
       StatsGrid: <StatsGrid {...(item as StatsGridProps)} />,
+      ListWithIconAndCta: <ListWithIconAndCta {...(item as ListWithIconAndCtaProps)} />,
     };
     const DynamicComponent = componentMap[componentType];
     if (!DynamicComponent) return null;
@@ -44,5 +47,6 @@ export const Components_Query = /* groq */ `
     ${Comparison_Query}
     ${Features_Query}
     ${StatsGrid_Query}
+    ${ListWithIconAndCta_Query}
   },
 `;

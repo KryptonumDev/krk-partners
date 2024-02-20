@@ -1,0 +1,77 @@
+.ListWithIconAndCta {
+  padding: clamp(24px, calc(40vw / 7.68), 40px) 0;
+  header {
+    display: grid;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: clamp(16px, calc(32vw / 7.68), 32px);
+    > div {
+      max-width: calc(450rem / 16);
+    }
+    @media (min-width: 900px) {
+      grid-template-columns: auto auto;
+      > div {
+        max-width: calc(381rem / 16);
+      }
+    }
+    .paragraph {
+      font-size: clamp(calc(20rem / 16), calc(24vw / 7.68), calc(24rem / 16));
+    }
+    margin-bottom: clamp(32px, calc(64vw / 7.68), 80px);
+  }
+  .list {
+    display: grid;
+    gap: clamp(12px, calc(24vw / 7.68), 24px);
+    @media (min-width: 600px) and (max-width: 1049px) {
+      grid-template-columns: 1fr 1fr;
+      .item {
+        &:last-child {
+          grid-column: 3/1;
+        }
+      }
+    }
+    @media (min-width: 1050px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media (max-width: 599px) {
+      .item {
+        &:last-child {
+          margin-top: 12px;
+        }
+      }
+    }
+    .item {
+      color: var(--neutral-700);
+      font-size: 1rem;
+      &:not(:last-child) {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 8px;
+        .icon {
+          display: grid;
+          place-items: center;
+          clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+          background-color: var(--neutral-200);
+          width: 40px;
+          height: 40px;
+          img {
+            width: clamp(16px, calc(20vw / 7.68), 20px);
+            height: clamp(16px, calc(20vw / 7.68), 20px);
+          }
+        }
+        p {
+          margin-top: 6px;
+        }
+      }
+      &:last-child {
+        border-radius: 16px;
+        background: var(--neutral-300);
+        padding: clamp(16px, calc(24vw / 7.68), 24px) 12px;
+        text-align: center;
+        a {
+          margin: clamp(12px, calc(16vw / 7.68), 16px) auto 0;
+        }
+      }
+    }
+  }
+}
