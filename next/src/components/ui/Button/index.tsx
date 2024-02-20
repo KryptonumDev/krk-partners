@@ -86,3 +86,9 @@ const Arrow = () => (
 );
 
 export default Button;
+
+export const Button_Query = `
+  theme,
+  text,
+  href,
+`;

@@ -1,0 +1,186 @@
+.CaseStudy {
+  padding: clamp(24px, calc(40vw / 7.68), 40px) 0;
+  max-width: calc(1100rem / 16);
+  margin-left: auto;
+  header {
+    margin-bottom: clamp(24px, calc(32vw / 7.68), 32px);
+  }
+}
+
+.Tabs {
+  display: grid;
+  grid-template-areas: 'switcher img' 'paragraph img' 'ctaPrompt img' 'cta img';
+  grid-template-rows: auto auto auto 1fr;
+  grid-template-columns: 1fr 1fr;
+  column-gap: clamp(64px, calc(82vw / 7.68), 136px);
+  align-items: flex-start;
+  [data-index] {
+    transition: opacity 0.5s var(--easing);
+    overflow: hidden;
+  }
+  &[data-active-tab='0'] [data-index]:not([data-index='0']),
+  &[data-active-tab='1'] [data-index]:not([data-index='1']),
+  &[data-active-tab='2'] [data-index]:not([data-index='2']) {
+    height: 0;
+    opacity: 0;
+    transition: none;
+  }
+}
+.switcher {
+  grid-area: switcher;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: clamp(16px, calc(32vw / 7.68), 32px);
+  button {
+    border: 1px solid var(--neutral-300);
+    text-align: center;
+    font-size: calc(14rem / 16);
+    padding: 10px 8px;
+    margin: 0 -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px 6px;
+    svg {
+      transition: width 0.5s var(--easing);
+      z-index: 2;
+      position: relative;
+    }
+    span {
+      z-index: 2;
+      position: relative;
+      transition: transform 0.5s var(--easing);
+    }
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      box-shadow: -3px -1px 8px 0px rgba(127, 168, 210, 0.1), -14px -5px 15px 0px rgba(127, 168, 210, 0.09),
+        -31px -12px 20px 0px rgba(127, 168, 210, 0.05), -55px -21px 23px 0px rgba(127, 168, 210, 0.01),
+        -85px -33px 26px 0px rgba(127, 168, 210, 0);
+      transition: opacity 0.5s var(--easing);
+      background: var(--neutral-200);
+    }
+    &[aria-active='false'] {
+      svg {
+        width: 0;
+      }
+      span {
+        transform: translateX(-6px);
+      }
+      &::before {
+        opacity: 0;
+      }
+    }
+  }
+}
+.paragraph {
+  grid-area: paragraph;
+  margin-bottom: 32px;
+  > *:not(:last-child) {
+    margin-bottom: 12px;
+  }
+}
+.ctaPrompt {
+  grid-area: ctaPrompt;
+  font-size: calc(16rem / 16);
+}
+.cta {
+  grid-area: cta;
+  margin-top: clamp(12px, calc(32vw / 7.68), 32px);
+}
+.img {
+  grid-area: img;
+  position: relative;
+  .icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18.8%;
+    aspect-ratio: 1/1;
+    display: grid;
+    place-items: center;
+    border-radius: 13%;
+    background: var(--neutral-200);
+    box-shadow: 0px 3px 6px 0px rgba(127, 168, 210, 0.1), 0px 11px 11px 0px rgba(127, 168, 210, 0.09),
+      0px 25px 15px 0px rgba(127, 168, 210, 0.05), 0px 45px 18px 0px rgba(127, 168, 210, 0.01),
+      0px 71px 20px 0px rgba(127, 168, 210, 0);
+    img {
+      width: clamp(24px, calc(28vw / 7.68), 32px);
+      height: clamp(24px, calc(28vw / 7.68), 32px);
+    }
+    transition: opacity 0.5s var(--easing);
+    &[aria-active='false'] {
+      opacity: 0;
+    }
+  }
+  .mask {
+    aspect-ratio: 484/575;
+    mask-image: url('/image-shape.svg');
+    border-radius: 16px;
+    overflow: hidden;
+    width: fit-content;
+    > div {
+      display: flex;
+      align-items: center;
+      transition: transform 0.8s var(--easing);
+    }
+    img {
+      width: 100%;
+      height: auto;
+      flex-shrink: 0;
+      display: block;
+    }
+  }
+}
+
+@media (max-width: 1049px) {
+  .CaseStudy {
+    header {
+      text-align: center;
+    }
+  }
+  .Tabs {
+    grid-template-areas: 'switcher switcher' 'paragraph paragraph' 'img ctaPrompt' 'img cta';
+    column-gap: 32px;
+  }
+}
+@media (max-width: 549px) {
+  .CaseStudy {
+    header {
+      text-align: center;
+    }
+  }
+  .Tabs {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'switcher' 'paragraph' 'img' 'ctaPrompt' 'cta';
+    .switcher {
+      button {
+        flex-direction: column;
+        height: 59.4px;
+        svg {
+          transition: height 0.5s var(--easing);
+        }
+        &[aria-active='false'] {
+          svg {
+            width: 13px;
+            height: 0;
+          }
+          span {
+            transform: unset;
+          }
+        }
+      }
+    }
+    .ctaPrompt {
+      margin-top: 24px;
+    }
+    .img {
+      max-width: 242px;
+    }
+  }
+}

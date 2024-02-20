@@ -15,7 +15,7 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/:slug((?!szybkie-i-bezpieczne-pozyczki$)(?!api).*)',
+        source: '/:slug((?!szybkie-i-bezpieczne-pozyczki$)(?!api)(?!image-shape.svg)(?!krk-partners-logo.png).*)',
         destination: '/szybkie-i-bezpieczne-pozyczki',
         permanent: false,
       },

@@ -20,18 +20,6 @@ const LandingPage = async ({ params: { slug } }: { params: { slug: string } }) =
         ]}
         visible={false}
       />
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        width='484'
-        height='575'
-        viewBox='0 0 484 575'
-        fill='none'
-      >
-        <path
-          d='M484 16C484 7.16344 476.837 0 468 0H119C110.163 0 103 7.16344 103 16V86C103 94.8366 95.8366 102 87 102H16C7.16344 102 0 109.163 0 118V559C0 567.837 7.16345 575 16 575H468C476.837 575 484 567.837 484 559V16Z'
-          fill='#f90'
-        />
-      </svg>
       <Components data={content} />
     </>
   );
