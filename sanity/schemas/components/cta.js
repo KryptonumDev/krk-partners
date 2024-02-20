@@ -12,6 +12,8 @@ export default {
           { title: "Główny", value: "primary" },
           { title: "Dodatkowy", value: "secondary" },
         ],
+        layout: 'radio',
+        direction: "horizontal"
       },
       validation: (Rule) => Rule.required(),
       initialValue: 'primary',
@@ -38,7 +40,13 @@ export default {
   ],
   preview: {
     select: {
-      title: `${cta.text}' kierujący do '${cta.href}'`,
+      text: 'text',
+      href: 'href',
     },
+    prepare({ text, href }) {
+      return {
+        title: `${text}' kierujący do '${href}'`
+      }
+    }
   },
 }

@@ -1,4 +1,4 @@
-import { removeMarkdown } from "../../utils/functions"
+import { removeMarkdown } from '../../utils/remove-markdown';
 
 export default {
   name: "CaseStudy",
@@ -27,7 +27,7 @@ export default {
         },
       ],
       title: 'Lista',
-      validation: Rule => Rule.required(),
+      validation: Rule => Rule.required().max(3),
     },
   ],
   preview: {
@@ -49,6 +49,15 @@ export const CaseStudy_Item = {
   title: "Element",
   type: "object",
   fields: [
+    {
+      name: 'tab',
+      type: 'string',
+      title: 'Zakładka',
+      validation: Rule => [
+        Rule.required(),
+        Rule.max(18).warning('Pamiętaj, aby zakładka była możliwie jak najkrótsza.')
+      ],
+    },
     {
       name: 'paragraph',
       type: 'markdown',
@@ -82,16 +91,17 @@ export const CaseStudy_Item = {
   ],
   preview: {
     select: {
+      tab: 'tab',
       paragraph: 'paragraph',
       cta: 'cta',
       media: 'img'
     },
-    prepare({ paragraph, cta, media }) {
+    prepare({ tab, paragraph, cta, media }) {
       return {
-        title: `${removeMarkdown(heading)}`,
-        subtitle: `${removeMarkdown(paragraph)}`,
+        title: `${tab} | ${removeMarkdown(paragraph)}`,
+        subtitle: `'${cta.text}' kierujący do '${cta.href}'`,
         media,
       }
-    }
-  }
+    },
+  },
 }
