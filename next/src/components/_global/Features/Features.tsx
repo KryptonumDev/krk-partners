@@ -12,7 +12,10 @@ const Features = ({ heading, subheading, list }: Props) => {
       </header>
       <ul className={styles.list}>
         {list?.map(({ icon, title, description }, i) => (
-          <li key={i} className={styles.item}>
+          <li
+            key={i}
+            className={styles.item}
+          >
             <div className={styles.icon}>
               <Img
                 data={icon}

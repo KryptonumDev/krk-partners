@@ -2,12 +2,14 @@ import Faq, { Faq_Query, type FaqProps } from '@/components/_global/Faq';
 import CaseStudy, { CaseStudy_Query, type CaseStudyProps } from './_global/CaseStudy';
 import Comparison, { Comparison_Query, type ComparisonProps } from './_global/Comparison';
 import Features, { Features_Query, type FeaturesProps } from './_global/Features';
+import StatsGrid, { StatsGrid_Query, type StatsGridProps } from './_global/StatsGrid';
 
 type ComponentMap = {
   Faq: FaqProps;
   CaseStudy: CaseStudyProps;
   Comparison: ComparisonProps;
   Features: FeaturesProps;
+  StatsGrid: StatsGridProps;
 };
 
 export type ComponentProps = ComponentMap[keyof ComponentMap] & { _type: string };
@@ -25,6 +27,7 @@ const Components = ({ data }: { data: ComponentProps[] }) => {
       CaseStudy: <CaseStudy {...(item as CaseStudyProps)} />,
       Comparison: <Comparison {...(item as ComparisonProps)} />,
       Features: <Features {...(item as FeaturesProps)} />,
+      StatsGrid: <StatsGrid {...(item as StatsGridProps)} />,
     };
     const DynamicComponent = componentMap[componentType];
     if (!DynamicComponent) return null;
@@ -40,5 +43,6 @@ export const Components_Query = /* groq */ `
     ${CaseStudy_Query}
     ${Comparison_Query}
     ${Features_Query}
+    ${StatsGrid_Query}
   },
 `;
