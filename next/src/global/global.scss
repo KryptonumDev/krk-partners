@@ -130,17 +130,18 @@ h1 {
   font-size: clamp(calc(24rem / 16), calc(26vw / 7.68), calc(36rem / 16));
 }
 h2 {
-  font-size: calc(14rem / 16);
+  font-size: clamp(calc(12rem / 16), calc(14vw / 7.68), calc(14rem / 16));
   text-transform: uppercase;
   font-family: var(--font-cinzel);
   font-weight: 500;
+  line-height: 150%;
   + * {
     margin-top: clamp(8px, calc(12vw / 7.68), 12px);
   }
 }
 h3 {
   letter-spacing: -0.02em;
-  font-size: clamp(calc(24rem / 16), calc(32vw / 7.68), calc(32rem / 16));
+  font-size: clamp(calc(26rem / 16), calc(32vw / 7.68), calc(32rem / 16));
 }
 
 .link {
