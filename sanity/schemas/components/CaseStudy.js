@@ -4,7 +4,7 @@ export default {
   name: "CaseStudy",
   title: "Studium przypadku",
   type: "object",
-  media: () => '🤝',
+  icon: () => '🤝',
   fields: [
     {
       name: 'heading',

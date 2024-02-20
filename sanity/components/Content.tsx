@@ -3,6 +3,7 @@ export default {
   type: 'array',
   title: 'Komponenty podstrony',
   of: [
-    { type: 'CaseStudy' }
+    { type: 'CaseStudy' },
+    { type: 'Comparison' },
   ],
 }

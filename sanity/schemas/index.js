@@ -15,6 +15,7 @@ import cta from './components/cta'
 import seo from './components/seo'
 import Content from '../components/Content'
 import CaseStudy, { CaseStudy_Item } from './components/CaseStudy'
+import Comparison, { Comparison_TableHeader, Comparison_TableItems } from './components/Comparison'
 
 export const schemaTypes = [
   ...singleTypes,
@@ -26,4 +27,7 @@ export const schemaTypes = [
   seo,
   CaseStudy,
   CaseStudy_Item,
+  Comparison,
+  Comparison_TableHeader,
+  Comparison_TableItems,
 ]
