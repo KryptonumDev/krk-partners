@@ -1,0 +1,153 @@
+.FloatingTilesAndImages {
+  padding: clamp(24px, calc(40vw / 7.68), 40px) 0;
+  min-width: 0;
+  .column {
+    max-width: calc(1000rem / 16);
+    margin: 0 auto;
+    display: grid;
+    align-items: center;
+    gap: clamp(24px, calc(32vw / 7.68), 32px) clamp(82px, calc(96vw / 7.68), 124px);
+    @media (min-width: 1100px) {
+      grid-template-columns: 1fr 1.25fr;
+    }
+    header {
+      @media (max-width: 1099px) {
+        max-width: calc(450rem / 16);
+        margin: 0 auto;
+      }
+      h3 {
+        margin-bottom: clamp(16px, calc(24vw / 7.68), 24px);
+      }
+    }
+    .list {
+      padding: 32px;
+      border-radius: 16px;
+      background: var(--neutral-300);
+      max-width: calc(484rem / 16);
+      margin: 0 auto;
+      p {
+        margin-bottom: clamp(16px, calc(24vw / 7.68), 24px);
+        font-size: 1rem;
+      }
+      .grid {
+        display: grid;
+        gap: clamp(16px, calc(24vw / 7.68), 32px);
+        grid-template-areas: 'item1' 'item2' 'item3' 'item4';
+        .item {
+          padding: clamp(12px, calc(16vw / 7.68), 16px) clamp(12px, calc(20vw / 7.68), 20px);
+          display: grid;
+          gap: 12px;
+          grid-template-columns: auto 1fr;
+          border-radius: 16px;
+          background: var(--neutral-100);
+          &:nth-child(1) {
+            background: var(--neutral-800);
+            color: var(--neutral-300);
+          }
+          &:not(:nth-of-type(1)) {
+            box-shadow: 0px 11px 11px 0px rgba(127, 168, 210, 0.09), 0px 25px 15px 0px rgba(127, 168, 210, 0.05);
+          }
+          img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+          }
+          ul {
+            li {
+              list-style-type: none;
+              &:first-child {
+                font-size: 1rem;
+              }
+              &:not(:last-child) {
+                margin-bottom: 8px;
+              }
+            }
+          }
+        }
+      }
+      @media (min-width: 700px) {
+        p {
+          text-align: center;
+        }
+        margin-bottom: 34px;
+        .grid {
+          grid-template-columns: 1fr 1fr;
+          grid-template-areas: 'item1 item2' 'item3 item2' 'item4 item4';
+          .item {
+            &:nth-child(2) {
+              margin-right: -104px;
+            }
+            &:nth-child(3) {
+              margin-left: -104px;
+            }
+            &:nth-child(4) {
+              width: 75%;
+              margin-left: auto;
+              margin-bottom: -66px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .images {
+    margin: 96px 0 clamp(16px, calc(24vw / 7.68), 32px);
+    @media (max-width: 1279px) {
+      margin-left: calc(var(--pageMargin) * -1);
+      margin-right: calc(var(--pageMargin) * -1);
+      padding: 0 var(--pageMargin);
+    }
+    overflow: hidden;
+    .transform {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 12px;
+    }
+    .item {
+      border-radius: 16px;
+      overflow: hidden;
+      flex-grow: 1;
+      flex-shrink: 0;
+      position: relative;
+      min-height: 222px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      p {
+        position: relative;
+        padding: 64px 12px 16px;
+        background: linear-gradient(180deg, rgba(23, 23, 25, 0), #171719);
+        font-size: 1rem;
+        color: var(--neutral-100);
+        text-align: center;
+      }
+    }
+  }
+  .ctaBox {
+    padding: 16px clamp(16px, calc(32vw / 7.68), 48px);
+    max-width: calc(794rem / 16);
+    margin: 0 auto;
+    border-radius: 200px;
+    background: var(--neutral-200);
+    display: grid;
+    align-items: center;
+    gap: 24px;
+    @media (min-width: 1000px) {
+      grid-template-columns: 1fr auto;
+      padding-right: 24px;
+    }
+    @media (max-width: 999px) {
+      border-radius: 4px;
+      text-align: center;
+      a {
+        margin: 0 auto;
+      }
+    }
+  }
+}

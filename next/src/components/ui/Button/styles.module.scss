@@ -10,6 +10,7 @@
   background: var(--primary-400);
   color: var(--neutral-200);
   font-size: 1rem;
+  overflow: hidden;
   span {
     z-index: 3;
     position: relative;
@@ -40,7 +41,7 @@
     width: 200%;
     aspect-ratio: 1/1;
     background: var(--primary-300);
-    transition: transform 0.8s var(--easing);
+    transition: transform 0.5s var(--easing);
     border-radius: 50%;
     position: absolute;
     z-index: 2;

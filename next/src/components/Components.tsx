@@ -8,6 +8,10 @@ import ListWithIconAndCta, {
   type ListWithIconAndCtaProps,
 } from '@/components/_global/ListWithIconAndCta';
 import Reviews, { Reviews_Query, type ReviewsProps } from '@/components/_global/Reviews';
+import FloatingTilesAndImages, {
+  FloatingTilesAndImages_Query,
+  type FloatingTilesAndImagesProps,
+} from '@/components/_global/FloatingTilesAndImages';
 
 type ComponentMap = {
   Faq: FaqProps;
@@ -17,6 +21,7 @@ type ComponentMap = {
   StatsGrid: StatsGridProps;
   ListWithIconAndCta: ListWithIconAndCtaProps;
   Reviews: ReviewsProps;
+  FloatingTilesAndImages: FloatingTilesAndImagesProps;
 };
 
 export type ComponentProps = ComponentMap[keyof ComponentMap] & { _type: string };
@@ -37,6 +42,7 @@ const Components = ({ data }: { data: ComponentProps[] }) => {
       StatsGrid: <StatsGrid {...(item as StatsGridProps)} />,
       ListWithIconAndCta: <ListWithIconAndCta {...(item as ListWithIconAndCtaProps)} />,
       Reviews: <Reviews {...(item as ReviewsProps)} />,
+      FloatingTilesAndImages: <FloatingTilesAndImages {...(item as FloatingTilesAndImagesProps)} />,
     };
     const DynamicComponent = componentMap[componentType];
     if (!DynamicComponent) return null;
@@ -55,5 +61,6 @@ export const Components_Query = /* groq */ `
     ${StatsGrid_Query}
     ${ListWithIconAndCta_Query}
     ${Reviews_Query}
+    ${FloatingTilesAndImages_Query}
   },
 `;
