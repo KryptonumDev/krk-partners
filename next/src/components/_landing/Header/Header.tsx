@@ -23,6 +23,7 @@ const KrkPartnersLogo = () => (
     xmlns='http://www.w3.org/2000/svg'
     width={80}
     height={36}
+    viewBox='0 0 80 36'
     fill='none'
   >
     <g clipPath='url(#a)'>
