@@ -19,6 +19,7 @@ import Comparison, { Comparison_TableHeader, Comparison_TableItems } from './com
 import Features, { Features_Item } from './components/Features'
 import StatsGrid from './components/StatsGrid'
 import ListWithIconAndCta, { ListWithIconAndCta_Item } from './components/ListWithIconAndCta'
+import Reviews, { Reviews_Item } from './components/Reviews'
 
 export const schemaTypes = [
   ...singleTypes,
@@ -38,4 +39,6 @@ export const schemaTypes = [
   StatsGrid,
   ListWithIconAndCta,
   ListWithIconAndCta_Item,
+  Reviews,
+  Reviews_Item,
 ]

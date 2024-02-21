@@ -8,5 +8,6 @@ export default {
     { type: 'Features' },
     { type: 'StatsGrid' },
     { type: 'ListWithIconAndCta' },
+    { type: 'Reviews' },
   ],
 }
