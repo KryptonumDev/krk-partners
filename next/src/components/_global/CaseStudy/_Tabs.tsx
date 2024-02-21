@@ -15,8 +15,9 @@ const Tabs = ({ list, TabActiveIcon }: TabsProps) => {
       <div className={styles.switcher}>
         {list.map(({ tab: listTab }, i) => (
           <button
+            key={i}
             onClick={() => handleTab(i)}
-            aria-active={tab === i}
+            data-active={tab === i}
           >
             {TabActiveIcon}
             <span>{listTab}</span>
@@ -35,7 +36,7 @@ const Tabs = ({ list, TabActiveIcon }: TabsProps) => {
           <div
             key={i}
             className={styles.icon}
-            aria-active={tab === i}
+            data-active={tab === i}
           >
             {icon}
           </div>

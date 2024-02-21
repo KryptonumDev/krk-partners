@@ -65,7 +65,7 @@
       transition: opacity 0.5s var(--easing);
       background: var(--neutral-200);
     }
-    &[aria-active='false'] {
+    &[data-active='false'] {
       svg {
         width: 0;
       }
@@ -114,7 +114,7 @@
       height: clamp(24px, calc(28vw / 7.68), 32px);
     }
     transition: opacity 0.5s var(--easing);
-    &[aria-active='false'] {
+    &[data-active='false'] {
       opacity: 0;
     }
   }
@@ -165,7 +165,7 @@
         svg {
           transition: height 0.5s var(--easing);
         }
-        &[aria-active='false'] {
+        &[data-active='false'] {
           svg {
             width: 13px;
             height: 0;
