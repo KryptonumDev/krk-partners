@@ -21,6 +21,7 @@ import StatsGrid from './components/StatsGrid'
 import ListWithIconAndCta, { ListWithIconAndCta_Item } from './components/ListWithIconAndCta'
 import Reviews, { Reviews_Item } from './components/Reviews'
 import FloatingTilesAndImages, { FloatingTilesAndImages_Images, FloatingTilesAndImages_List } from './components/FloatingTilesAndImages'
+import Faq, { Faq_List } from './components/Faq'
 
 export const schemaTypes = [
   ...singleTypes,
@@ -45,4 +46,6 @@ export const schemaTypes = [
   FloatingTilesAndImages,
   FloatingTilesAndImages_List,
   FloatingTilesAndImages_Images,
+  Faq,
+  Faq_List,
 ]

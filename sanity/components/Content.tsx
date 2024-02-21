@@ -10,5 +10,6 @@ export default {
     {type: 'ListWithIconAndCta'},
     {type: 'Reviews'},
     {type: 'FloatingTilesAndImages'},
+    {type: 'Faq'},
   ],
 }
