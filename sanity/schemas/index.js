@@ -20,6 +20,7 @@ import Features, { Features_Item } from './components/Features'
 import StatsGrid from './components/StatsGrid'
 import ListWithIconAndCta, { ListWithIconAndCta_Item } from './components/ListWithIconAndCta'
 import Reviews, { Reviews_Item } from './components/Reviews'
+import FloatingTilesAndImages, { FloatingTilesAndImages_Images, FloatingTilesAndImages_List } from './components/FloatingTilesAndImages'
 
 export const schemaTypes = [
   ...singleTypes,
@@ -41,4 +42,7 @@ export const schemaTypes = [
   ListWithIconAndCta_Item,
   Reviews,
   Reviews_Item,
+  FloatingTilesAndImages,
+  FloatingTilesAndImages_List,
+  FloatingTilesAndImages_Images,
 ]
