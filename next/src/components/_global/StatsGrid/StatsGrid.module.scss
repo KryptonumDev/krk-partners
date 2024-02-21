@@ -15,14 +15,16 @@
     }
   }
   .tiles {
-    max-width: calc(608rem / 16);
     position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: clamp(8px, calc(16vw / 7.68), 32px);
-    color: var(--neutral-700);
-    .tile {
+    > div {
+      max-width: calc(608rem / 16);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: clamp(8px, calc(16vw / 7.68), 32px);
+      color: var(--neutral-700);
+    }
+    .item {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -78,11 +80,11 @@
         height: auto;
       }
       transform: translate(-50%, -50%);
-      transition: transform .5s var(--easing);
+      transition: transform 0.5s var(--easing);
     }
     &:hover {
       .logo {
-        transform: translate(-50%, -50%) scale(.82);
+        transform: translate(-50%, -50%) scale(0.82);
       }
     }
   }

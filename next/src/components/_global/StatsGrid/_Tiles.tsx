@@ -24,39 +24,38 @@ const Tiles = ({
   const progressReversed = useTransform(scrollYProgress, [0, 1], [64, 0]);
 
   return (
-    <div
-      className={styles.tiles}
-      ref={ref}
-    >
-      <motion.div
-        className={styles.tile}
-        style={{ y: progress }}
-      >
-        <h4>{tile1_Heading}</h4>
-        {tile1_Img}
-      </motion.div>
-      <motion.div
-        className={styles.tile}
-        style={{ y: progressReversed }}
-      >
-        <h4>{tile2_Heading}</h4>
-        {tile2_Img}
-      </motion.div>
-      <motion.div
-        className={styles.tile}
-        style={{ y: progress }}
-      >
-        <h4>{tile3_Heading}</h4>
-        {tile3_Img}
-      </motion.div>
-      <motion.div
-        className={styles.tile}
-        style={{ y: progressReversed }}
-      >
-        <h4>{tile4_Heading}</h4>
-        {tile4_Img}
-      </motion.div>
-      <div className={styles.logo}>{logo}</div>
+    <div className={styles.tiles}>
+      <div ref={ref}>
+        <motion.div
+          className={styles.item}
+          style={{ y: progress }}
+        >
+          <h4>{tile1_Heading}</h4>
+          {tile1_Img}
+        </motion.div>
+        <motion.div
+          className={styles.item}
+          style={{ y: progressReversed }}
+        >
+          <h4>{tile2_Heading}</h4>
+          {tile2_Img}
+        </motion.div>
+        <motion.div
+          className={styles.item}
+          style={{ y: progress }}
+        >
+          <h4>{tile3_Heading}</h4>
+          {tile3_Img}
+        </motion.div>
+        <motion.div
+          className={styles.item}
+          style={{ y: progressReversed }}
+        >
+          <h4>{tile4_Heading}</h4>
+          {tile4_Img}
+        </motion.div>
+        <div className={styles.logo}>{logo}</div>
+      </div>
     </div>
   );
 };
