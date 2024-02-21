@@ -1,38 +1,64 @@
 .wrapper {
-  display: flex;
+  min-width: 48px;
+  display: grid;
   width: fit-content;
+  grid-template-columns: 1fr auto;
   align-items: center;
   gap: 8px;
-  overflow: hidden;
-  > span {
-    margin-left: -32px;
+  padding: 4px 4px 4px 20px;
+  border-radius: 40px;
+  background: var(--primary-400);
+  color: var(--neutral-200);
+  font-size: 1rem;
+  span {
+    z-index: 3;
+    position: relative;
+  }
+  .icon {
+    z-index: 3;
+    background: var(--primary-300);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    svg {
+      flex-shrink: 0;
+      &:last-child {
+        margin-right: -10px;
+      }
+      width: 100%;
+      transition: transform 0.5s var(--easing);
+    }
+    overflow: hidden;
   }
   position: relative;
-  .ellipse {
-    margin: 1px 0;
+  &::before {
+    content: '';
+    width: 200%;
+    aspect-ratio: 1/1;
+    background: var(--primary-300);
+    transition: transform 0.8s var(--easing);
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
+    right: 24px;
+    top: 50%;
+    transform: translate(50%, -50%) scale(0);
   }
-  .arrow, span {
-    transition: transform .3s var(--easing);
-  }
-  .arrow {
-    &:nth-child(1){
-      position: absolute;
-      left: 0;
-      transform: translateX(-100%);
+  &:active {
+    &::before {
+      transform: translate(50%, -50%) scale(1);
     }
   }
   &:hover,
   &:focus-visible {
-    .arrow:first-child {
-      transform: translateX(13px);
-      transition-delay: .3s;
-    }
-    span {
-      transform: translateX(21px);
-      transition-delay: .1s;
-    }
-    .arrow:last-child {
-      transform: translateX(100%);
+    .icon {
+      svg {
+        transform: translateX(100%);
+      }
     }
   }
 }

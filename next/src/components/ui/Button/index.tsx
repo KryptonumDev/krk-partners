@@ -35,53 +35,29 @@ const Button = ({ data, children, href, className, ...props }: ButtonProps) => {
       className={`${styles.wrapper}${className ? ` ${className}` : ''}`}
       {...props}
     >
-      <Arrow />
-      <Ellipse />
       <span>{children}</span>
-      <Arrow />
+      <div className={styles.icon}>
+        <ArrowIcon />
+        <ArrowIcon />
+      </div>
     </Element>
   );
 };
 
-const Ellipse = () => {
-  const id = 'ellipse-' + Math.random().toString(36).substring(2, 11);
-  return (
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      width='51'
-      height='54'
-      fill='none'
-      className={styles.ellipse}
-    >
-      <mask
-        id={id}
-        fill='#fff'
-      >
-        <path d='M47.78 45.124a27 27 0 112.706-32.714l-.383.246a26.545 26.545 0 10-2.66 32.162l.337.306z'></path>
-      </mask>
-      <path
-        stroke='#53423C'
-        strokeWidth='1.5'
-        d='M47.78 45.124a27 27 0 112.706-32.714l-.383.246a26.545 26.545 0 10-2.66 32.162l.337.306z'
-        mask={`url(#${id})`}
-      ></path>
-    </svg>
-  );
-};
-
-const Arrow = () => (
+const ArrowIcon = () => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    width='23'
-    height='10'
+    width={20}
+    height={21}
     fill='none'
-    className={styles.arrow}
   >
     <path
-      stroke='#53423C'
-      strokeWidth='0.75'
-      d='M.534 5h21.812m0 0l-3.75-3.75M22.346 5l-3.75 3.75'
-    ></path>
+      d='M3.333 10.542h13.334m0 0-5-5m5 5-5 5'
+      stroke='#fff'
+      strokeWidth={1.5}
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
   </svg>
 );
 
