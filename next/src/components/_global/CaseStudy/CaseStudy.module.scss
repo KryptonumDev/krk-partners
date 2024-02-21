@@ -21,6 +21,7 @@
   &[data-active-tab='0'] [data-index]:not([data-index='0']),
   &[data-active-tab='1'] [data-index]:not([data-index='1']),
   &[data-active-tab='2'] [data-index]:not([data-index='2']) {
+    visibility: hidden;
     height: 0;
     opacity: 0;
     transition: none;
