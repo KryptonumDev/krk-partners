@@ -7,7 +7,7 @@ const styles = {
 const links = [
   {
     name: 'Podgląd strony',
-    href: '',
+    href: 'https://krk-partners-git-drafts-kryptonum.vercel.app',
   },
 ]
 
