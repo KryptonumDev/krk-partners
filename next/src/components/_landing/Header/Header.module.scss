@@ -1,0 +1,8 @@
+.Header {
+  padding: clamp(16px, calc(40vw / 7.68), 40px) clamp(16px, calc(80vw / 7.68), 80px) clamp(4px, calc(12vw / 7.68), 12px);
+  text-align: center;
+  a {
+    display: inline-block;
+    margin: 0 auto;
+  }
+}

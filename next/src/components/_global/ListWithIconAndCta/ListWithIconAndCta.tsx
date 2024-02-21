@@ -1,6 +1,6 @@
-import Button from '../ui/Button';
-import Img from '../ui/image';
-import Markdown from '../ui/markdown';
+import Button from '../../ui/Button';
+import Img from '../../ui/image';
+import Markdown from '../../ui/markdown';
 import styles from './ListWithIconAndCta.module.scss';
 import type { Props } from './ListWithIconAndCta.types';
 

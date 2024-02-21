@@ -1,10 +1,13 @@
 import Faq, { Faq_Query, type FaqProps } from '@/components/_global/Faq';
-import CaseStudy, { CaseStudy_Query, type CaseStudyProps } from './_global/CaseStudy';
-import Comparison, { Comparison_Query, type ComparisonProps } from './_global/Comparison';
-import Features, { Features_Query, type FeaturesProps } from './_global/Features';
-import StatsGrid, { StatsGrid_Query, type StatsGridProps } from './_global/StatsGrid';
-import ListWithIconAndCta, { ListWithIconAndCta_Query, type ListWithIconAndCtaProps } from './ListWithIconAndCta';
-import Reviews, { Reviews_Query, type ReviewsProps } from './_global/Reviews';
+import CaseStudy, { CaseStudy_Query, type CaseStudyProps } from '@/components/_global/CaseStudy';
+import Comparison, { Comparison_Query, type ComparisonProps } from '@/components/_global/Comparison';
+import Features, { Features_Query, type FeaturesProps } from '@/components/_global/Features';
+import StatsGrid, { StatsGrid_Query, type StatsGridProps } from '@/components/_global/StatsGrid';
+import ListWithIconAndCta, {
+  ListWithIconAndCta_Query,
+  type ListWithIconAndCtaProps,
+} from '@/components/_global/ListWithIconAndCta';
+import Reviews, { Reviews_Query, type ReviewsProps } from '@/components/_global/Reviews';
 
 type ComponentMap = {
   Faq: FaqProps;
