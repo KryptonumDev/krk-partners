@@ -1,0 +1,67 @@
+.Reviews {
+  padding: clamp(24px, calc(40vw / 7.68), 40px) 0;
+  background-color: var(--neutral-200);
+  header {
+    max-width: calc(506rem / 16);
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+  .list {
+    display: grid;
+    align-items: flex-start;
+    row-gap: 16px;
+    @media (min-width: 1000px) {
+      grid-template-columns: 1fr 1fr 1fr;
+      .item {
+        &:nth-child(3n + 2) {
+          box-shadow: 0px 11px 11px 0px rgba(127, 168, 210, 0.09), 0px 25px 15px 0px rgba(127, 168, 210, 0.05);
+          z-index: 2;
+        }
+      }
+    }
+    @media (max-width: 999px) {
+      max-width: calc(608rem / 16);
+      margin: 0 auto;
+    }
+    .item {
+      border-radius: 4px;
+      background: var(--neutral-100);
+      padding: clamp(16px, calc(24vw / 7.68), 24px) clamp(16px, calc(32vw / 7.68), 32px);
+      padding-top: 0;
+      margin-top: calc(clamp(68px, calc(80vw / 7.68), 80px) * 0.45);
+      .header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 4px 12px;
+        margin-bottom: 16px;
+        .name {
+          color: var(--neutral-700);
+          font-size: 1rem;
+        }
+        .amount {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          gap: 6px;
+          align-items: center;
+          font-size: calc(12rem / 16);
+        }
+      }
+      .img {
+        margin: calc(clamp(68px, calc(80vw / 7.68), 80px) * -0.45) auto 2px;
+        width: clamp(68px, calc(80vw / 7.68), 80px);
+        height: clamp(68px, calc(80vw / 7.68), 80px);
+        clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+        background-color: var(--neutral-200);
+        display: grid;
+        place-items: center;
+        img {
+          width: 60%;
+          height: 60%;
+          clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+        }
+      }
+    }
+  }
+}
