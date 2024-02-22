@@ -26,6 +26,7 @@
     border: 1px solid var(--form-100);
     padding: 8px;
     transition: border-color 0.5s;
+    font-size: 1rem;
     &::placeholder {
       color: var(--primary-500);
     }
