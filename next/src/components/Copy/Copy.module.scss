@@ -1,0 +1,29 @@
+.Copy {
+  display: grid;
+  width: fit-content;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  border-radius: 36px;
+  padding: 4px;
+  border: 1px solid var(--neutral-300);
+  background: var(--neutral-100);
+  &:not(:last-child) {
+    margin-bottom: 6px;
+  }
+  .icon {
+    width: clamp(32px, calc(36vw / 7.68), 36px);
+    height: clamp(32px, calc(36vw / 7.68), 36px);
+    border-radius: 50%;
+    background: var(--neutral-200);
+    display: grid;
+    place-items: center;
+    svg {
+      width: clamp(16px, calc(20vw / 7.68), 20px);
+      height: clamp(16px, calc(20vw / 7.68), 20px);
+    }
+  }
+  a {
+    margin: 0 12px 0 4px;
+    font-size: 1rem;
+  }
+}
