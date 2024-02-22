@@ -9,7 +9,7 @@ export default {
     {
       name: 'name',
       type: 'string',
-      title: 'Name'
+      title: 'Nazwa'
     },
     {
       name: 'slug',

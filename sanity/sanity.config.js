@@ -38,6 +38,8 @@ export default defineConfig({
             createListItem(S, 'global'),
             S.divider(),
             createDocumentTypeListItem(S, 'landingPage_Collection'),
+            S.divider(),
+            createDocumentTypeListItem(S, 'team_Collection'),
             ...singleTypes.map((item) => createListItem(S, item.name)),
           ]),
     }),

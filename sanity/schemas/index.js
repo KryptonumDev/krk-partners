@@ -5,9 +5,11 @@ export const singleTypes = []
 
 // Collection Types
 import landingPage_Collection from './collectionTypes/landingPage_Collection'
+import team_Collection from './collectionTypes/team_Collection'
 
 export const collectionTypes = [
   landingPage_Collection,
+  team_Collection,
 ]
 
 // Components
