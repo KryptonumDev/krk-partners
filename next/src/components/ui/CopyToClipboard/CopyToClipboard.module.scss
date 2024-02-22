@@ -1,22 +1,28 @@
 .CopyToClipboard {
-  border-radius: 4px;
-  background-color: var(--primary-300);
-  padding: 6px 8px;
-  font-size: calc(14rem/16);
-  line-height: 1.5;
-  transition: background-color .5s;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  &:disabled {
-    pointer-events: none;
+  padding: 4px 12px;
+  height: 36px;
+  border-radius: 36px;
+  background: var(--neutral-300);
+  overflow: hidden;
+  font-size: calc(12rem / 16);
+  .wrapper {
+    height: 200%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: transform 0.5s var(--easing), opacity 0.5s var(--easing);
+    margin-top: 4.5px;
+    line-height: 19px;
+    gap: 18.5px;
   }
-  &:not(:has(svg)):hover {
-    background-color: var(--primary-200);
-  }
-  svg {
+  position: relative;
+  .successIcon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     path {
-      animation: icon .8s var(--easing) forwards;
+      animation: icon 0.8s var(--easing) forwards;
       &:first-child {
         stroke-dasharray: 38;
         stroke-dashoffset: 38;
@@ -26,18 +32,24 @@
       &:last-child {
         stroke-dasharray: 10;
         stroke-dashoffset: 10;
-        animation-delay: .5s;
+        animation-delay: 0.5s;
       }
     }
   }
-  &:has(svg) {
-    background-color: var(--primary-400);
+  &:has(.successIcon) > .wrapper {
+    opacity: 0;
+  }
+  &:hover {
+    .wrapper {
+      transform: translateY(-36px);
+    }
   }
 }
 
 @keyframes icon {
-  // 100% target doesn't work on Safari
-  99%, 100% {
+  // 100% target doesn't work on Safari, so I have to use 99% and 100% instead
+  99%,
+  100% {
     stroke-dashoffset: 0;
   }
 }
