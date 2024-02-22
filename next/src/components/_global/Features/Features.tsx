@@ -19,8 +19,7 @@ const Features = ({ heading, subheading, list }: Props) => {
             <div className={styles.icon}>
               <Img
                 data={icon}
-                width={20}
-                height={20}
+                style={{ width: 20 }}
                 sizes='20px'
               />
             </div>
