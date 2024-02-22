@@ -31,7 +31,16 @@ export default {
   preview: {
     select: {
       title: 'name',
+      tel: 'tel',
+      email: 'email',
       media: 'img',
+    },
+    prepare({ title, tel, email, media }) {
+      return {
+        title: title,
+        subtitle: `${tel || 'Brak numeru telefonu'} | ${email || 'Brak adresu e-mail'}`,
+        media,
+      }
     }
   },
 }
