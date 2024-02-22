@@ -1,17 +1,26 @@
+import { ImgType } from '@/global/types';
+
 export type Props = {
   heading: string;
-  paragraph?: string;
+  subheading: string;
   list: {
     question: string;
     answer: string;
   }[];
-  index?: number;
+  contact_Heading: string;
+  form_Paragraph: string;
+  contact_Paragraph: string;
+  contact_Person: {
+    img: ImgType;
+    name: string;
+    tel: string;
+    email: string;
+  };
 };
 
 export type ListProps = {
-  Indicator: JSX.Element;
   list: {
-    question: JSX.Element;
-    answer: JSX.Element;
+    question: React.ReactNode;
+    answer: React.ReactNode;
   }[];
 };
