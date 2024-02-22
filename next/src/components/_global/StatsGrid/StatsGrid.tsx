@@ -20,14 +20,39 @@ const StatsGrid = ({
 }: Props) => {
   const renderedTiles = {
     tile1_Heading,
-    tile1_Img: <Img data={tile1_Img} sizes='270px' />,
+    tile1_Img: (
+      <Img
+        data={tile1_Img}
+        sizes='270px'
+      />
+    ),
     tile2_Heading,
-    tile2_Img: <Img data={tile2_Img} sizes='270px' />,
+    tile2_Img: (
+      <Img
+        data={tile2_Img}
+        sizes='270px'
+      />
+    ),
     tile3_Heading,
-    tile3_Img: <Img data={tile3_Img} sizes='270px' />,
+    tile3_Img: (
+      <Img
+        data={tile3_Img}
+        sizes='270px'
+      />
+    ),
     tile4_Heading,
-    tile4_Img: <Img data={tile4_Img} sizes='270px' />,
-    logo: <Img data={logo} sizes='80px' />,
+    tile4_Img: (
+      <Img
+        data={tile4_Img}
+        sizes='48px'
+      />
+    ),
+    logo: (
+      <Img
+        data={logo}
+        sizes='80px'
+      />
+    ),
   };
 
   return (

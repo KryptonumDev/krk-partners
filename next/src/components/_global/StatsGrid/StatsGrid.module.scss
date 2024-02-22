@@ -33,6 +33,9 @@
       border-radius: 16px;
       overflow: hidden;
       background-color: var(--neutral-300);
+      img {
+        height: auto;
+      }
       &:nth-child(1) {
         img {
           max-width: calc(100% + clamp(12px, calc(24vw / 7.68), 24px));

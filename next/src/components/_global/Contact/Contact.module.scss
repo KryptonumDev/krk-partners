@@ -1,0 +1,173 @@
+.Contact {
+  max-width: calc(1000rem / 16);
+  margin: 0 auto;
+  header {
+    max-width: calc(381rem / 16);
+    margin: 0 auto clamp(24px, calc(32vw / 7.68), 32px);
+    text-align: center;
+  }
+}
+
+.column {
+  display: grid;
+  gap: 24px;
+  align-items: stretch;
+  > p {
+    padding: 8px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px 12px;
+    &::before,
+    &::after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      border-top: 1px dashed var(--neutral-300);
+    }
+  }
+  @media (min-width: 1000px) {
+    grid-template-columns: 1fr auto 1fr;
+    > p {
+      grid-template-columns: unset;
+      grid-template-rows: 1fr auto 1fr;
+      &::before,
+      &::after {
+        width: 1px;
+        height: 100%;
+        border-left: unset;
+        border-top: unset;
+        border-left: 1px dashed var(--neutral-300);
+      }
+    }
+  }
+}
+
+.Form,
+.Call {
+  padding: clamp(16px, calc(32vw / 7.68), 32px);
+  border-radius: 16px;
+  > h3 {
+    font-size: 1rem;
+  }
+}
+
+.Form {
+  overflow: hidden;
+  background: var(--neutral-800);
+  color: var(--neutral-300);
+  display: grid;
+  gap: clamp(24px, calc(32vw / 7.68), 32px);
+  // Changed form colors, because of the dark background
+  --form-100: var(--neutral-600);
+  --form-200: var(--neutral-500);
+  --form-300: var(--secondary-300);
+  h3 {
+    color: var(--neutral-300);
+  }
+  position: relative;
+  &:has(.FormState) {
+    > *:not(.FormState) {
+      visibility: hidden;
+    }
+  }
+}
+
+.FormState {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background: var(--neutral-800);
+  > h4 {
+    font-size: clamp(calc(20rem / 16), calc(24vw / 7.68), calc(24rem / 16));
+    margin: 32px 0 16px;
+  }
+  > p {
+    font-size: 1rem;
+  }
+  > button {
+    margin-top: 32px;
+  }
+  .tryEmailUs {
+    margin-top: 32px;
+    .copy {
+      margin: 0 auto;
+    }
+    a {
+      color: var(--neutral-600);
+    }
+    p {
+      margin-bottom: 12px;
+    }
+  }
+  animation: FormState 0.5s both;
+  @keyframes FormState {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+.FormLoading {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  border-radius: inherit;
+  background-color: rgba(23, 23, 25, 0.62);
+  backdrop-filter: blur(4px);
+  z-index: 4;
+}
+
+.Call {
+  background: var(--neutral-200);
+  h3 {
+    margin-bottom: clamp(16px, calc(24vw / 7.68), 24px);
+    color: var(--neutral-700);
+  }
+  .person {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: clamp(8px, calc(12vw / 7.68), 12px);
+    margin-bottom: 12px;
+    .img {
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+      background-color: var(--neutral-300);
+      img {
+        width: 48px;
+        height: 48px;
+        clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+        object-fit: cover;
+        object-position: top;
+      }
+    }
+    p {
+      color: var(--neutral-700);
+      font-size: 1rem;
+    }
+  }
+  .copy {
+    @media (min-width: 1100px) {
+      margin-left: calc(64px + clamp(8px, calc(12vw / 7.68), 12px));
+    }
+  }
+}

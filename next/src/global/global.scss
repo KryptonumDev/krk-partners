@@ -20,6 +20,14 @@
   --primary-400: #377853;
 
   --secondary-200: #376578;
+  --secondary-300: #5f9cb6;
+  --secondary-500: #376578;
+
+  --error-500: #e3204e;
+
+  --form-100: var(--neutral-500);
+  --form-200: var(--neutral-700);
+  --form-300: var(--secondary-500);
 
   --pageMargin: clamp(16px, calc(40vw / 7.68), 40px);
   @media (max-width: 899px) and (min-width: 649px) {
@@ -126,10 +134,12 @@ h6 {
     font-weight: 400;
   }
 }
-h1 {
+h1,
+.h1 > * {
   font-size: clamp(calc(24rem / 16), calc(26vw / 7.68), calc(36rem / 16));
 }
-h2 {
+:not(.h3) > h2,
+.h2 > * {
   font-size: clamp(calc(12rem / 16), calc(14vw / 7.68), calc(14rem / 16));
   text-transform: uppercase;
   font-family: var(--font-cinzel);
@@ -139,17 +149,17 @@ h2 {
     margin-top: clamp(8px, calc(12vw / 7.68), 12px);
   }
 }
-h3 {
+h3,
+.h3 > * {
   letter-spacing: -0.02em;
   font-size: clamp(calc(26rem / 16), calc(32vw / 7.68), calc(32rem / 16));
 }
 
 .link {
   text-decoration: underline;
-  color: var(--neutral-700);
   &:hover,
   &:focus-visible {
-    color: var(--neutral-800);
+    opacity: 0.62;
   }
 }
 

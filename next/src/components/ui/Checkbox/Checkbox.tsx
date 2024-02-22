@@ -30,16 +30,13 @@ export default Checkbox;
 const Checkmark = () => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    width='14'
-    height='12'
+    width={12}
+    height={10}
     fill='none'
-    viewBox='0 0 14 12'
   >
     <path
-      stroke='#9A827A'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      d='M13.25 1L4.5 11 .75 7.25'
-    ></path>
+      d='M11.373.96a1 1 0 0 1 0 1.414L4.707 9.04a1 1 0 0 1-1.414 0L.626 6.374A1 1 0 1 1 2.04 4.959L4 6.92 9.96.959a1 1 0 0 1 1.413 0Z'
+      fill='#15A669'
+    />
   </svg>
 );

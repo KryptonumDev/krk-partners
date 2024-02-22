@@ -1,4 +1,4 @@
-import CopyToClipboard from '../ui/CopyToClipboard';
+import CopyToClipboard from '../CopyToClipboard';
 import styles from './Copy.module.scss';
 import type { Props } from './Copy.types';
 
