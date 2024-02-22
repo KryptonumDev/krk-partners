@@ -85,6 +85,13 @@
     .answer {
       overflow: hidden;
       padding: 0 16px;
+      > *:not(:first-child) {
+        margin-top: 12px;
+      }
+      > * + ul,
+      > * + ol {
+        margin-top: 8px !important;
+      }
     }
     &[data-opened='false'] {
       &::before {

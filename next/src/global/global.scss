@@ -145,10 +145,11 @@ h3 {
 }
 
 .link {
-  font-weight: 700;
+  text-decoration: underline;
+  color: var(--neutral-700);
   &:hover,
   &:focus-visible {
-    text-decoration: underline;
+    color: var(--neutral-800);
   }
 }
 
@@ -181,16 +182,5 @@ main {
 }
 
 .unorderedList {
-  list-style-type: none;
-  li {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 8px;
-    svg {
-      height: 1.5em;
-    }
-    &:not(:last-child) {
-      margin-bottom: 12px;
-    }
-  }
+  margin-left: 1rem;
 }

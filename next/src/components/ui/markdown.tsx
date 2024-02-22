@@ -27,13 +27,10 @@ const LinkRenderer = ({
 
 const ListRenderer = ({
   children,
-  ordered,
 }: React.LiHTMLAttributes<HTMLLIElement> & {
   children?: React.ReactNode;
-  ordered?: boolean;
 }) => (
   <li>
-    {!ordered && <BulletList />}
     <span>{children}</span>
   </li>
 );
@@ -113,22 +110,3 @@ Markdown.span = (props: JSX.IntrinsicAttributes & MarkdownProps) => (
 );
 
 export default Markdown;
-
-const BulletList = () => (
-  <svg
-    xmlns='http://www.w3.org/2000/svg'
-    width={16}
-    height={16}
-    fill='none'
-  >
-    <path
-      opacity={0.5}
-      d='M14.8 8A6.667 6.667 0 1 1 1.467 8 6.667 6.667 0 0 1 14.8 8Z'
-      fill='#377853'
-    />
-    <path
-      d='M10.82 5.98a.5.5 0 0 1 0 .707L7.488 10.02a.5.5 0 0 1-.707 0L5.447 8.687a.5.5 0 1 1 .707-.707l.98.98 1.49-1.49 1.49-1.49a.5.5 0 0 1 .707 0Z'
-      fill='#377853'
-    />
-  </svg>
-);
