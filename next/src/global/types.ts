@@ -27,11 +27,16 @@ export type generateMetadataProps = {
   };
 };
 
-export type PageQueryProps = {
-  name: string;
-  slug?: string;
-  content: ComponentProps[];
-} & generateMetadataProps;
+export type LandingPageQueryProps = {
+  landingPage: {
+    name: string;
+    slug?: string;
+    content: ComponentProps[];
+  } & generateMetadataProps;
+  firstLanding: {
+    slug: string;
+  };
+};
 
 export type generateStaticParamsProps = {
   slug: string;

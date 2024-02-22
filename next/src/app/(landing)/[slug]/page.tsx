@@ -1,13 +1,15 @@
 import { draftMode } from 'next/headers';
-import { notFound } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import sanityFetch from '@/utils/sanity.fetch';
 import Seo, { Seo_Query } from '@/global/Seo';
-import type { PageQueryProps, generateStaticParamsProps } from '@/global/types';
+import type { LandingPageQueryProps, generateStaticParamsProps } from '@/global/types';
 import Components, { Components_Query } from '@/components/Components';
 import Breadcrumbs from '@/components/_global/Breadcrumbs';
 
 const LandingPage = async ({ params: { slug } }: { params: { slug: string } }) => {
-  const { content, name }: PageQueryProps = await query(slug);
+  const {
+    landingPage: { content, name },
+  } = await query(slug);
 
   return (
     <>
@@ -15,7 +17,7 @@ const LandingPage = async ({ params: { slug } }: { params: { slug: string } }) =
         data={[
           {
             name,
-            path: `/landing/${slug}`,
+            path: `/${slug}`,
           },
         ]}
         visible={false}
@@ -29,31 +31,38 @@ export default LandingPage;
 
 export async function generateMetadata({ params: { slug: paramsSlug } }: { params: { slug: string } }) {
   const {
-    slug,
-    seo: { title, description },
+    landingPage: {
+      slug,
+      seo: { title, description },
+    },
   } = await query(paramsSlug);
   return Seo({
     title,
     description,
-    path: `/landing/${slug}`,
+    path: `/${slug}`,
   });
 }
 
-const query = async (slug: string): Promise<PageQueryProps> => {
-  const data = await sanityFetch({
+const query = async (slug: string): Promise<LandingPageQueryProps> => {
+  const data = await sanityFetch<LandingPageQueryProps>({
     query: /* groq */ `
-      *[_type == "landingPage_Collection" && slug.current == $slug][0] {
-        name,
-        'slug': slug.current,
-        ${Components_Query}
-        ${Seo_Query}
+      {
+        "landingPage": *[_type == "landingPage_Collection" && slug.current == $slug][0] {
+          name,
+          'slug': slug.current,
+          ${Components_Query}
+          ${Seo_Query}
+        },
+        "firstLanding": *[_type == "landingPage_Collection"][0] {
+          'slug': slug.current,
+        }
       }
     `,
     params: { slug },
     isDraftMode: draftMode().isEnabled,
   });
-  !data && notFound();
-  return data as PageQueryProps;
+  !data.landingPage && redirect(data.firstLanding.slug);
+  return data as LandingPageQueryProps;
 };
 
 export async function generateStaticParams(): Promise<generateStaticParamsProps[]> {
