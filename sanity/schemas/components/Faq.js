@@ -29,41 +29,6 @@ export default {
       title: 'Lista pytań i odpowiedzi',
       validation: Rule => Rule.required(),
     },
-    {
-      name: 'contact_Heading',
-      type: 'markdown',
-      title: 'Nagłówek',
-      validation: Rule => Rule.required(),
-      fieldset: 'contact',
-    },
-    {
-      name: 'form_Paragraph',
-      type: 'string',
-      title: 'Paragraf w formularzu',
-      validation: Rule => Rule.required(),
-      fieldset: 'contact',
-    },
-    {
-      name: 'contact_Paragraph',
-      type: 'string',
-      title: 'Paragraf w sekcji skontaktuj się',
-      validation: Rule => Rule.required(),
-      fieldset: 'contact',
-    },
-    {
-      name: 'contact_Person',
-      type: 'reference',
-      to: [{ type: 'team_Collection' }],
-      title: 'Osoba do kontaktu',
-      validation: Rule => Rule.required(),
-      fieldset: 'contact',
-    },
-  ],
-  fieldsets: [
-    {
-      name: 'contact',
-      title: 'Kontakt',
-    }
   ],
   preview: {
     select: {

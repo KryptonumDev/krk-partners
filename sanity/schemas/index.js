@@ -24,6 +24,7 @@ import ListWithIconAndCta, { ListWithIconAndCta_Item } from './components/ListWi
 import Reviews, { Reviews_Item } from './components/Reviews'
 import FloatingTilesAndImages, { FloatingTilesAndImages_Images, FloatingTilesAndImages_List } from './components/FloatingTilesAndImages'
 import Faq, { Faq_List } from './components/Faq'
+import Contact from './components/Contact'
 
 export const schemaTypes = [
   ...singleTypes,
@@ -50,4 +51,5 @@ export const schemaTypes = [
   FloatingTilesAndImages_Images,
   Faq,
   Faq_List,
+  Contact,
 ]

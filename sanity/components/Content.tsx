@@ -11,5 +11,6 @@ export default {
     {type: 'Reviews'},
     {type: 'FloatingTilesAndImages'},
     {type: 'Faq'},
+    {type: 'Contact'},
   ],
 }
