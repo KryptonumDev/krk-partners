@@ -12,5 +12,6 @@ export default {
     {type: 'FloatingTilesAndImages'},
     {type: 'Faq'},
     {type: 'Contact'},
+    {type: 'Steps'},
   ],
 }
