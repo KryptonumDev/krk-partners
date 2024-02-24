@@ -14,6 +14,7 @@ import FloatingTilesAndImages, {
 import Faq, { Faq_Query, type FaqProps } from '@/components/_global/Faq';
 import Contact, { Contact_Query, type ContactProps } from '@/components/_global/Contact';
 import Steps, { Steps_Query, type StepsProps } from '@/components/_global/Steps';
+import Team, { Team_Query, type TeamProps } from './_global/Team';
 
 type ComponentMap = {
   CaseStudy: CaseStudyProps;
@@ -26,6 +27,7 @@ type ComponentMap = {
   Faq: FaqProps;
   Contact: ContactProps;
   Steps: StepsProps;
+  Team: TeamProps;
 };
 
 export type ComponentProps = ComponentMap[keyof ComponentMap] & { _type: string };
@@ -44,6 +46,7 @@ const Components = ({ data }: { data: ComponentProps[] }) => {
       Faq: <Faq {...(item as FaqProps)} />,
       Contact: <Contact {...(item as ContactProps)} />,
       Steps: <Steps {...(item as StepsProps)} />,
+      Team: <Team {...(item as TeamProps)} />,
     };
     const DynamicComponent = componentMap[componentType];
     if (!DynamicComponent) return null;
@@ -65,5 +68,6 @@ export const Components_Query = /* groq */ `
     ${Faq_Query}
     ${Contact_Query}
     ${Steps_Query}
+    ${Team_Query}
   },
 `;

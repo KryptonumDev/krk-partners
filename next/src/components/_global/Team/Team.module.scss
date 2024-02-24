@@ -1,0 +1,40 @@
+.Team {
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(8px, calc(24vw / 7.68), 24px);
+    margin-bottom: clamp(24px, calc(48vw / 7.68), 48px);
+    img {
+      height: 184px;
+      width: auto;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+  }
+  .column {
+    display: grid;
+    gap: clamp(24px, calc(32vw / 7.68), 32px);
+    @media (min-width: 900px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media (max-width: 899px) {
+      max-width: calc(450rem / 16);
+    }
+    h2,
+    h3 {
+      color: var(--neutral-700);
+    }
+    h2 {
+      font-size: clamp(calc(20rem / 16), calc(24vw / 7.68), calc(24rem / 16));
+    }
+    h3 {
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+    .paragraph {
+      > *:not(:last-child) {
+        margin-bottom: 12px;
+      }
+    }
+  }
+}
