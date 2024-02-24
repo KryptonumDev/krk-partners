@@ -1,0 +1,81 @@
+.PersonIntroduction {
+  display: grid;
+  gap: clamp(24px, calc(48vw / 7.68), 48px) 32px;
+  align-items: flex-end;
+  .name {
+    margin: 32px -64px 0 0;
+    z-index: 2;
+    align-self: flex-start;
+    grid-area: name;
+    border-radius: 16px;
+    background: var(--neutral-200);
+    padding: clamp(12px, calc(16vw / 7.68), 16px) clamp(16px, calc(32vw / 7.68), 32px);
+    h2 {
+      font-size: clamp(calc(20rem / 16), calc(24vw / 7.68), calc(24rem / 16));
+      color: var(--neutral-700);
+      margin-bottom: 2px;
+    }
+    h3 {
+      font-size: 1rem;
+    }
+  }
+  .img {
+    border-radius: 16px;
+    align-self: flex-start;
+    grid-area: img;
+  }
+  .logo {
+    grid-area: logo;
+    width: 90px;
+    height: auto;
+  }
+  .content {
+    grid-area: content;
+    border-radius: 16px;
+    background: var(--neutral-200);
+    padding: clamp(16px, calc(32vw / 7.68), 32px) clamp(16px, calc(32vw / 7.68), 52px);
+    .QuoteIcon {
+      width: clamp(32px, calc(40vw / 7.68), 40px);
+      height: clamp(32px, calc(40vw / 7.68), 40px);
+      border-radius: 50%;
+      background-color: var(--neutral-100);
+      margin-bottom: 16px;
+      display: grid;
+      place-items: center;
+      svg {
+        width: clamp(16px, calc(20vw / 7.68), 20px);
+        height: clamp(16px, calc(20vw / 7.68), 20px);
+      }
+    }
+    .text {
+      > *:not(:last-child) {
+        margin-bottom: 12px;
+      }
+    }
+    .signature {
+      margin: 16px 0 0 auto;
+      max-width: 168px;
+    }
+  }
+  @media (min-width: 1100px) {
+    grid-template-columns: 1.5fr 2fr 2.5fr;
+    grid-template-areas: 'name img content' 'logo img content';
+  }
+  @media (min-width: 550px) and (max-width: 1099px) {
+    grid-template-columns: 1fr 1.1fr;
+    grid-template-areas: 'name img' 'logo img' 'content content';
+    .name {
+      margin-right: calc(clamp(64px, calc(64vw / 7.68), 96px) * -1);
+    }
+  }
+  @media (max-width: 549px) {
+    gap: 0;
+    grid-template-areas: 'img' 'name' 'logo' 'content';
+    .name {
+      margin: -8px 8px 0;
+    }
+    .logo {
+      margin: 32px auto 16px;
+    }
+  }
+}

@@ -102,6 +102,12 @@ Markdown.h5 = (props: JSX.IntrinsicAttributes & MarkdownProps) => (
     {...props}
   />
 );
+Markdown.h6 = (props: JSX.IntrinsicAttributes & MarkdownProps) => (
+  <Markdown
+    Tag='h5'
+    {...props}
+  />
+);
 Markdown.span = (props: JSX.IntrinsicAttributes & MarkdownProps) => (
   <Markdown
     Tag='span'

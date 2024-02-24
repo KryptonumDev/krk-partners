@@ -138,7 +138,7 @@ h1,
 .h1 > * {
   font-size: clamp(calc(24rem / 16), calc(26vw / 7.68), calc(36rem / 16));
 }
-:not(.h3) > h2,
+:not(.h3) > h2:not(.h3),
 .h2 > * {
   font-size: clamp(calc(12rem / 16), calc(14vw / 7.68), calc(14rem / 16));
   text-transform: uppercase;
