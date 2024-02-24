@@ -25,7 +25,7 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
-      name: 'block1_Subheading',
+      name: 'block1_Heading',
       type: 'markdown',
       title: 'Nagłówek',
       validation: Rule => Rule.required(),
@@ -39,7 +39,7 @@ export default {
       fieldset: 'block1',
     },
     {
-      name: 'block2_Subheading',
+      name: 'block2_Heading',
       type: 'markdown',
       title: 'Nagłówek',
       validation: Rule => Rule.required(),
