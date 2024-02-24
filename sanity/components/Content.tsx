@@ -14,5 +14,6 @@ export default {
     {type: 'Contact'},
     {type: 'Steps'},
     {type: 'Team'},
+    {type: 'PersonIntroduction'},
   ],
 }
