@@ -13,5 +13,6 @@ export default {
     {type: 'Faq'},
     {type: 'Contact'},
     {type: 'Steps'},
+    {type: 'Team'},
   ],
 }

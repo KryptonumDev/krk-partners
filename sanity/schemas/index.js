@@ -26,6 +26,7 @@ import FloatingTilesAndImages, { FloatingTilesAndImages_Images, FloatingTilesAnd
 import Faq, { Faq_List } from './components/Faq'
 import Contact from './components/Contact'
 import Steps, { Steps_Timeline } from './components/Steps'
+import Team from './components/Team'
 
 export const schemaTypes = [
   ...singleTypes,
@@ -55,4 +56,5 @@ export const schemaTypes = [
   Contact,
   Steps,
   Steps_Timeline,
+  Team,
 ]
