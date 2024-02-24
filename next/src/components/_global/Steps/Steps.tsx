@@ -1,8 +1,9 @@
 import Markdown from '@/components/ui/markdown';
-import styles from './Steps.module.scss';
-import type { Props } from './Steps.types';
 import Img from '@/components/ui/image';
 import Button from '@/components/ui/Button';
+import styles from './Steps.module.scss';
+import Timeline from './_Timeline';
+import type { Props } from './Steps.types';
 
 const Steps = ({ heading, timeline, cta_Heading, cta_Paragraph, cta_Cta, cta_Img }: Props) => {
   return (
@@ -10,17 +11,7 @@ const Steps = ({ heading, timeline, cta_Heading, cta_Paragraph, cta_Cta, cta_Img
       <header>
         <Markdown.h2 className='h3'>{heading}</Markdown.h2>
       </header>
-      <div className={styles.timeline}>
-        {timeline.map(({ name, when }, i) => (
-          <div
-            className={styles.item}
-            key={i}
-          >
-            <p>{name}</p>
-            <p>{when}</p>
-          </div>
-        ))}
-      </div>
+      <Timeline timeline={timeline} />
       <div className={styles.ctaBox}>
         <Markdown.h3>{cta_Heading}</Markdown.h3>
         <Markdown className={styles.paragraph}>{cta_Paragraph}</Markdown>

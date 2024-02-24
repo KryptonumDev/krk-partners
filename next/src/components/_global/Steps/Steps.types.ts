@@ -11,3 +11,10 @@ export type Props = {
   cta_Cta: CtaType;
   cta_Img: ImgType;
 };
+
+export type TimelineType = {
+  timeline: {
+    name: string;
+    when: string;
+  }[];
+};
