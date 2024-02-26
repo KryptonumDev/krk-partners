@@ -28,6 +28,7 @@ import Contact from './components/Contact'
 import Steps, { Steps_Timeline } from './components/Steps'
 import Team from './components/Team'
 import PersonIntroduction from './components/PersonIntroduction'
+import FloatingItems, { FloatingItems_List } from './components/FloatingItems'
 
 export const schemaTypes = [
   ...singleTypes,
@@ -59,4 +60,6 @@ export const schemaTypes = [
   Steps_Timeline,
   Team,
   PersonIntroduction,
+  FloatingItems,
+  FloatingItems_List,
 ]

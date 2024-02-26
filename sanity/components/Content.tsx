@@ -15,5 +15,6 @@ export default {
     {type: 'Steps'},
     {type: 'Team'},
     {type: 'PersonIntroduction'},
+    {type: 'FloatingItems'},
   ],
 }
