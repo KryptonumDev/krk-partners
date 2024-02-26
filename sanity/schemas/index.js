@@ -29,6 +29,7 @@ import Steps, { Steps_Timeline } from './components/Steps'
 import Team from './components/Team'
 import PersonIntroduction from './components/PersonIntroduction'
 import FloatingItems, { FloatingItems_List } from './components/FloatingItems'
+import HeroApplication from './components/HeroApplication'
 
 export const schemaTypes = [
   ...singleTypes,
@@ -62,4 +63,5 @@ export const schemaTypes = [
   PersonIntroduction,
   FloatingItems,
   FloatingItems_List,
+  HeroApplication,
 ]

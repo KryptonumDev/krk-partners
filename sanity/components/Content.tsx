@@ -3,6 +3,7 @@ export default {
   type: 'array',
   title: 'Komponenty podstrony',
   of: [
+    {type: 'HeroApplication'},
     {type: 'CaseStudy'},
     {type: 'Comparison'},
     {type: 'Features'},
