@@ -19,6 +19,7 @@ import PersonIntroduction, {
   PersonIntroduction_Query,
   type PersonIntroductionProps,
 } from './_global/PersonIntroduction';
+import FloatingItems, { FloatingItems_Query, type FloatingItemsProps } from './_global/FloatingItems';
 
 type ComponentMap = {
   CaseStudy: CaseStudyProps;
@@ -33,6 +34,7 @@ type ComponentMap = {
   Steps: StepsProps;
   Team: TeamProps;
   PersonIntroduction: PersonIntroductionProps;
+  FloatingItems: FloatingItemsProps;
 };
 
 export type ComponentProps = ComponentMap[keyof ComponentMap] & { _type: string };
@@ -53,6 +55,7 @@ const Components = ({ data }: { data: ComponentProps[] }) => {
       Steps: <Steps {...(item as StepsProps)} />,
       Team: <Team {...(item as TeamProps)} />,
       PersonIntroduction: <PersonIntroduction {...(item as PersonIntroductionProps)} />,
+      FloatingItems: <FloatingItems {...(item as FloatingItemsProps)} />,
     };
     const DynamicComponent = componentMap[componentType];
     if (!DynamicComponent) return null;
@@ -76,5 +79,6 @@ export const Components_Query = /* groq */ `
     ${Steps_Query}
     ${Team_Query}
     ${PersonIntroduction_Query}
+    ${FloatingItems_Query}
   },
 `;

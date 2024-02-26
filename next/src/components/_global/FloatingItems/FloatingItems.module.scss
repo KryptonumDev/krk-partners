@@ -1,0 +1,224 @@
+.FloatingItems {
+  padding: clamp(24px, calc(60vw / 7.68), 60px) 0;
+  header {
+    max-width: calc(588rem / 16);
+    margin: 0 auto;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+  }
+  display: grid;
+  place-items: center;
+  position: relative;
+  min-height: 450px;
+  &[data-visible='true'] {
+    .list {
+      .item {
+        animation-play-state: running;
+      }
+    }
+  }
+  .list {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    .item {
+      animation: FloatingItems 0.5s var(--easing) both;
+      animation-play-state: paused;
+      position: absolute;
+      &:nth-child(1) {
+        left: 5%;
+        top: 2%;
+      }
+      &:nth-child(2) {
+        left: 36%;
+        top: 0%;
+      }
+      &:nth-child(3) {
+        left: 61%;
+        top: 0%;
+      }
+      &:nth-child(4) {
+        left: 75%;
+        top: 10%;
+      }
+      &:nth-child(5) {
+        left: 15%;
+        top: 22%;
+      }
+      &:nth-child(6) {
+        left: 53%;
+        top: 22.4%;
+      }
+      &:nth-child(7) {
+        left: 2%;
+        top: 47%;
+      }
+      &:nth-child(8) {
+        left: 79%;
+        top: 40%;
+      }
+      &:nth-child(9) {
+        left: 18%;
+        top: 69%;
+      }
+      &:nth-child(10) {
+        left: 38%;
+        top: 84%;
+      }
+      &:nth-child(11) {
+        left: 69%;
+        top: 70%;
+      }
+      padding: 4px 16px 4px 4px;
+      border-radius: 48px;
+      background-color: var(--neutral-200);
+      display: inline-grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 12px;
+      font-size: 1rem;
+      &[data-highlighted='false'] {
+        box-shadow: 0px 11px 11px 0px rgba(127, 168, 210, 0.09), 0px 25px 15px 0px rgba(127, 168, 210, 0.05);
+      }
+      &[data-highlighted='true'] {
+        background-color: var(--neutral-800);
+        color: var(--neutral-200);
+        .icon {
+          background-color: var(--neutral-700);
+        }
+      }
+      .icon {
+        background-color: var(--neutral-300);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        img {
+          width: 20px;
+          height: 20px;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+  @media (max-width: 999px) {
+    min-height: 617px;
+    .list {
+      .item {
+        &:nth-child(2) {
+          left: 15.789%;
+          top: 0%;
+        }
+        &:nth-child(3) {
+          left: 61.336%;
+          top: 0%;
+        }
+        &:nth-child(5) {
+          left: 0%;
+          top: 15.728%;
+        }
+        &:nth-child(6) {
+          left: 65.461%;
+          top: 15.536%;
+        }
+        &:nth-child(1) {
+          left: 7.236%;
+          top: 29.514%;
+        }
+        &:nth-child(4) {
+          left: 50.82%;
+          top: 29.514%;
+        }
+        &:nth-child(7) {
+          left: 0%;
+          top: 63.127%;
+        }
+        &:nth-child(11) {
+          left: 60.032%;
+          top: 65.244%;
+        }
+        &:nth-child(10) {
+          left: 25.823%;
+          top: 77.941%;
+        }
+        &:nth-child(9) {
+          left: 2.135%;
+          top: 91.632%;
+        }
+        &:nth-child(8) {
+          left: 58.224%;
+          top: 90.793%;
+        }
+      }
+    }
+  }
+  @media (max-width: 599px) {
+    min-height: 914px;
+    header {
+      margin-top: 13%;
+    }
+    .list {
+      .item {
+        &:nth-child(3) {
+          left: 0%;
+          top: 0%;
+        }
+        &:nth-child(2) {
+          left: 41.515%;
+          top: 6.874%;
+        }
+        &:nth-child(5) {
+          left: 0%;
+          top: 14.756%;
+        }
+        &:nth-child(6) {
+          left: 55.758%;
+          top: 22.628%;
+        }
+        &:nth-child(1) {
+          left: 0%;
+          top: 29.512%;
+        }
+        &:nth-child(4) {
+          left: 25.758%;
+          top: 38.397%;
+        }
+        &:nth-child(7) {
+          left: 0%;
+          top: 63.305%;
+        }
+        &:nth-child(11) {
+          left: 26.364%;
+          top: 71.078%;
+        }
+        &:nth-child(10) {
+          left: 0%;
+          top: 78.998%;
+        }
+        &:nth-child(8) {
+          left: 25.152%;
+          top: 86.926%;
+        }
+        &:nth-child(9) {
+          left: 0%;
+          top: 94.846%;
+        }
+      }
+    }
+  }
+}
+
+@keyframes FloatingItems {
+  0% {
+    transform: translateY(13px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
