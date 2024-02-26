@@ -1,3 +1,4 @@
+import HeroApplication, { HeroApplication_Query, type HeroApplicationProps } from './_global/HeroApplication';
 import CaseStudy, { CaseStudy_Query, type CaseStudyProps } from '@/components/_global/CaseStudy';
 import Comparison, { Comparison_Query, type ComparisonProps } from '@/components/_global/Comparison';
 import Features, { Features_Query, type FeaturesProps } from '@/components/_global/Features';
@@ -22,6 +23,7 @@ import PersonIntroduction, {
 import FloatingItems, { FloatingItems_Query, type FloatingItemsProps } from './_global/FloatingItems';
 
 type ComponentMap = {
+  HeroApplication: HeroApplicationProps;
   CaseStudy: CaseStudyProps;
   Comparison: ComparisonProps;
   Features: FeaturesProps;
@@ -43,6 +45,7 @@ const Components = ({ data }: { data: ComponentProps[] }) => {
   return data?.map((item, index) => {
     const componentType = item._type as keyof ComponentMap;
     const componentMap: Record<string, React.ReactNode> = {
+      HeroApplication: <HeroApplication {...(item as HeroApplicationProps)} />,
       CaseStudy: <CaseStudy {...(item as CaseStudyProps)} />,
       Comparison: <Comparison {...(item as ComparisonProps)} />,
       Features: <Features {...(item as FeaturesProps)} />,
@@ -67,6 +70,7 @@ export default Components;
 
 export const Components_Query = /* groq */ `
   content[] {
+    ${HeroApplication_Query}
     ${CaseStudy_Query}
     ${Comparison_Query}
     ${Features_Query}

@@ -22,9 +22,10 @@ type ImgProps = (
 ) & {
   sizes: string;
   priority?: boolean;
+  quality?: number;
 } & React.HTMLAttributes<HTMLImageElement | null>;
 
-const Img = ({ data, src, width, height, alt, sizes, priority, ...props }: ImgProps) => {
+const Img = ({ data, src, width, height, alt, sizes, priority, quality, ...props }: ImgProps) => {
   const placeholder = data?.asset.metadata?.lqip || defaultPlaceholder;
   if (data) {
     src = data.asset.url;
@@ -40,7 +41,8 @@ const Img = ({ data, src, width, height, alt, sizes, priority, ...props }: ImgPr
       height={height}
       alt={alt || ''}
       sizes={sizes}
-      priority={priority}
+      {...(priority && { priority })}
+      {...(quality && { quality })}
       {...((width! > 40 || height! > 40) && {
         blurDataURL: placeholder,
         placeholder: 'blur',
