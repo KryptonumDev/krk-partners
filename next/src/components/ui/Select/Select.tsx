@@ -4,9 +4,9 @@ import Error from '@/components/ui/Error';
 import styles from './Select.module.scss';
 import type { Props } from './Select.types';
 
-const Select = ({ register, label, errors, options }: Props) => {
+const Select = ({ register, label, errors, options, defaultValue }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [option, setOption] = useState(options[0]);
+  const [option, setOption] = useState(defaultValue);
 
   const handleClick = () => setTimeout(() => (document.activeElement as HTMLElement)?.blur(), 0);
 
@@ -49,7 +49,7 @@ const Select = ({ register, label, errors, options }: Props) => {
               onMouseUp={handleClick}
             >
               <input
-                defaultChecked={i === 0}
+                defaultChecked={defaultValue === option}
                 type='radio'
                 {...register}
                 onChange={() => setOption(option)}
