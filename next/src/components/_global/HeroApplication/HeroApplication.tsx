@@ -2,6 +2,7 @@ import Markdown from '@/components/ui/markdown';
 import styles from './HeroApplication.module.scss';
 import type { Props } from './HeroApplication.types';
 import Img from '@/components/ui/image';
+import Form from './_Form';
 
 const HeroApplication = ({
   heading,
@@ -36,7 +37,7 @@ const HeroApplication = ({
           <p className={styles.text}>{testimonial_Text}</p>
         </div>
       </header>
-      <div className={styles.form}>
+      <div className={styles.application}>
         <div className={styles.introduction}>
           <Markdown.h2 className='h3'>{form_Heading}</Markdown.h2>
           <ul>
@@ -48,6 +49,7 @@ const HeroApplication = ({
             ))}
           </ul>
         </div>
+        <Form />
       </div>
     </section>
   );

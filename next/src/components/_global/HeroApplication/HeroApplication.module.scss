@@ -40,7 +40,7 @@
       }
     }
   }
-  .form {
+  .application {
     .introduction {
       h2 {
         font-size: clamp(calc(20rem / 16), calc(24vw / 7.68), calc(24rem / 16));
@@ -65,4 +65,22 @@
       }
     }
   }
+}
+
+.Form {
+  position: relative;
+}
+
+.Loading {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  border-radius: inherit;
+  background-color: rgba(23, 23, 25, 0.62);
+  backdrop-filter: blur(4px);
+  z-index: 4;
 }

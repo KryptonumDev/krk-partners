@@ -7,9 +7,10 @@ import Input from '@/components/ui/Input';
 import Checkbox from '@/components/ui/Checkbox';
 import Button from '@/components/ui/Button';
 import { regex } from '@/global/constants';
-import type { FormStatusType, FormType } from './Contact.types';
 import FormState from './_FormState';
 import FormLoading from './_FormLoading';
+import type { FormType } from './Contact.types';
+import type { FormStatusType } from '@/global/types';
 
 const Form = ({ paragraph, email }: FormType) => {
   const [status, setStatus] = useState<FormStatusType>({ sending: false });

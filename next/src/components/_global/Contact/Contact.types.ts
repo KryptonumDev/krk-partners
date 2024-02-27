@@ -21,8 +21,3 @@ export type CallType = {
   paragraph: string;
   person: Props['contact_Person'];
 };
-
-export type FormStatusType = {
-  sending: boolean;
-  success?: boolean;
-};

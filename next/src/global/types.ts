@@ -41,3 +41,8 @@ export type LandingPageQueryProps = {
 export type generateStaticParamsProps = {
   slug: string;
 };
+
+export type FormStatusType = {
+  sending: boolean;
+  success?: boolean;
+};
