@@ -18,6 +18,7 @@
       margin-bottom: -5px;
       border-bottom: none;
       background-color: var(--neutral-100);
+      transition: background-color 0.3s var(--easing), border-color 0.3s var(--easing);
       padding: 12px 8px 24px;
       color: var(--neutral-800);
       text-align: center;
@@ -47,6 +48,7 @@
     padding: 1px 4px;
     border-radius: 15px;
     border: 1px solid var(--neutral-500);
+    transition: border-color 0.3s var(--easing);
     position: relative;
     input {
       left: -20px;
@@ -108,6 +110,16 @@
       .thumb {
         transform: translateX(-50%) scale(0.9);
       }
+    }
+  }
+  &[aria-invalid='true'] {
+    .input {
+      input {
+        border-color: var(--error-500);
+      }
+    }
+    .slider {
+      border-color: var(--error-500);
     }
   }
 }

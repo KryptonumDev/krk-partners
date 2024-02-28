@@ -19,7 +19,10 @@ const Slider = ({ label, register, minValue, maxValue, errors, setValue }: Props
   };
 
   return (
-    <div className={styles['Slider']}>
+    <div
+      className={styles['Slider']}
+      aria-invalid={!!errors[register.name]}
+    >
       <p>
         <span dangerouslySetInnerHTML={{ __html: label }} />
         <Error error={errors[register.name]?.message?.toString()} />
