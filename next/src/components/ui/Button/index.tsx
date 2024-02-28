@@ -32,7 +32,7 @@ const Button = ({ data, children, href, className, ...props }: ButtonProps) => {
     <Element
       href={href || ''}
       {...(href && isExternal && { target: '_blank', rel: 'noopener' })}
-      className={`${styles.wrapper}${className ? ` ${className}` : ''}`}
+      className={`${styles['Button']}${className ? ` ${className}` : ''}`}
       {...props}
     >
       <span>{children}</span>

@@ -1,4 +1,4 @@
-.wrapper {
+.Button {
   min-width: 48px;
   display: grid;
   width: fit-content;
@@ -61,5 +61,9 @@
         transform: translateX(100%);
       }
     }
+  }
+  &:disabled {
+    opacity: 0.62;
+    pointer-events: none;
   }
 }
