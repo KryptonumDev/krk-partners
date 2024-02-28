@@ -1,3 +1,4 @@
+'use client';
 import { useState } from 'react';
 import Error from '@/components/ui/Error';
 import styles from './Slider.module.scss';
@@ -13,7 +14,7 @@ const Slider = ({ label, register, minValue, maxValue, errors, setValue }: Props
 
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(formatToOnlyDigits(e)) || 0;
-    setValue('value', formatNumberToSpaces(value), { shouldValidate: true });
+    setValue(register.name, formatNumberToSpaces(value), { shouldValidate: true });
     const percentage = Math.max(0, Math.min(((value - minValue) / (maxValue - minValue)) * 100, 100));
     setSliderState({ value, percentage });
   };
@@ -33,7 +34,7 @@ const Slider = ({ label, register, minValue, maxValue, errors, setValue }: Props
           name={register.name}
           type='text'
           defaultValue={formatNumberToSpaces(sliderState.value)}
-          onChange={(e) => handleSliderChange(e)}
+          onChange={handleSliderChange}
         />
         <div className={styles.suffix}>
           <span>{formatNumberToSpaces(sliderState.value)}</span>

@@ -7,6 +7,7 @@ import Button from '@/components/ui/Button';
 import Checkbox from '@/components/ui/Checkbox';
 import Select from '@/components/ui/Select';
 import Slider from '@/components/ui/Slider';
+import Picker from '@/components/ui/Picker';
 import styles from '../HeroApplication.module.scss';
 import Loading from './Loading';
 import { regex } from '@/global/constants';
@@ -80,6 +81,19 @@ const Form = () => {
         errors={errors}
         minValue={200000}
         maxValue={5000000}
+      />
+      <Picker
+        label='Okres finansowania w miesiącach (min. 1 max 24)'
+        register={register('fundingPeriod', {
+          required: { value: true, message: 'Okres finansowania jest wymagany' },
+          min: { value: 1, message: 'Minimalnie 1 miesiąc' },
+          max: { value: 24, message: 'Maksymalnie 24 miesiące' },
+        })}
+        setValue={setValue}
+        errors={errors}
+        options={[6, 12, 24]}
+        minValue={1}
+        maxValue={24}
       />
       <Input
         label='Imię i nazwisko'
