@@ -64,10 +64,17 @@ const Form = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <Slider
+        label='Kwota pożyczki'
         register={register('value', {
           required: { value: true, message: 'Kwota jest wymagana' },
-          min: { value: 200000, message: 'Kwota musi być większa niż 200 000 zł' },
-          max: { value: 5000000, message: 'Kwota nie może być większa niż 5 000 000 zł' },
+          validate: (value) => {
+            value = value.replaceAll(' ', '');
+            if (value < 200000) {
+              return 'Kwota musi być większa niż 200 000 zł';
+            } else if (value > 5000000) {
+              return 'Kwota nie może być większa niż 5 000 000 zł';
+            }
+          },
         })}
         setValue={setValue}
         errors={errors}

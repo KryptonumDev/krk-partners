@@ -1,6 +1,113 @@
 .Slider {
+  > p {
+    margin: 0 6px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2px 4px;
+    flex-wrap: wrap;
+    svg {
+      flex-shrink: 0;
+    }
+  }
+  .input {
+    font-size: 1rem;
+    input {
+      border-radius: 4px 4px 0px 0px;
+      border: 1px solid var(--neutral-500);
+      margin-bottom: -5px;
+      border-bottom: none;
+      background-color: var(--neutral-100);
+      padding: 12px 8px 24px;
+      color: var(--neutral-800);
+      text-align: center;
+      width: 100%;
+      &:focus-visible {
+        outline: none;
+      }
+    }
+    position: relative;
+    .suffix {
+      pointer-events: none;
+      position: absolute;
+      top: 13px;
+      left: 50%;
+      transform: translateX(calc(-50% + 8px));
+      span {
+        &:first-child {
+          opacity: 0;
+        }
+      }
+    }
+  }
   .slider {
-    width: 100%;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1px 4px;
+    border-radius: 15px;
+    border: 1px solid var(--neutral-500);
+    position: relative;
+    input {
+      left: -20px;
+      right: -20px;
+      position: absolute;
+      height: 40px;
+      cursor: pointer;
+      opacity: 0;
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--neutral-400);
+    }
+    .thumb {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      left: 0;
+      border-radius: 50%;
+      background-color: var(--secondary-500);
+      display: grid;
+      place-items: center;
+      transform: translateX(-50%);
+      transition: transform 0.3s var(--easing);
+      svg {
+        transition: transform 0.3s var(--easing);
+      }
+    }
+  }
+  .range {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &:has(.slider input:hover),
+  &:has(.slider input:focus-visible),
+  &:has(.input input:focus-visible),
+  &:has(.input input:hover) {
+    .input {
+      input {
+        background-color: var(--neutral-200);
+      }
+    }
+  }
+  &:has(.slider input:hover) {
+    .slider {
+      .thumb {
+        svg {
+          transform: scaleX(1.2) scaleY(0.9);
+        }
+      }
+    }
+  }
+  &:has(.slider input:active) {
+    .slider {
+      .thumb {
+        transform: translateX(-50%) scale(0.9);
+      }
+    }
   }
 }
