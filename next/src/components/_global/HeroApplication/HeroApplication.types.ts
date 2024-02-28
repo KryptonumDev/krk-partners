@@ -1,4 +1,12 @@
-import type { ImgType } from '@/global/types';
+import type { FormStatusType, ImgType } from '@/global/types';
+import type {
+  FieldErrors,
+  FieldValues,
+  UseFormRegister,
+  UseFormSetValue,
+  UseFormTrigger,
+  UseFormWatch,
+} from 'react-hook-form';
 
 export type Props = {
   heading: string;
@@ -10,4 +18,30 @@ export type Props = {
   testimonial_Text: string;
   form_Heading: string;
   form_Features: string[];
+};
+
+export type Step1Props = {
+  form: {
+    register: UseFormRegister<FieldValues>;
+    setValue: UseFormSetValue<FieldValues>;
+    errors: FieldErrors<FieldValues>;
+    trigger: UseFormTrigger<FieldValues>;
+  };
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+} & React.HTMLAttributes<HTMLDivElement>;
+
+export type Step2Props = {
+  form: {
+    register: UseFormRegister<FieldValues>;
+    setValue: UseFormSetValue<FieldValues>;
+    errors: FieldErrors<FieldValues>;
+    watch: UseFormWatch<FieldValues>;
+  };
+  status: FormStatusType;
+} & React.HTMLAttributes<HTMLDivElement>;
+
+export type StepsProps = {
+  steps: string[];
+  currentStep: number;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
 };

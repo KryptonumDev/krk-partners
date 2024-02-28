@@ -3,8 +3,8 @@ import { useState } from 'react';
 import Error from '@/components/ui/Error';
 import styles from './Slider.module.scss';
 import { formatToOnlyDigits } from '@/utils/format-to-only-digits';
-import type { Props } from './Slider.types';
 import { formatNumberToSpaces } from '@/utils/format-number-to-spaces';
+import type { Props } from './Slider.types';
 
 const Slider = ({ label, register, minValue, maxValue, errors, setValue }: Props) => {
   const [sliderState, setSliderState] = useState({
