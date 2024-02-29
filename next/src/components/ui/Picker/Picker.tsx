@@ -51,6 +51,7 @@ const Picker = ({ label, register, errors, setValue, minValue, maxValue, options
           ref={input}
           className={styles.input}
           type='text'
+          inputMode='numeric'
           placeholder='Wpisz własny'
           minLength={minValue.toString().length}
           maxLength={maxValue.toString().length}
