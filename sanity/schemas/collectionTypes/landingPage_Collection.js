@@ -36,6 +36,16 @@ export default {
       title: 'Komponenty podstrony',
     },
     {
+      name: 'contactPerson',
+      type: 'reference',
+      to: [
+        { type: 'team_Collection' }
+      ],
+      title: 'Osoba kontaktowa',
+      description: 'Osoba, która wyświetli się jako osoba kontaktowa, np. po poprawnym wysłaniu formularza kontaktowego.',
+      validation: Rule => Rule.required(),
+    },
+    {
       name: 'seo',
       type: 'seo',
       title: 'SEO',
