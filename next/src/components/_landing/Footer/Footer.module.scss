@@ -7,9 +7,10 @@
   }
   p {
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 28px;
+    gap: 4px 28px;
     svg {
       width: auto;
       height: clamp(24px, calc(28vw / 7.68), 28px);
