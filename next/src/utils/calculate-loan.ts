@@ -1,6 +1,7 @@
-export function calculateLoan(fundingPeriod: number, amount: string, companyType: string) {
-  const parsedAmount = parseInt(amount);
+import { formatNumberToSpaces } from './format-number-to-spaces';
 
+export function calculateLoan(fundingPeriod: number, amount: string, companyType: string) {
+  const parsedAmount = parseInt(amount.replace(/\s/g, ''));
   if (companyType == 'Spółka z.o.o') {
     return calculateJDG(parsedAmount, fundingPeriod);
   } else {
@@ -96,9 +97,9 @@ export function calculateLoan(fundingPeriod: number, amount: string, companyType
     const additionalCalculations = performAdditionalCalculations(additionalCalculationsMultiplier, comission, interest);
     const totalInterest = interest + additionalCalculations;
     return {
-      comission: comission,
-      totalInterest: totalInterest,
-      total: amount + comission + totalInterest,
+      comission: formatNumberToSpaces(comission),
+      totalInterest: formatNumberToSpaces(totalInterest),
+      total: formatNumberToSpaces(amount + comission + totalInterest),
     };
   }
 
@@ -112,10 +113,10 @@ export function calculateLoan(fundingPeriod: number, amount: string, companyType
     const interest = calculateInterest(interestMultiplier, amount, months);
     const earlyPaymentFee = calculateEarlyPaymentFee(amount, months);
     return {
-      comission: comission,
-      totalInterest: interest,
-      earlyPaymentFee: earlyPaymentFee,
-      total: interest + comission + earlyPaymentFee + amount,
+      comission: formatNumberToSpaces(comission),
+      totalInterest: formatNumberToSpaces(interest),
+      earlyPaymentFee: formatNumberToSpaces(earlyPaymentFee),
+      total: formatNumberToSpaces(interest + comission + earlyPaymentFee + amount),
     };
   }
 

@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useFormContext } from 'react-hook-form';
 import Button from '@/components/ui/Button';
 import Checkbox from '@/components/ui/Checkbox';
 import Input from '@/components/ui/Input';
@@ -13,8 +12,18 @@ import { formatToOnlyDigits } from '@/utils/format-to-only-digits';
 import { landRegisterList } from './land-register-list';
 import { Step2Props } from '../HeroApplication.types';
 import Error from '@/components/ui/Error';
+import { checkLandAndMortgageRegister } from '@/utils/check-land-and-mortgage-register';
 
 const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }: Step2Props) => {
+  const [isMortgageProperlySet, setIsMortgageProperlySet] = useState(true);
+  const [digit, setDigit] = useState('');
+
+  const handleDigitChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const value = event.target.value.replace(/\D/g, '');
+    setValue('checkDigit', value);
+    setDigit(value);
+  };
+
   const checkAll = (checked: boolean) => {
     const checkboxes = ['legal1', 'legal2', 'legal3', 'legal4'];
     checkboxes.forEach((e) => setValue(e, checked, { shouldValidate: true }));
@@ -25,6 +34,20 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
   useEffect(() => {
     setValue('legal_all', isAllChecked, { shouldValidate: true });
   }, [isAllChecked]);
+
+  const landAndMortgageRegister = watch(['courtId', 'registerNumber', 'checkDigit']);
+
+  useEffect(() => {
+    const mappedLandAndMortgageRegister: string[] = [];
+    landAndMortgageRegister.map((input) => {
+      if (regex.hasLetters.test(input)) {
+        mappedLandAndMortgageRegister.push(input?.substring(0, 4));
+      } else if (input) {
+        mappedLandAndMortgageRegister.push(input);
+      }
+    });
+    setIsMortgageProperlySet(checkLandAndMortgageRegister(mappedLandAndMortgageRegister));
+  }, [landAndMortgageRegister]);
 
   return (
     <div
@@ -117,7 +140,8 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
           register={register('checkDigit', {
             required: { value: true, message: 'Cyfra kontrolna jest wymagana' },
           })}
-          onChange={formatToOnlyDigits}
+          onChange={(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => handleDigitChange(event)}
+          value={digit}
           errors={errors}
           placeholder='_'
           maxLength={1}
@@ -125,6 +149,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         <Error error={errors['courtId']?.message?.toString()} />
         <Error error={errors['registerNumber']?.message?.toString()} />
         <Error error={errors['checkDigit']?.message?.toString()} />
+        <Error error={!isMortgageProperlySet ? 'Niepoprawnie wypełnione dane' : ''} />
       </div>
       <div className={styles.legal}>
         <Checkbox
