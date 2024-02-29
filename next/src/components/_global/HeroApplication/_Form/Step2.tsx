@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useFormContext } from 'react-hook-form';
 import Button from '@/components/ui/Button';
 import Checkbox from '@/components/ui/Checkbox';
 import Input from '@/components/ui/Input';
@@ -17,6 +16,13 @@ import { checkLandAndMortgageRegister } from '@/utils/check-land-and-mortgage-re
 
 const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }: Step2Props) => {
   const [isMortgageProperlySet, setIsMortgageProperlySet] = useState(true);
+  const [digit, setDigit] = useState('');
+
+  const handleDigitChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const value = event.target.value.replace(/\D/g, '');
+    setValue('checkDigit', value);
+    setDigit(value);
+  };
 
   const checkAll = (checked: boolean) => {
     const checkboxes = ['legal1', 'legal2', 'legal3', 'legal4'];
@@ -41,7 +47,6 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
       }
     });
     setIsMortgageProperlySet(checkLandAndMortgageRegister(mappedLandAndMortgageRegister));
-    console.log(isMortgageProperlySet);
   }, [landAndMortgageRegister]);
 
   return (
@@ -131,7 +136,8 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
           register={register('checkDigit', {
             required: { value: true, message: 'Cyfra kontrolna jest wymagana' },
           })}
-          onChange={formatToOnlyDigits}
+          onChange={(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => handleDigitChange(event)}
+          value={digit}
           errors={errors}
           placeholder='_'
           maxLength={1}
