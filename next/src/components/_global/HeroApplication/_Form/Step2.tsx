@@ -128,6 +128,8 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
           })}
           errors={errors}
           placeholder='_  _  _  _  _  _  _  _'
+          maxLength={8}
+          inputMode='numeric'
         />
         <span>/</span>
         <Input
@@ -140,6 +142,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
           value={digit}
           errors={errors}
           placeholder='_'
+          inputMode='numeric'
           maxLength={1}
         />
         <Error error={errors['courtId']?.message?.toString()} />
