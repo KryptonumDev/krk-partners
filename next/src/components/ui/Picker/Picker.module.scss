@@ -1,4 +1,15 @@
 .Picker {
+  > p {
+    margin: 0 6px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2px 4px;
+    flex-wrap: wrap;
+    svg {
+      flex-shrink: 0;
+    }
+  }
   .options {
     display: flex;
     flex-wrap: wrap;
@@ -24,6 +35,9 @@
       .indicator {
         width: 0;
         transition: width 0.5s var(--easing);
+      }
+      &:has(input:focus-visible) {
+        border-color: var(--secondary-500);
       }
       &:has(input:checked) {
         border-color: var(--secondary-500);
