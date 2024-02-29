@@ -26,6 +26,7 @@
     grid-template-columns: 1fr auto;
     gap: 8px;
     align-items: center;
+    transition: border-color 0.3s var(--easing);
     > p {
       overflow: hidden;
       white-space: nowrap;
@@ -89,8 +90,7 @@
     }
   }
   &[aria-invalid='true'] {
-    input,
-    textarea {
+    .select {
       border-color: var(--error-500);
     }
   }

@@ -75,6 +75,16 @@
 
 .Form {
   position: relative;
+  &:has(.FormSuccess) {
+    > *:not(.FormSuccess) {
+      visibility: hidden;
+    }
+  }
+  &:has(.FormError) {
+    > *:not(.FormError) {
+      visibility: hidden;
+    }
+  }
 }
 
 .Steps {
@@ -87,22 +97,14 @@
   padding: 16px clamp(0px, calc(32vw / 7.68), 32px);
   max-width: calc(560rem / 16);
   margin: 0 auto;
-  @media (max-width: 499px) {
-    padding-left: 0;
-    padding-right: 0;
-    .progressbar {
-      left: 25px;
-      right: 25px;
-    }
-  }
   border-bottom: 1px dashed var(--neutral-300);
   margin-bottom: 32px;
   .progressbar {
     z-index: -1;
     position: absolute;
     top: 32px;
-    left: 38px;
-    right: 38px;
+    left: 62px;
+    right: 64px;
     height: 2px;
     background-color: var(--neutral-300);
     div {
@@ -111,6 +113,14 @@
       background-color: var(--neutral-800);
       transition: transform 0.5s var(--easing);
       transform-origin: left;
+    }
+  }
+  @media (max-width: 499px) {
+    padding-left: 0;
+    padding-right: 0;
+    .progressbar {
+      left: 28px;
+      right: 34px;
     }
   }
   button {
@@ -176,7 +186,8 @@
       }
       margin-bottom: 4px;
     }
-    > label span[data-error] {
+    > label span[data-error],
+    > div:nth-child(2) span[data-error] {
       display: none;
     }
     > span[data-error] {
@@ -205,14 +216,14 @@
 
 .Loading {
   position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  left: -16px;
+  top: -16px;
+  right: -16px;
+  bottom: -16px;
   display: grid;
   place-items: center;
   border-radius: inherit;
-  background-color: rgba(23, 23, 25, 0.62);
+  background-color: rgba(255, 255, 255, 0.62);
   backdrop-filter: blur(4px);
   z-index: 4;
 }
@@ -226,7 +237,7 @@
   bottom: 0;
   border-radius: 16px;
   background: var(--neutral-200);
-  z-index: 4;
+  z-index: 5;
   padding: clamp(12px, calc(24vw / 7.68), 24px);
 }
 
@@ -263,4 +274,75 @@
 }
 
 .FormSuccess {
+  > h3 {
+    font-size: clamp(calc(20rem / 16), calc(24vw / 7.68), calc(24rem / 16));
+    strong {
+      font-size: clamp(calc(26rem / 16), calc(32vw / 7.68), calc(32rem / 16));
+      color: var(--success-500, #15a669);
+      display: block;
+      line-height: 135%;
+    }
+    margin-bottom: 28px;
+  }
+  .attribute {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+    font-size: 1rem;
+    > div {
+      text-align: right;
+      > p {
+        &:not(:first-child) {
+          font-size: calc(12rem / 16);
+        }
+      }
+    }
+  }
+  .contact {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--neutral-300);
+    > p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+    .person {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: clamp(8px, calc(12vw / 7.68), 12px);
+      margin-bottom: 12px;
+      .img {
+        width: clamp(48px, calc(96vw / 7.68), 96px);
+        height: clamp(48px, calc(96vw / 7.68), 96px);
+        display: grid;
+        place-items: center;
+        clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+        background-color: var(--neutral-300);
+        img {
+          width: 75%;
+          height: 75%;
+          clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+          object-fit: cover;
+          object-position: top;
+        }
+      }
+      p {
+        color: var(--neutral-700);
+        font-size: 1rem;
+      }
+    }
+    @media (min-width: 1100px) {
+      .person + .copy {
+        margin-top: -34px;
+      }
+      .copy {
+        margin-left: calc(clamp(48px, calc(96vw / 7.68), 96px) + clamp(8px, calc(12vw / 7.68), 12px));
+      }
+    }
+  }
 }

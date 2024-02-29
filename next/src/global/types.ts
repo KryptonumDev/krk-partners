@@ -27,11 +27,19 @@ export type generateMetadataProps = {
   };
 };
 
+export type ContactPersonType = {
+  img: ImgType;
+  name: string;
+  tel: string;
+  email: string;
+};
+
 export type LandingPageQueryProps = {
   landingPage: {
     name: string;
     slug?: string;
     content: ComponentProps[];
+    contactPerson?: ContactPersonType;
   } & generateMetadataProps;
   firstLanding: {
     slug: string;

@@ -1,4 +1,4 @@
-import type { FormStatusType, ImgType } from '@/global/types';
+import type { ContactPersonType, FormStatusType, ImgType } from '@/global/types';
 import type {
   FieldErrors,
   FieldValues,
@@ -18,10 +18,12 @@ export type Props = {
   testimonial_Text: string;
   form_Heading: string;
   form_Features: string[];
+  contactPerson?: ContactPersonType;
 };
 
 export type FormProps = {
   email: string;
+  contactPerson?: ContactPersonType;
 };
 
 export type CalculationProps = {
@@ -29,7 +31,8 @@ export type CalculationProps = {
   totalInterest: string;
   earlyPaymentFee?: string;
   total: string;
-} | null;
+  contactPerson?: ContactPersonType;
+};
 
 export type StepsProps = {
   steps: string[];

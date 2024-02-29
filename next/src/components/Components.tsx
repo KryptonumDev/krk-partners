@@ -21,6 +21,7 @@ import PersonIntroduction, {
   type PersonIntroductionProps,
 } from './_global/PersonIntroduction';
 import FloatingItems, { FloatingItems_Query, type FloatingItemsProps } from './_global/FloatingItems';
+import type { ContactPersonType } from '@/global/types';
 
 type ComponentMap = {
   HeroApplication: HeroApplicationProps;
@@ -41,11 +42,16 @@ type ComponentMap = {
 
 export type ComponentProps = ComponentMap[keyof ComponentMap] & { _type: string };
 
-const Components = ({ data }: { data: ComponentProps[] }) => {
+const Components = ({ data, contactPerson }: { data: ComponentProps[]; contactPerson?: ContactPersonType }) => {
   return data?.map((item, index) => {
     const componentType = item._type as keyof ComponentMap;
     const componentMap: Record<string, React.ReactNode> = {
-      HeroApplication: <HeroApplication {...(item as HeroApplicationProps)} />,
+      HeroApplication: (
+        <HeroApplication
+          {...(item as HeroApplicationProps)}
+          contactPerson={contactPerson}
+        />
+      ),
       CaseStudy: <CaseStudy {...(item as CaseStudyProps)} />,
       Comparison: <Comparison {...(item as ComparisonProps)} />,
       Features: <Features {...(item as FeaturesProps)} />,

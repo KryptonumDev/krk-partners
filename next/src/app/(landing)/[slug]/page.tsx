@@ -5,10 +5,11 @@ import Seo, { Seo_Query } from '@/global/Seo';
 import type { LandingPageQueryProps, generateStaticParamsProps } from '@/global/types';
 import Components, { Components_Query } from '@/components/Components';
 import Breadcrumbs from '@/components/_global/Breadcrumbs';
+import { Img_Query } from '@/components/ui/image';
 
 const LandingPage = async ({ params: { slug } }: { params: { slug: string } }) => {
   const {
-    landingPage: { content, name },
+    landingPage: { content, name, contactPerson },
   } = await query(slug);
 
   return (
@@ -22,7 +23,7 @@ const LandingPage = async ({ params: { slug } }: { params: { slug: string } }) =
         ]}
         visible={false}
       />
-      <Components data={content} />
+      <Components data={content} contactPerson={contactPerson} />
     </>
   );
 };
@@ -52,6 +53,14 @@ const query = async (slug: string): Promise<LandingPageQueryProps> => {
           'slug': slug.current,
           ${Components_Query}
           ${Seo_Query}
+          contactPerson -> {
+            img {
+              ${Img_Query}
+            },
+            name,
+            tel,
+            email,
+          },
         },
         "firstLanding": *[_type == "landingPage_Collection"][0] {
           'slug': slug.current,

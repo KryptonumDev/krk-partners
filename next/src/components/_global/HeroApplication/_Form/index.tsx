@@ -13,10 +13,10 @@ import FormSuccess from './FormSuccess';
 
 const steps = ['Pożyczka', 'Informacje', 'Propozycja'];
 
-const Form = ({ email }: FormProps) => {
+const Form = ({ email, contactPerson }: FormProps) => {
   const [status, setStatus] = useState<FormStatusType>({ sending: false });
   const [step, setStep] = useState(1);
-  const [calculation, setCalculation] = useState<CalculationProps>(null);
+  const [calculation, setCalculation] = useState<CalculationProps | null>(null);
   const {
     handleSubmit,
     reset,
@@ -39,13 +39,13 @@ const Form = ({ email }: FormProps) => {
       if (response.ok && responseData.success) {
         const { comission, totalInterest, earlyPaymentFee, total } = responseData.calculation;
         setCalculation({ comission, totalInterest, earlyPaymentFee, total });
-        setStatus((prevStatus) => ({ ...prevStatus, success: true }));
+        setStatus({ sending: false, success: true });
         reset();
       } else {
-        setStatus((prevStatus) => ({ ...prevStatus, success: false }));
+        setStatus({ sending: false, success: false });
       }
     } catch {
-      setStatus((prevStatus) => ({ ...prevStatus, success: false }));
+      setStatus({ sending: false, success: false });
     }
   };
 
@@ -70,12 +70,15 @@ const Form = ({ email }: FormProps) => {
         style={{ display: step !== 2 ? 'none' : undefined }}
       />
       {status?.success !== undefined &&
-        (status.success ? (
-          <FormSuccess calculation={calculation} />
-        ) : (
+        (!status.success || calculation == null ? (
           <FormError
             email={email}
             setStatus={setStatus}
+          />
+        ) : (
+          <FormSuccess
+            {...calculation}
+            contactPerson={contactPerson}
           />
         ))}
       <Loading loading={status?.sending} />

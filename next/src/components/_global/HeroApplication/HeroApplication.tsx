@@ -15,6 +15,7 @@ const HeroApplication = async ({
   testimonial_Text,
   form_Heading,
   form_Features,
+  contactPerson,
 }: Props) => {
   const { email } = await query();
 
@@ -52,7 +53,7 @@ const HeroApplication = async ({
             ))}
           </ul>
         </div>
-        <Form email={email} />
+        <Form email={email} contactPerson={contactPerson} />
       </div>
     </section>
   );

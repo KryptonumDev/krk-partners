@@ -1,5 +1,4 @@
 import Img from '@/components/ui/image';
-import CopyToClipboard from '@/components/ui/CopyToClipboard';
 import styles from './Contact.module.scss';
 import type { CallType } from './Contact.types';
 import Copy from '@/components/ui/Copy';
