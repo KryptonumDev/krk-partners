@@ -33,7 +33,7 @@ const Select = ({ register, label, errors, options, defaultValue, setErrorsUnder
       ref={ref}
     >
       <p>
-        <span dangerouslySetInnerHTML={{ __html: label }} />
+        {label && <span dangerouslySetInnerHTML={{ __html: label }} />}
         {!setErrorsUnder && <Error error={errors[register.name]?.message?.toString()} />}
       </p>
       <div

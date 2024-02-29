@@ -56,12 +56,12 @@ const Form = () => {
       <Step1
         form={{ register, setValue, errors, trigger }}
         setStep={setStep}
-        style={{ display: step === 1 ? 'block' : 'none' }}
+        style={{ display: step !== 1 ? 'none' : undefined }}
       />
       <Step2
         form={{ register, setValue, errors, watch }}
         status={status}
-        style={{ display: step === 2 ? 'block' : 'none' }}
+        style={{ display: step !== 2 ? 'none' : undefined }}
       />
       {/* <FormState
         isSuccess={status?.success}

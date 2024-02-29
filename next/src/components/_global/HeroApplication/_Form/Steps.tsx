@@ -4,6 +4,8 @@ import type { StepsProps } from '../HeroApplication.types';
 const Steps = ({ steps, currentStep, setStep }: StepsProps) => {
   const progress = currentStep === 1 ? 0.25 : 0.75;
 
+  console.log(currentStep);
+
   return (
     <div className={styles['Steps']}>
       <div className={styles.progressbar}>
