@@ -14,7 +14,7 @@ import FormSuccess from './FormSuccess';
 const steps = ['Pożyczka', 'Informacje', 'Propozycja'];
 
 const Form = ({ email }: FormProps) => {
-  const [status, setStatus] = useState<FormStatusType>({ sending: false, success: true });
+  const [status, setStatus] = useState<FormStatusType>({ sending: false });
   const [step, setStep] = useState(1);
   const [calculation, setCalculation] = useState<CalculationProps>(null);
   const {
