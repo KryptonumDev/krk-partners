@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useFormContext } from 'react-hook-form';
 import Button from '@/components/ui/Button';
@@ -13,8 +13,11 @@ import { formatToOnlyDigits } from '@/utils/format-to-only-digits';
 import { landRegisterList } from './land-register-list';
 import { Step2Props } from '../HeroApplication.types';
 import Error from '@/components/ui/Error';
+import { checkLandAndMortgageRegister } from '@/utils/check-land-and-mortgage-register';
 
 const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }: Step2Props) => {
+  const [isMortgageProperlySet, setIsMortgageProperlySet] = useState(true);
+
   const checkAll = (checked: boolean) => {
     const checkboxes = ['legal1', 'legal2', 'legal3', 'legal4'];
     checkboxes.forEach((e) => setValue(e, checked, { shouldValidate: true }));
@@ -25,6 +28,21 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
   useEffect(() => {
     setValue('legal_all', isAllChecked, { shouldValidate: true });
   }, [isAllChecked]);
+
+  const landAndMortgageRegister = watch(['courtId', 'registerNumber', 'checkDigit']);
+
+  useEffect(() => {
+    const mappedLandAndMortgageRegister: string[] = [];
+    landAndMortgageRegister.map((input) => {
+      if (regex.hasLetters.test(input)) {
+        mappedLandAndMortgageRegister.push(input?.substring(0, 4));
+      } else if (input) {
+        mappedLandAndMortgageRegister.push(input);
+      }
+    });
+    setIsMortgageProperlySet(checkLandAndMortgageRegister(mappedLandAndMortgageRegister));
+    console.log(isMortgageProperlySet);
+  }, [landAndMortgageRegister]);
 
   return (
     <div
@@ -121,6 +139,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         <Error error={errors['courtId']?.message?.toString()} />
         <Error error={errors['registerNumber']?.message?.toString()} />
         <Error error={errors['checkDigit']?.message?.toString()} />
+        <Error error={!isMortgageProperlySet ? 'Niepoprawnie wypełnione dane' : ''} />
       </div>
       <div className={styles.legal}>
         <Checkbox
