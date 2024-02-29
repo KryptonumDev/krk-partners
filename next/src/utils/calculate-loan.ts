@@ -1,11 +1,10 @@
-export function calculateLoan(months: string, amount: string, companyType: string) {
-  const parsedMonths = parseInt(months);
+export function calculateLoan(fundingPeriod: number, amount: string, companyType: string) {
   const parsedAmount = parseInt(amount);
 
   if (companyType == 'Spółka z.o.o') {
-    return calculateJDG(parsedAmount, parsedMonths);
+    return calculateJDG(parsedAmount, fundingPeriod);
   } else {
-    return calculateSPH(parsedAmount, parsedMonths);
+    return calculateSPH(parsedAmount, fundingPeriod);
   }
 
   function calculateJDG(amount: number, months: number) {

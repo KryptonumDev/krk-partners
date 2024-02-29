@@ -33,7 +33,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
     >
       <Input
         label='Imię i nazwisko'
-        register={register('name', {
+        register={register('fullName', {
           required: { value: true, message: 'Imię i nazwisko jest wymagane' },
           pattern: { value: regex.string, message: 'Imię i nazwisko jest wymagane' },
         })}
@@ -112,8 +112,8 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
           label=''
           register={register('checkDigit', {
             required: { value: true, message: 'Cyfra kontrolna jest wymagana' },
-            pattern: { value: regex.checkDigit, message: 'Niepoprawnie wypełniona cyfra kontrolna' },
           })}
+          onChange={formatToOnlyDigits}
           errors={errors}
           placeholder='_'
           maxLength={1}
