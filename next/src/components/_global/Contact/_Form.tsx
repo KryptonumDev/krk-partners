@@ -32,15 +32,12 @@ const Form = ({ paragraph, email }: FormType) => {
       const responseData = await response.json();
       if (responseData.success) {
         setStatus((prevStatus) => ({ ...prevStatus, success: true }));
-        setStatus({ sending: false });
         reset();
       } else {
         setStatus((prevStatus) => ({ ...prevStatus, success: false }));
-        setStatus({ sending: false });
       }
     } catch {
       setStatus((prevStatus) => ({ ...prevStatus, success: false }));
-      setStatus({ sending: false });
     }
   };
 
