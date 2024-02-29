@@ -18,7 +18,7 @@ const Step1 = ({ form: { register, setValue, errors, trigger }, setStep, ...prop
     >
       <Slider
         label='Kwota pożyczki'
-        register={register('value', {
+        register={register('loanAmount', {
           required: { value: true, message: 'Kwota jest wymagana' },
           validate: (value) => {
             value = value.replaceAll(' ', '');
@@ -40,6 +40,7 @@ const Step1 = ({ form: { register, setValue, errors, trigger }, setStep, ...prop
           required: { value: true, message: 'Okres finansowania jest wymagany' },
           min: { value: 1, message: 'Minimalnie 1 miesiąc' },
           max: { value: 24, message: 'Maksymalnie 24 miesiące' },
+          valueAsNumber: true,
         })}
         setValue={setValue}
         errors={errors}

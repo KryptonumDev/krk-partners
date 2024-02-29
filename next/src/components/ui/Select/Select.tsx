@@ -5,7 +5,7 @@ import styles from './Select.module.scss';
 import type { Props } from './Select.types';
 
 const Select = ({ register, label, errors, options, defaultValue, setErrorsUnder = false }: Props) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLLabelElement>(null);
   const [option, setOption] = useState(defaultValue);
 
   const handleClick = () => setTimeout(() => (document.activeElement as HTMLElement)?.blur(), 0);
@@ -27,7 +27,7 @@ const Select = ({ register, label, errors, options, defaultValue, setErrorsUnder
   };
 
   return (
-    <div
+    <label
       className={styles['Select']}
       aria-invalid={!!errors[register.name]}
       ref={ref}
@@ -63,7 +63,7 @@ const Select = ({ register, label, errors, options, defaultValue, setErrorsUnder
         </div>
       </div>
       {setErrorsUnder && <Error error={errors[register.name]?.message?.toString()} />}
-    </div>
+    </label>
   );
 };
 

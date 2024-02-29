@@ -1,62 +1,95 @@
 import { NextResponse } from 'next/server';
-import { domain, regex } from '@/global/constants';
+import { regex } from '@/global/constants';
 import { calculateLoan } from '@/utils/calculate-loan';
 
-const headers = {
-  'Access-Control-Allow-Origin': domain,
-  'Content-Type': 'application/json',
-  'Access-Control-Allow-Methods': 'POST',
+const airtableData = {
+  baseId: 'appAPnYmJCKsCs7vP',
+  tableId: 'tblmNtpqkDWAxFhSn',
+};
+
+type RequestProps = {
+  loanAmount: string;
+  fundingPeriod: number;
+  fullName: string;
+  email: string;
+  tel: string;
+  nip: string;
+  companyType: string;
+  courtId: string;
+  registerNumber: string;
+  checkDigit: number;
+  legal1: boolean;
+  legal2: boolean;
+  legal3: boolean;
+  legal4: boolean;
 };
 
 export async function POST(request: Request) {
   const {
-    value,
-    name,
-    checkDigit,
+    loanAmount,
+    fundingPeriod,
+    fullName,
+    email,
+    tel,
+    nip,
     companyType,
     courtId,
-    email,
+    registerNumber,
+    checkDigit,
     legal1,
     legal2,
     legal3,
     legal4,
-    legal_all,
-    nip,
-    registerNumber,
-    tel,
-  } = (await request.json()) as {
-    value: string;
-    name: string;
-    checkDigit: string;
-    companyType: string;
-    courtId: string;
-    email: string;
-    legal1: string;
-    legal2: string;
-    legal3: string;
-    legal4: string;
-    legal_all: string;
-    nip: string;
-    registerNumber: string;
-    tel: string;
+  }: RequestProps = await request.json();
+
+  const isValidate =
+    regex.email.test(email) ||
+    regex.registerNumber.test(registerNumber) ||
+    regex.tel.test(tel) ||
+    legal1 ||
+    legal2 ||
+    legal3 ||
+    legal4;
+
+  if (!isValidate) return NextResponse.json({ success: false }, { status: 422 });
+
+  const calculatedLoan = calculateLoan(fundingPeriod, loanAmount, companyType);
+
+  const body = {
+    records: [
+      {
+        fields: {
+          'Imię i nazwisko': fullName,
+          'Kwota pożyczki': loanAmount,
+          'Okres finansowania (miesiące)': fundingPeriod,
+          'Adres e-mail': email,
+          Telefon: tel,
+          NIP: nip,
+          'Numer księgi wieczystej': courtId,
+          'Rodzaj działalności': companyType,
+        },
+      },
+    ],
   };
 
-  if (
-    !regex.email.test(email) ||
-    !regex.checkDigit.test(checkDigit) ||
-    !regex.registerNumber.test(registerNumber) ||
-    !regex.tel.test(tel) ||
-    !legal1 ||
-    !legal2 ||
-    !legal3 ||
-    !legal4
-  ) {
-    return NextResponse.json({ success: false }, { status: 422, headers });
+  try {
+    const response = await fetch(`https://api.airtable.com/v0/${airtableData.baseId}/${airtableData.tableId}`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+    if (!response.ok) {
+      return NextResponse.json({ success: false, message: 'Connectivity to API failed' }, { status: 422 });
+    }
+    const responseData = await response.json();
+    if (!responseData.records) {
+      return NextResponse.json({ success: false, message: 'Unable to create new record' }, { status: 422 });
+    }
+    return NextResponse.json({ success: true, calculatedLoan }, { status: 200 });
+  } catch {
+    return NextResponse.json({ success: false, message: 'An unexpected error occurred' }, { status: 422 });
   }
-
-  const months = '6';
-
-  const calculatedLoan = calculateLoan(months, value, companyType);
-
-  return NextResponse.json({ success: true, calculatedLoan: calculatedLoan }, { status: 200 });
 }
