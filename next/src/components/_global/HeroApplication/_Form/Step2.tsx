@@ -15,7 +15,6 @@ import Error from '@/components/ui/Error';
 import { checkLandAndMortgageRegister } from '@/utils/check-land-and-mortgage-register';
 
 const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }: Step2Props) => {
-  const [isMortgageProperlySet, setIsMortgageProperlySet] = useState(true);
   const [digit, setDigit] = useState('');
 
   const handleDigitChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -37,7 +36,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
 
   const landAndMortgageRegister = watch(['courtId', 'registerNumber', 'checkDigit']);
 
-  useEffect(() => {
+  function validateRegister() {
     const mappedLandAndMortgageRegister: string[] = [];
     landAndMortgageRegister.map((input) => {
       if (regex.hasLetters.test(input)) {
@@ -46,8 +45,8 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         mappedLandAndMortgageRegister.push(input);
       }
     });
-    setIsMortgageProperlySet(checkLandAndMortgageRegister(mappedLandAndMortgageRegister));
-  }, [landAndMortgageRegister]);
+    return checkLandAndMortgageRegister(mappedLandAndMortgageRegister);
+  }
 
   return (
     <div
@@ -135,6 +134,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
           label=''
           register={register('checkDigit', {
             required: { value: true, message: 'Cyfra kontrolna jest wymagana' },
+            validate: () => validateRegister() || 'Niepoprawna cyfra kontrolna',
           })}
           onChange={(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => handleDigitChange(event)}
           value={digit}
@@ -145,7 +145,6 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         <Error error={errors['courtId']?.message?.toString()} />
         <Error error={errors['registerNumber']?.message?.toString()} />
         <Error error={errors['checkDigit']?.message?.toString()} />
-        <Error error={!isMortgageProperlySet ? 'Niepoprawnie wypełnione dane' : ''} />
       </div>
       <div className={styles.legal}>
         <Checkbox
