@@ -3,8 +3,9 @@ import styles from './HeroApplication.module.scss';
 import type { Props } from './HeroApplication.types';
 import Img from '@/components/ui/image';
 import Form from './_Form';
+import sanityFetch from '@/utils/sanity.fetch';
 
-const HeroApplication = ({
+const HeroApplication = async ({
   heading,
   subheading,
   paragraph,
@@ -15,6 +16,8 @@ const HeroApplication = ({
   form_Heading,
   form_Features,
 }: Props) => {
+  const { email } = await query();
+
   return (
     <section className={styles['HeroApplication']}>
       <header>
@@ -49,13 +52,23 @@ const HeroApplication = ({
             ))}
           </ul>
         </div>
-        <Form />
+        <Form email={email} />
       </div>
     </section>
   );
 };
 
 export default HeroApplication;
+
+const query = async (): Promise<{ email: string }> => {
+  return await sanityFetch({
+    query: `
+      *[_id == "global"][0]{
+        email,
+      }
+    `,
+  });
+};
 
 const QuoteIcon = () => (
   <svg

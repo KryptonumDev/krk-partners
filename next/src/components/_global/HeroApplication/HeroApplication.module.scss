@@ -216,3 +216,51 @@
   backdrop-filter: blur(4px);
   z-index: 4;
 }
+
+.FormError,
+.FormSuccess {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16px;
+  background: var(--neutral-200);
+  z-index: 4;
+  padding: clamp(12px, calc(24vw / 7.68), 24px);
+}
+
+.FormError {
+  text-align: center;
+  > * {
+    max-width: calc(427rem / 16);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  > svg {
+    margin: 0 auto 32px;
+  }
+  > h3 {
+    color: var(--neutral-800);
+    font-size: clamp(calc(20rem / 16), calc(24vw / 7.68), calc(24rem / 16));
+    margin-bottom: 16px;
+  }
+  > p {
+    font-size: 1rem;
+    color: var(--neutral-800);
+  }
+  > button {
+    margin: 32px auto;
+  }
+  .contact {
+    > p {
+      margin-bottom: 12px;
+    }
+    > div {
+      margin: 0 auto;
+    }
+  }
+}
+
+.FormSuccess {
+}

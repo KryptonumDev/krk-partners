@@ -34,14 +34,12 @@ export const regex: {
   checkDigit: RegExp;
   hasLetters: RegExp;
 } = {
-
   email: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
   tel: /^(?:\+(?:\d{1,3}))?(?:[ -]?\(?\d{1,4}\)?[ -]?\d{1,5}[ -]?\d{1,5}[ -]?\d{1,6})$/,
   string: /^(?!\s+$)(.*?)\s*$/,
   registerNumber: /^[0-9]{8}$/,
   checkDigit: /^[0-9]{1}$/,
   hasLetters: /[a-zA-Z]/,
-
 };
 
 /**

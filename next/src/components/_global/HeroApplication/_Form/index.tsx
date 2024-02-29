@@ -6,13 +6,17 @@ import Steps from './Steps';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Loading from './Loading';
+import FormError from './FormError';
 import type { FormStatusType } from '@/global/types';
+import type { CalculationProps, FormProps } from '../HeroApplication.types';
+import FormSuccess from './FormSuccess';
 
 const steps = ['Pożyczka', 'Informacje', 'Propozycja'];
 
-const Form = () => {
-  const [status, setStatus] = useState<FormStatusType>({ sending: false });
+const Form = ({ email }: FormProps) => {
+  const [status, setStatus] = useState<FormStatusType>({ sending: false, success: true });
   const [step, setStep] = useState(1);
+  const [calculation, setCalculation] = useState<CalculationProps>(null);
   const {
     handleSubmit,
     reset,
@@ -33,6 +37,8 @@ const Form = () => {
       });
       const responseData = await response.json();
       if (response.ok && responseData.success) {
+        const { comission, totalInterest, earlyPaymentFee, total } = responseData.calculation;
+        setCalculation({ comission, totalInterest, earlyPaymentFee, total });
         setStatus((prevStatus) => ({ ...prevStatus, success: true }));
         reset();
       } else {
@@ -63,11 +69,15 @@ const Form = () => {
         status={status}
         style={{ display: step !== 2 ? 'none' : undefined }}
       />
-      {/* <FormState
-        isSuccess={status?.success}
-        setStatus={setStatus}
-        email={email}
-      /> */}
+      {status?.success !== undefined &&
+        (status.success ? (
+          <FormSuccess calculation={calculation} />
+        ) : (
+          <FormError
+            email={email}
+            setStatus={setStatus}
+          />
+        ))}
       <Loading loading={status?.sending} />
     </form>
   );

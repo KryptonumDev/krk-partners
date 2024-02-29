@@ -20,6 +20,23 @@ export type Props = {
   form_Features: string[];
 };
 
+export type FormProps = {
+  email: string;
+};
+
+export type CalculationProps = {
+  comission: string;
+  totalInterest: string;
+  earlyPaymentFee?: string;
+  total: string;
+} | null;
+
+export type StepsProps = {
+  steps: string[];
+  currentStep: number;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+};
+
 export type Step1Props = {
   form: {
     register: UseFormRegister<FieldValues>;
@@ -40,8 +57,6 @@ export type Step2Props = {
   status: FormStatusType;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-export type StepsProps = {
-  steps: string[];
-  currentStep: number;
-  setStep: React.Dispatch<React.SetStateAction<number>>;
-};
+export type FormErrorProps = {
+  setStatus: React.Dispatch<React.SetStateAction<FormStatusType>>;
+} & FormProps;
