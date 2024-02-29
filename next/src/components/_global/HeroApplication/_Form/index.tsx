@@ -130,9 +130,7 @@ const Form = () => {
         ]}
         errors={errors}
       />
-      <div
-        className={styles.register}
-      >
+      <div className={styles.register}>
         <Select
           label=''
           register={register('courtId', {
