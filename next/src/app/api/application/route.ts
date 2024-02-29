@@ -15,9 +15,8 @@ type RequestProps = {
   tel: string;
   nip: string;
   companyType: string;
-  courtId: string;
-  registerNumber: string;
-  checkDigit: number;
+  landRegiser_CourtId: string;
+  landRegister_RegisterNumber: string;
   legal1: boolean;
   legal2: boolean;
   legal3: boolean;
@@ -33,9 +32,8 @@ export async function POST(request: Request) {
     tel,
     nip,
     companyType,
-    courtId,
-    registerNumber,
-    checkDigit,
+    landRegiser_CourtId,
+    landRegister_RegisterNumber,
     legal1,
     legal2,
     legal3,
@@ -44,7 +42,7 @@ export async function POST(request: Request) {
 
   const isValidate =
     regex.email.test(email) ||
-    regex.registerNumber.test(registerNumber) ||
+    regex.registerNumber.test(landRegister_RegisterNumber) ||
     regex.tel.test(tel) ||
     legal1 ||
     legal2 ||
@@ -65,7 +63,7 @@ export async function POST(request: Request) {
           'Adres e-mail': email,
           Telefon: tel,
           NIP: nip,
-          'Numer księgi wieczystej': courtId,
+          'Numer księgi wieczystej': landRegiser_CourtId,
           'Rodzaj działalności': companyType,
         },
       },
