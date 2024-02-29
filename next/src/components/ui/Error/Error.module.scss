@@ -1,8 +1,13 @@
 .Error {
-  font-size: clac(14rem/16);
+  font-size: calc(14rem/16);
   display: flex;
   width: fit-content;
   gap: 2px;
   align-items: center;
   color: var(--error-500);
+
+  &[data-absolute='true'] {
+    position: absolute;
+    width: 200px;
+  }
 }

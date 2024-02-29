@@ -10,11 +10,14 @@
   }
   gap: clamp(48px, calc(64vw / 7.68), 64px) clamp(82px, calc(96vw / 7.68), 134px);
   align-items: flex-start;
+
   header {
     max-width: calc(484rem / 16);
+
     h1 {
       margin-bottom: clamp(16px, calc(20vw / 7.68), 20px);
     }
+
     .paragraph {
       font-size: 1rem;
       > *:not(:last-child) {
@@ -74,6 +77,29 @@
 
 .Form {
   position: relative;
+
+  .register {
+    display: flex;
+    gap: 8px;
+
+    .registerNumber {
+      width: 200px;
+    }
+
+    .checkDigit {
+      width: 200px;
+
+      input {
+        width: 40px;
+        text-align: center;
+      }
+    }
+
+    p {
+      top: 14px;
+      position: relative;
+    }
+  }
 }
 
 .Steps {
@@ -121,9 +147,6 @@
         background-color: var(--neutral-700);
         color: var(--neutral-100);
       }
-    }
-    &:disabled {
-      pointer-events: none;
     }
   }
 }

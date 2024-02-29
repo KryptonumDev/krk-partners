@@ -7,4 +7,5 @@ export type Props = {
   label: string;
   errors: FieldErrors;
   options: string[];
+  setErrorsUnder?: boolean;
 } & React.SelectHTMLAttributes<HTMLSelectElement>;

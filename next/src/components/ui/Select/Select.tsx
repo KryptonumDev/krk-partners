@@ -4,7 +4,7 @@ import Error from '@/components/ui/Error';
 import styles from './Select.module.scss';
 import type { Props } from './Select.types';
 
-const Select = ({ register, label, errors, options, defaultValue }: Props) => {
+const Select = ({ register, label, errors, options, defaultValue, setErrorsUnder = false }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [option, setOption] = useState(defaultValue);
 
@@ -34,7 +34,7 @@ const Select = ({ register, label, errors, options, defaultValue }: Props) => {
     >
       <p>
         <span dangerouslySetInnerHTML={{ __html: label }} />
-        <Error error={errors[register.name]?.message?.toString()} />
+        {!setErrorsUnder && <Error error={errors[register.name]?.message?.toString()} />}
       </p>
       <div
         className={styles.select}
@@ -62,6 +62,7 @@ const Select = ({ register, label, errors, options, defaultValue }: Props) => {
           ))}
         </div>
       </div>
+      {setErrorsUnder && <Error error={errors[register.name]?.message?.toString()} />}
     </div>
   );
 };

@@ -86,14 +86,41 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         ]}
         errors={errors}
       />
-      <Select
-        label=''
-        register={register('companyType', {
-          required: { value: true, message: 'Rodzaj działaności jest wymagany' },
-        })}
-        options={landRegisterList}
-        errors={errors}
-      />
+      <div className={styles.register}>
+        <Select
+          label=''
+          register={register('courtId', {
+            required: { value: true, message: 'Identyfikator sądu jest wymagany' },
+          })}
+          options={landRegisterList}
+          errors={errors}
+          setErrorsUnder={true}
+        />
+        <p>/</p>
+        <Input
+          label=''
+          register={register('registerNumber', {
+            required: { value: true, message: 'Numer księgi wieczystej jest wymagany' },
+            pattern: { value: regex.registerNumber, message: 'Niepoprawny numer księgi wieczystej' },
+          })}
+          errors={errors}
+          setErrorsUnder={true}
+          placeholder='_  _  _  _  _  _  _  _'
+          className={styles.registerNumber}
+        />
+        <p>/</p>
+        <Input
+          label=''
+          register={register('checkDigit', {
+            required: { value: true, message: 'Cyfra kontrolna jest wymagana' },
+            pattern: { value: regex.checkDigit, message: 'Niepoprawnie wypełniona cyfra kontrolna' },
+          })}
+          errors={errors}
+          placeholder='_'
+          setErrorsUnder={true}
+          className={styles.checkDigit}
+        />
+      </div>
       <div className={styles.legal}>
         <Checkbox
           label='Zaznacz wszystkie'

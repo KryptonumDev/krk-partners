@@ -7,5 +7,7 @@ export type Props = {
   label: string;
   errors: FieldErrors;
   textarea?: boolean;
+  setErrorsUnder?: boolean;
+  className?: string;
 } & React.InputHTMLAttributes<HTMLInputElement> &
   React.TextareaHTMLAttributes<HTMLTextAreaElement>;

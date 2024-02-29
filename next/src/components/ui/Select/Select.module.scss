@@ -1,6 +1,7 @@
 .Select {
   font-size: 1rem;
   color: var(--primary-800);
+  min-width: 200px;
   > p {
     margin: 0 6px 4px;
     display: flex;
