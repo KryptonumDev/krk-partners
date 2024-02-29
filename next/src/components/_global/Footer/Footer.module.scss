@@ -1,0 +1,16 @@
+.Footer {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  .link {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 28px;
+    font-size: 14px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  padding-bottom: 32px;
+}
