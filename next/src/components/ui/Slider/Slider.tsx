@@ -30,6 +30,7 @@ const Slider = ({ label, register, minValue, maxValue, errors, setValue }: Props
       </p>
       <div className={styles.input}>
         <input
+          aria-label={`Wybierz wartość dla ${label}`}
           {...register}
           name={register.name}
           type='text'
@@ -56,6 +57,7 @@ const Slider = ({ label, register, minValue, maxValue, errors, setValue }: Props
           <ArrowIcon />
         </div>
         <input
+          aria-label={`Wybierz wartość dla ${label}`}
           type='range'
           min={minValue}
           max={maxValue}
