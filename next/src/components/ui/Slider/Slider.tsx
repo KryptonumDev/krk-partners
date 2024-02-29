@@ -33,6 +33,7 @@ const Slider = ({ label, register, minValue, maxValue, errors, setValue }: Props
           {...register}
           name={register.name}
           type='text'
+          inputMode='numeric'
           defaultValue={formatNumberToSpaces(sliderState.value)}
           onChange={handleSliderChange}
         />
