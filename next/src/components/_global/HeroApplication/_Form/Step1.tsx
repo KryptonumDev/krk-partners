@@ -7,7 +7,7 @@ import Button from '@/components/ui/Button';
 
 const Step1 = ({ form: { register, setValue, errors, trigger }, setStep, ...props }: Step1Props) => {
   const handleNextStep = async () => {
-    const isValid = await trigger(['value', 'fundingPeriod']);
+    const isValid = await trigger(['loanAmount', 'fundingPeriod']);
     if (isValid) setStep(2);
   };
 
