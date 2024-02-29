@@ -12,6 +12,7 @@ import { isValidateNip } from '@/utils/is-validate-nip';
 import { formatToOnlyDigits } from '@/utils/format-to-only-digits';
 import { landRegisterList } from './land-register-list';
 import { Step2Props } from '../HeroApplication.types';
+import Error from '@/components/ui/Error';
 
 const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }: Step2Props) => {
   const checkAll = (checked: boolean) => {
@@ -96,7 +97,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
           errors={errors}
           setErrorsUnder={true}
         />
-        <p>/</p>
+        <span>/</span>
         <Input
           label=''
           register={register('registerNumber', {
@@ -104,11 +105,9 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
             pattern: { value: regex.registerNumber, message: 'Niepoprawny numer księgi wieczystej' },
           })}
           errors={errors}
-          setErrorsUnder={true}
           placeholder='_  _  _  _  _  _  _  _'
-          className={styles.registerNumber}
         />
-        <p>/</p>
+        <span>/</span>
         <Input
           label=''
           register={register('checkDigit', {
@@ -117,9 +116,11 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
           })}
           errors={errors}
           placeholder='_'
-          setErrorsUnder={true}
-          className={styles.checkDigit}
+          maxLength={1}
         />
+        <Error error={errors['courtId']?.message?.toString()} />
+        <Error error={errors['registerNumber']?.message?.toString()} />
+        <Error error={errors['checkDigit']?.message?.toString()} />
       </div>
       <div className={styles.legal}>
         <Checkbox

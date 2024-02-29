@@ -1,5 +1,7 @@
 .HeroApplication {
   display: grid;
+  gap: clamp(48px, calc(64vw / 7.68), 64px) clamp(82px, calc(96vw / 7.68), 134px);
+  align-items: flex-start;
   @media (min-width: 1100px) {
     grid-template-columns: 1fr 1.2fr;
     header {
@@ -8,16 +10,11 @@
       top: 152px;
     }
   }
-  gap: clamp(48px, calc(64vw / 7.68), 64px) clamp(82px, calc(96vw / 7.68), 134px);
-  align-items: flex-start;
-
   header {
     max-width: calc(484rem / 16);
-
     h1 {
       margin-bottom: clamp(16px, calc(20vw / 7.68), 20px);
     }
-
     .paragraph {
       font-size: 1rem;
       > *:not(:last-child) {
@@ -77,27 +74,21 @@
 
 .Form {
   position: relative;
-
   .register {
-    display: flex;
-    gap: 8px;
-
-    .registerNumber {
-      width: 200px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr auto 1fr auto 40px;
+    gap: 2px 8px;
+    > label span[data-error] {
+      display: none;
     }
-
-    .checkDigit {
-      width: 200px;
-
+    > span[data-error] {
+      grid-column: 6/1;
+    }
+    label:last-of-type {
       input {
-        width: 40px;
         text-align: center;
       }
-    }
-
-    p {
-      top: 14px;
-      position: relative;
     }
   }
 }

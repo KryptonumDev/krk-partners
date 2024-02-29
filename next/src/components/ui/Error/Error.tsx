@@ -3,7 +3,7 @@ import styles from './Error.module.scss';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { Props } from './Error.types';
 
-const Error = ({ error, isAbsolute }: Props) => {
+const Error = ({ error }: Props) => {
   return (
     <AnimatePresence
       initial={false}
@@ -13,7 +13,6 @@ const Error = ({ error, isAbsolute }: Props) => {
         <motion.span
           data-error
           className={styles['Error']}
-          data-absolute={isAbsolute}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

@@ -3,23 +3,15 @@ import Textarea from './_Textarea';
 import styles from './Input.module.scss';
 import type { Props } from './Input.types';
 
-const Input = ({
-  register,
-  label,
-  errors,
-  textarea = false,
-  setErrorsUnder = false,
-  className = '',
-  ...props
-}: Props) => {
+const Input = ({ register, label, errors, textarea = false, ...props }: Props) => {
   return (
     <label
-      className={`${styles['Input']} ${className}`}
+      className={styles['Input']}
       aria-invalid={!!errors[register.name]}
     >
       <p>
         <span dangerouslySetInnerHTML={{ __html: label }} />
-        {!setErrorsUnder && <Error error={errors[register.name]?.message?.toString()} />}
+        <Error error={errors[register.name]?.message?.toString()} />
       </p>
       {textarea ? (
         <Textarea
@@ -34,7 +26,6 @@ const Input = ({
           {...props}
         />
       )}
-      {setErrorsUnder && <Error error={errors[register.name]?.message?.toString()} isAbsolute={true}/>}
     </label>
   );
 };

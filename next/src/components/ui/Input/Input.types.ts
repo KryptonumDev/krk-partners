@@ -1,4 +1,4 @@
-import { FieldErrors } from 'react-hook-form';
+import type { FieldErrors } from 'react-hook-form';
 
 export type Props = {
   register: {
@@ -7,7 +7,5 @@ export type Props = {
   label: string;
   errors: FieldErrors;
   textarea?: boolean;
-  setErrorsUnder?: boolean;
-  className?: string;
 } & React.InputHTMLAttributes<HTMLInputElement> &
   React.TextareaHTMLAttributes<HTMLTextAreaElement>;
