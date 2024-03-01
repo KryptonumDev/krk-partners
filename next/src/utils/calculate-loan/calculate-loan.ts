@@ -1,6 +1,11 @@
-import { formatNumberToSpaces } from './format-number-to-spaces';
+import { formatNumberToSpaces } from '../format-number-to-spaces';
+import { getCalculationData } from './get-calculation-data';
 
-export function calculateLoan(fundingPeriod: number, amount: string, companyType: string) {
+export async function calculateLoan(fundingPeriod: number, amount: string, companyType: string) {
+  const {
+    loanCalculations: { JDGSmall, JDGMedium, JDGHigh, SPHSmall, SPHMedium, SPHHigh, earlyPaymentFeeMultiplier },
+  } = await getCalculationData();
+
   const parsedAmount = parseInt(amount.replace(/\s/g, ''));
   if (companyType == 'Spółka z.o.o') {
     return calculateJDG(parsedAmount, fundingPeriod);
@@ -9,80 +14,65 @@ export function calculateLoan(fundingPeriod: number, amount: string, companyType
   }
 
   function calculateJDG(amount: number, months: number) {
-    if (amount < 1000000 && amount >= 200000) {
+    if (amount < JDGSmall.to && amount >= JDGSmall.from) {
       return calculateLowJDG(amount, months);
-    } else if (amount < 3000000 && amount >= 1000000) {
+    } else if (amount < JDGMedium.to && amount >= JDGMedium.from) {
       return calculateMediumJDG(amount, months);
-    } else if (amount <= 5000000 && amount >= 3000000) {
+    } else if (amount <= JDGHigh.to && amount >= JDGHigh.from) {
       return calculateHighJDG(amount, months);
     }
   }
 
   function calculateSPH(amount: number, months: number) {
-    if (amount < 1000000 && amount >= 200000) {
+    if (amount < SPHSmall.to && amount >= SPHSmall.from) {
       return calculateLowSPH(amount, months);
-    } else if (amount < 3000000 && amount >= 1000000) {
+    } else if (amount < SPHMedium.to && amount >= SPHMedium.from) {
       return calculateMediumSPH(amount, months);
-    } else if (amount <= 5000000 && amount >= 3000000) {
+    } else if (amount <= SPHHigh.to && amount >= SPHHigh.from) {
       return calculateHighSPH(amount, months);
     }
   }
 
   function calculateLowJDG(amount: number, months: number) {
-    const comissionMultiplier = 0.125;
-    const interestMultiplier = 0.175;
-    const additionalCalculationsMultiplier = 0.0408333333;
     return performJDGCalculations(
-      comissionMultiplier,
-      interestMultiplier,
-      additionalCalculationsMultiplier,
+      JDGSmall.comission,
+      JDGSmall.interest,
+      JDGSmall.additionalCalculationsMultiplier,
       amount,
       months
     );
   }
 
   function calculateMediumJDG(amount: number, months: number) {
-    const comissionMultiplier = 0.12;
-    const interestMultiplier = 0.12;
-    const additionalCalculationsMultiplier = 0.035;
     return performJDGCalculations(
-      comissionMultiplier,
-      interestMultiplier,
-      additionalCalculationsMultiplier,
+      JDGMedium.comission,
+      JDGMedium.interest,
+      JDGMedium.additionalCalculationsMultiplier,
       amount,
       months
     );
   }
 
   function calculateHighJDG(amount: number, months: number) {
-    const comissionMultiplier = 0.1;
-    const interestMultiplier = 0.1;
-    const additionalCalculationsMultiplier = 0.035;
     return performJDGCalculations(
-      comissionMultiplier,
-      interestMultiplier,
-      additionalCalculationsMultiplier,
+      JDGHigh.comission,
+      JDGHigh.interest,
+      JDGHigh.additionalCalculationsMultiplier,
       amount,
       months
     );
   }
 
   function calculateLowSPH(amount: number, months: number) {
-    const comissionMultiplier = 0.14;
-    const interestMultiplier = 0.16585;
-    return performSPHCalculations(comissionMultiplier, interestMultiplier, amount, months);
+    return performSPHCalculations(SPHSmall.comission, SPHSmall.interest, amount, months);
   }
 
   function calculateMediumSPH(amount: number, months: number) {
-    const comissionMultiplier = 0.12;
-    const interestMultiplier = 0.12;
-    return performSPHCalculations(comissionMultiplier, interestMultiplier, amount, months);
+    return performSPHCalculations(SPHMedium.comission, SPHMedium.interest, amount, months);
   }
 
   function calculateHighSPH(amount: number, months: number) {
-    const comissionMultiplier = 0.1;
-    const interestMultiplier = 0.1;
-    return performSPHCalculations(comissionMultiplier, interestMultiplier, amount, months);
+    return performSPHCalculations(SPHHigh.comission, SPHHigh.interest, amount, months);
   }
 
   function performJDGCalculations(
@@ -121,11 +111,11 @@ export function calculateLoan(fundingPeriod: number, amount: string, companyType
   }
 
   function calculateComission(multiplier: number, amount: number, months: number) {
-    return Math.ceil((months / 12) * multiplier * amount * 100) / 100;
+    return Math.ceil((months / 12) * multiplier * amount * 100) / 10000;
   }
 
   function calculateInterest(multiplier: number, amount: number, months: number) {
-    return Math.ceil((months / 12) * multiplier * amount * 100) / 100;
+    return Math.ceil((months / 12) * multiplier * amount * 100) / 10000;
   }
 
   function performAdditionalCalculations(multiplier: number, comission: number, interest: number) {
@@ -133,8 +123,6 @@ export function calculateLoan(fundingPeriod: number, amount: string, companyType
   }
 
   function calculateEarlyPaymentFee(amount: number, months: number) {
-    const earlyPaymentFeeMultiplier = 0.0535;
-
     if (months < 12) {
       return Math.ceil(earlyPaymentFeeMultiplier * amount * 100) / 100;
     }

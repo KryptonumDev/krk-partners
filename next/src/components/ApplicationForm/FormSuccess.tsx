@@ -1,6 +1,6 @@
 import Copy from '@/components/ui/Copy';
-import styles from '../HeroApplication.module.scss';
-import type { CalculationProps } from '../HeroApplication.types';
+import styles from './ApplicationForm.module.scss';
+import type { CalculationProps } from './ApplicationForm.types';
 import Img from '@/components/ui/image';
 
 const FormSuccess = ({ comission, totalInterest, earlyPaymentFee, total, contactPerson }: CalculationProps) => {

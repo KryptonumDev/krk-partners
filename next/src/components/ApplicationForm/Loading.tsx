@@ -1,4 +1,4 @@
-import styles from '../HeroApplication.module.scss';
+import styles from './ApplicationForm.module.scss';
 import Loader from '@/components/ui/Loader';
 
 const Loading = ({ loading }: { loading: boolean }) => {

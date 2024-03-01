@@ -1,5 +1,5 @@
-import styles from '../HeroApplication.module.scss';
-import type { StepsProps } from '../HeroApplication.types';
+import styles from './ApplicationForm.module.scss';
+import type { StepsProps } from './ApplicationForm.types';
 
 const Steps = ({ steps, currentStep, setStep, ...props }: StepsProps) => {
   const progress = currentStep === 1 ? 0.25 : 0.75;

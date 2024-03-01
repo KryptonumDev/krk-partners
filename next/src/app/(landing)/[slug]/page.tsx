@@ -23,7 +23,10 @@ const LandingPage = async ({ params: { slug } }: { params: { slug: string } }) =
         ]}
         visible={false}
       />
-      <Components data={content} contactPerson={contactPerson} />
+      <Components
+        data={content}
+        contactPerson={contactPerson}
+      />
     </>
   );
 };

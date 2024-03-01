@@ -1,8 +1,8 @@
 'use client';
 import Slider from '@/components/ui/Slider';
-import styles from '../HeroApplication.module.scss';
+import styles from './ApplicationForm.module.scss';
 import Picker from '@/components/ui/Picker';
-import type { Step1Props } from '../HeroApplication.types';
+import type { Step1Props } from './ApplicationForm.types';
 import Button from '@/components/ui/Button';
 
 const Step1 = ({ form: { register, setValue, errors, trigger }, setStep, ...props }: Step1Props) => {

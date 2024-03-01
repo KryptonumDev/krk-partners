@@ -1,27 +1,25 @@
-import { useEffect, useState } from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import Checkbox from '@/components/ui/Checkbox';
 import Input from '@/components/ui/Input';
 import Select from '@/components/ui/Select';
-import styles from '../HeroApplication.module.scss';
+import styles from './ApplicationForm.module.scss';
 import { regex } from '@/global/constants';
 import { formatPhoneNumber } from '@/utils/format-phone-number';
 import { isValidateNip } from '@/utils/is-validate-nip';
 import { formatToOnlyDigits } from '@/utils/format-to-only-digits';
 import { landRegisterList } from './land-register-list';
-import { Step2Props } from '../HeroApplication.types';
+import { Step2Props } from './ApplicationForm.types';
 import Error from '@/components/ui/Error';
 import { checkLandAndMortgageRegister } from '@/utils/check-land-and-mortgage-register';
 
 const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }: Step2Props) => {
   const [isMortgageProperlySet, setIsMortgageProperlySet] = useState(false);
-  const [digit, setDigit] = useState('');
 
-  const handleDigitChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const value = event.target.value.replace(/\D/g, '');
-    setValue('landRegister_CheckDigit', value);
-    setDigit(value);
+  const handleDigitChange = (event: SyntheticEvent) => {
+    const value = (event.target as HTMLInputElement).value.replace(/\D/g, '');
+    setValue('landRegister_CheckDigit', value), { shouldValidate: true };
   };
 
   const checkAll = (checked: boolean) => {
@@ -145,9 +143,8 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
           label=''
           register={register('landRegister_CheckDigit', {
             required: { value: true, message: 'Cyfra kontrolna jest wymagana' },
+            onChange: (event: SyntheticEvent) => handleDigitChange(event),
           })}
-          onChange={(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => handleDigitChange(event)}
-          value={digit}
           errors={errors}
           placeholder='_'
           inputMode='numeric'
@@ -155,8 +152,15 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         />
         <Error error={errors['landdRegister_CourtId']?.message?.toString()} />
         <Error error={errors['landRegister_RegisterNumber']?.message?.toString()} />
-        <Error error={errors['landRegister_CheckDigit']?.message?.toString()} />
-        <Error error={!isMortgageProperlySet ? 'Niepoprawnie wypełnione dane' : ''} />
+        <Error
+          error={
+            errors['landRegister_CheckDigit']?.message?.toString()
+              ? errors['landRegister_CheckDigit']?.message?.toString()
+              : !isMortgageProperlySet
+              ? 'Niepoprawnie wypełnione dane'
+              : undefined
+          }
+        />
       </div>
       <div className={styles.legal}>
         <Checkbox

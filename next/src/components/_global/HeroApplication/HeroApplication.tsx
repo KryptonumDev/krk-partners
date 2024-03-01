@@ -2,8 +2,8 @@ import Markdown from '@/components/ui/markdown';
 import styles from './HeroApplication.module.scss';
 import type { Props } from './HeroApplication.types';
 import Img from '@/components/ui/image';
-import Form from './_Form';
 import sanityFetch from '@/utils/sanity.fetch';
+import ApplicationForm from '@/components/ApplicationForm';
 
 const HeroApplication = async ({
   heading,
@@ -53,7 +53,10 @@ const HeroApplication = async ({
             ))}
           </ul>
         </div>
-        <Form email={email} contactPerson={contactPerson} />
+        <ApplicationForm
+          email={email}
+          contactPerson={contactPerson}
+        />
       </div>
     </section>
   );

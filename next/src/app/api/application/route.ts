@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
 import { regex } from '@/global/constants';
-import { calculateLoan } from '@/utils/calculate-loan';
+import { calculateLoan } from '@/utils/calculate-loan/calculate-loan';
+import { NextResponse } from 'next/server';
 
 const airtableData = {
   baseId: 'appAPnYmJCKsCs7vP',
@@ -51,7 +51,7 @@ export async function POST(request: Request) {
 
   if (!isValidate) return NextResponse.json({ success: false }, { status: 422 });
 
-  const calculatedLoan = calculateLoan(fundingPeriod, loanAmount, companyType);
+  const calculatedLoan = await calculateLoan(fundingPeriod, loanAmount, companyType);
 
   const body = {
     records: [
