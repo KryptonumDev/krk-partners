@@ -4,7 +4,7 @@ export type Props = {
   register: {
     name: string;
   };
-  label: string;
+  label?: string;
   errors: FieldErrors;
   options: string[];
   setErrorsUnder?: boolean;

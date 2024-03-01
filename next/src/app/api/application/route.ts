@@ -86,7 +86,7 @@ export async function POST(request: Request) {
     if (!responseData.records) {
       return NextResponse.json({ success: false, message: 'Unable to create new record' }, { status: 422 });
     }
-    return NextResponse.json({ success: true, calculatedLoan }, { status: 200 });
+    return NextResponse.json({ success: true, calculation: calculatedLoan }, { status: 200 });
   } catch {
     return NextResponse.json({ success: false, message: 'An unexpected error occurred' }, { status: 422 });
   }

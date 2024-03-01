@@ -1,4 +1,4 @@
-import type { FormStatusType, ImgType } from '@/global/types';
+import type { ContactPersonType, FormStatusType, ImgType } from '@/global/types';
 import type {
   FieldErrors,
   FieldValues,
@@ -18,7 +18,27 @@ export type Props = {
   testimonial_Text: string;
   form_Heading: string;
   form_Features: string[];
+  contactPerson?: ContactPersonType;
 };
+
+export type FormProps = {
+  email: string;
+  contactPerson?: ContactPersonType;
+};
+
+export type CalculationProps = {
+  comission: string;
+  totalInterest: string;
+  earlyPaymentFee?: string;
+  total: string;
+  contactPerson?: ContactPersonType;
+};
+
+export type StepsProps = {
+  steps: string[];
+  currentStep: number;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+} & React.HTMLAttributes<HTMLDivElement>;
 
 export type Step1Props = {
   form: {
@@ -40,8 +60,6 @@ export type Step2Props = {
   status: FormStatusType;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-export type StepsProps = {
-  steps: string[];
-  currentStep: number;
-  setStep: React.Dispatch<React.SetStateAction<number>>;
-};
+export type FormErrorProps = {
+  setStatus: React.Dispatch<React.SetStateAction<FormStatusType>>;
+} & FormProps;

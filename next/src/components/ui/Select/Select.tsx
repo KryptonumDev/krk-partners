@@ -4,8 +4,8 @@ import Error from '@/components/ui/Error';
 import styles from './Select.module.scss';
 import type { Props } from './Select.types';
 
-const Select = ({ register, label, errors, options, defaultValue, setErrorsUnder = false }: Props) => {
-  const ref = useRef<HTMLLabelElement>(null);
+const Select = ({ register, label, errors, options, defaultValue }: Props) => {
+  const ref = useRef<HTMLDivElement>(null);
   const [option, setOption] = useState(defaultValue);
 
   const handleClick = () => setTimeout(() => (document.activeElement as HTMLElement)?.blur(), 0);
@@ -27,14 +27,14 @@ const Select = ({ register, label, errors, options, defaultValue, setErrorsUnder
   };
 
   return (
-    <label
+    <div
       className={styles['Select']}
       aria-invalid={!!errors[register.name]}
       ref={ref}
     >
       <p>
-        <span dangerouslySetInnerHTML={{ __html: label }} />
-        {!setErrorsUnder && <Error error={errors[register.name]?.message?.toString()} />}
+        {label && <span dangerouslySetInnerHTML={{ __html: label }} />}
+        <Error error={errors[register.name]?.message?.toString()} />
       </p>
       <div
         className={styles.select}
@@ -62,8 +62,7 @@ const Select = ({ register, label, errors, options, defaultValue, setErrorsUnder
           ))}
         </div>
       </div>
-      {setErrorsUnder && <Error error={errors[register.name]?.message?.toString()} />}
-    </label>
+    </div>
   );
 };
 

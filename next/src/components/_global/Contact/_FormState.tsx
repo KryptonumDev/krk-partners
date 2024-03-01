@@ -1,8 +1,8 @@
 import { ErrorIcon, SuccessIcon } from '@/components/ui/Icons';
 import styles from './Contact.module.scss';
 import Button from '@/components/ui/Button';
-import type { FormStatusType } from './Contact.types';
 import Copy from '@/components/ui/Copy';
+import type { FormStatusType } from '@/global/types';
 
 const getIcon = (isSuccess: boolean) => (isSuccess ? <SuccessIcon /> : <ErrorIcon />);
 const getHeading = (isSuccess: boolean) =>

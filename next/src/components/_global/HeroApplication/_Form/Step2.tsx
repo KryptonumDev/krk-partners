@@ -115,6 +115,10 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         errors={errors}
       />
       <div className={styles.register}>
+        <div className={styles.label}>
+          <p>Numer księgi wieczystej</p>
+          <p>Potrzebujemy tej informacji, aby wyliczyć pożyczkę</p>
+        </div>
         <Select
           label=''
           register={register('landRegister_CourtId', {

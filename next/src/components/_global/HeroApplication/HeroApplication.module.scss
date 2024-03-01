@@ -47,6 +47,7 @@
   }
   .application {
     .introduction {
+      margin-bottom: 32px;
       h2 {
         font-size: clamp(calc(20rem / 16), calc(24vw / 7.68), calc(24rem / 16));
         margin-bottom: clamp(16px, calc(20vw / 7.68), 20px);
@@ -74,21 +75,14 @@
 
 .Form {
   position: relative;
-  .register {
-    display: grid;
-    align-items: center;
-    grid-template-columns: 1fr auto 1fr auto 40px;
-    gap: 2px 8px;
-    > label span[data-error] {
-      display: none;
+  &:has(.FormSuccess) {
+    > *:not(.FormSuccess) {
+      visibility: hidden;
     }
-    > span[data-error] {
-      grid-column: 6/1;
-    }
-    label:last-of-type {
-      input {
-        text-align: center;
-      }
+  }
+  &:has(.FormError) {
+    > *:not(.FormError) {
+      visibility: hidden;
     }
   }
 }
@@ -100,12 +94,17 @@
   align-items: center;
   counter-reset: counter;
   position: relative;
+  padding: 16px clamp(0px, calc(32vw / 7.68), 32px);
+  max-width: calc(560rem / 16);
+  margin: 0 auto;
+  border-bottom: 1px dashed var(--neutral-300);
+  margin-bottom: 32px;
   .progressbar {
     z-index: -1;
     position: absolute;
-    top: 16px;
-    left: 25px;
-    right: 25px;
+    top: 32px;
+    left: 62px;
+    right: 64px;
     height: 2px;
     background-color: var(--neutral-300);
     div {
@@ -114,6 +113,14 @@
       background-color: var(--neutral-800);
       transition: transform 0.5s var(--easing);
       transform-origin: left;
+    }
+  }
+  @media (max-width: 499px) {
+    padding-left: 0;
+    padding-right: 0;
+    .progressbar {
+      left: 28px;
+      right: 34px;
     }
   }
   button {
@@ -139,19 +146,198 @@
         color: var(--neutral-100);
       }
     }
+    &:disabled {
+      pointer-events: none;
+    }
+  }
+}
+
+.Step1,
+.Step2 {
+  max-width: calc(381rem / 16);
+  margin: 0 auto;
+}
+.Step1 {
+  display: grid;
+  gap: 20px;
+  > button {
+    margin-top: 20px;
+    margin-left: auto;
+  }
+}
+
+.Step2 {
+  display: grid;
+  gap: 12px;
+  button {
+    margin-top: 20px;
+  }
+  .register {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr auto 1fr auto 40px;
+    gap: 2px 8px;
+    .label {
+      grid-column: 6/1;
+      p {
+        &:last-child {
+          font-size: calc(12rem / 16);
+        }
+      }
+      margin-bottom: 4px;
+    }
+    > label span[data-error],
+    > div:nth-child(2) span[data-error] {
+      display: none;
+    }
+    > span[data-error] {
+      grid-column: 6/1;
+    }
+    label:last-of-type {
+      input {
+        text-align: center;
+      }
+    }
+  }
+  .legal {
+    display: grid;
+    gap: 12px;
+    label {
+      &:not(:first-child) {
+        margin-left: 24px;
+      }
+    }
+  }
+  > button {
+    margin-top: 20px;
+    margin-left: auto;
   }
 }
 
 .Loading {
   position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  left: -16px;
+  top: -16px;
+  right: -16px;
+  bottom: -16px;
   display: grid;
   place-items: center;
   border-radius: inherit;
-  background-color: rgba(23, 23, 25, 0.62);
+  background-color: rgba(255, 255, 255, 0.62);
   backdrop-filter: blur(4px);
   z-index: 4;
+}
+
+.FormError,
+.FormSuccess {
+  border-radius: 16px;
+  background: var(--neutral-200);
+  z-index: 5;
+  padding: clamp(12px, calc(24vw / 7.68), 24px);
+}
+
+.FormError {
+  text-align: center;
+  > * {
+    max-width: calc(427rem / 16);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  > svg {
+    margin: 0 auto 32px;
+  }
+  > h3 {
+    color: var(--neutral-800);
+    font-size: clamp(calc(20rem / 16), calc(24vw / 7.68), calc(24rem / 16));
+    margin-bottom: 16px;
+  }
+  > p {
+    font-size: 1rem;
+    color: var(--neutral-800);
+  }
+  > button {
+    margin: 32px auto;
+  }
+  .contact {
+    > p {
+      margin-bottom: 12px;
+    }
+    > div {
+      margin: 0 auto;
+    }
+  }
+}
+
+.FormSuccess {
+  > h3 {
+    font-size: clamp(calc(20rem / 16), calc(24vw / 7.68), calc(24rem / 16));
+    strong {
+      font-size: clamp(calc(26rem / 16), calc(32vw / 7.68), calc(32rem / 16));
+      color: var(--success-500, #15a669);
+      display: block;
+      line-height: 135%;
+    }
+    margin-bottom: 28px;
+  }
+  .attribute {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+    font-size: 1rem;
+    > div {
+      text-align: right;
+      > p {
+        &:not(:first-child) {
+          font-size: calc(12rem / 16);
+        }
+      }
+    }
+  }
+  .contact {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--neutral-300);
+    > p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+    .person {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: clamp(8px, calc(12vw / 7.68), 12px);
+      margin-bottom: 12px;
+      .img {
+        width: clamp(48px, calc(96vw / 7.68), 96px);
+        height: clamp(48px, calc(96vw / 7.68), 96px);
+        display: grid;
+        place-items: center;
+        clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+        background-color: var(--neutral-300);
+        img {
+          width: 75%;
+          height: 75%;
+          clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+          object-fit: cover;
+          object-position: top;
+        }
+      }
+      p {
+        color: var(--neutral-700);
+        font-size: 1rem;
+      }
+    }
+    @media (min-width: 1100px) {
+      .person + .copy {
+        margin-top: -34px;
+      }
+      .copy {
+        margin-left: calc(clamp(48px, calc(96vw / 7.68), 96px) + clamp(8px, calc(12vw / 7.68), 12px));
+      }
+    }
+  }
 }
