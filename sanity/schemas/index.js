@@ -33,6 +33,7 @@ import HeroApplication from './components/HeroApplication'
 import LoanCalculations from './components/LoanCalculations/LoanCalculations'
 import JDG from './components/LoanCalculations/JDG'
 import SPH from './components/LoanCalculations/SPH'
+import QuickApplication from './components/QuickApplication'
 
 export const schemaTypes = [
   ...singleTypes,
@@ -70,4 +71,5 @@ export const schemaTypes = [
   LoanCalculations,
   JDG,
   SPH,
+  QuickApplication,
 ]
