@@ -58,16 +58,17 @@ const Form = ({ email, contactPerson }: FormProps) => {
         currentStep={step}
         steps={steps}
         setStep={setStep}
+        style={{ display: status?.success !== undefined ? 'none' : undefined }}
       />
       <Step1
         form={{ register, setValue, errors, trigger }}
         setStep={setStep}
-        style={{ display: step !== 1 ? 'none' : undefined }}
+        style={{ display: status?.success !== undefined ? 'none' : step !== 1 ? 'none' : undefined }}
       />
       <Step2
         form={{ register, setValue, errors, watch }}
         status={status}
-        style={{ display: step !== 2 ? 'none' : undefined }}
+        style={{ display: status?.success !== undefined ? 'none' : step !== 2 ? 'none' : undefined }}
       />
       {status?.success !== undefined &&
         (!status.success || calculation == null ? (

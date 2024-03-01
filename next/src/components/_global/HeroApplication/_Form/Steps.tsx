@@ -1,11 +1,14 @@
 import styles from '../HeroApplication.module.scss';
 import type { StepsProps } from '../HeroApplication.types';
 
-const Steps = ({ steps, currentStep, setStep }: StepsProps) => {
+const Steps = ({ steps, currentStep, setStep, ...props }: StepsProps) => {
   const progress = currentStep === 1 ? 0.25 : 0.75;
 
   return (
-    <div className={styles['Steps']}>
+    <div
+      className={styles['Steps']}
+      {...props}
+    >
       <div className={styles.progressbar}>
         <div style={{ transform: `scaleX(${progress})` }}></div>
       </div>

@@ -38,7 +38,7 @@ export type StepsProps = {
   steps: string[];
   currentStep: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
-};
+} & React.HTMLAttributes<HTMLDivElement>;
 
 export type Step1Props = {
   form: {
