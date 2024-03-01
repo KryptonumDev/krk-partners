@@ -1,15 +1,15 @@
-import { defineConfig } from 'sanity'
-import { deskTool } from 'sanity/desk'
-import { visionTool } from '@sanity/vision'
-import { singleTypes, collectionTypes, schemaTypes } from './schemas'
-import { media } from 'sanity-plugin-media'
+import {defineConfig} from 'sanity'
+import {deskTool} from 'sanity/desk'
+import {visionTool} from '@sanity/vision'
+import {singleTypes, collectionTypes, schemaTypes} from './schemas'
+import {media} from 'sanity-plugin-media'
 
-import { markdownSchema } from 'sanity-plugin-markdown'
-import { CustomMarkdownInput } from './components/Markdown'
-import { ExternalLinks } from './components/ExternalLinks'
+import {markdownSchema} from 'sanity-plugin-markdown'
+import {CustomMarkdownInput} from './components/Markdown'
+import {ExternalLinks} from './components/ExternalLinks'
 
 const createListItem = (S, typeName) => {
-  const { title, name, icon } = schemaTypes.find((item) => item.name === typeName)
+  const {title, name, icon} = schemaTypes.find((item) => item.name === typeName)
   return S.listItem()
     .title(title)
     .id(name)
@@ -44,19 +44,19 @@ export default defineConfig({
           ]),
     }),
     visionTool(),
-    markdownSchema({ input: CustomMarkdownInput }),
+    markdownSchema({input: CustomMarkdownInput}),
     media(),
   ],
 
   schema: {
     types: schemaTypes,
-    templates: (templates) => templates.filter(({ schemaType }) => !singletonTypes.has(schemaType)),
+    templates: (templates) => templates.filter(({schemaType}) => !singletonTypes.has(schemaType)),
   },
 
   document: {
     actions: (input, context) =>
       singletonTypes.has(context.schemaType)
-        ? input.filter(({ action }) => action && singletonActions.has(action))
+        ? input.filter(({action}) => action && singletonActions.has(action))
         : input,
   },
 

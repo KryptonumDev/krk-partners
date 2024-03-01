@@ -1,5 +1,5 @@
 // Single Types
-import global, { global_Seo } from './singleTypes/global'
+import global, {global_Seo} from './singleTypes/global'
 
 export const singleTypes = []
 
@@ -7,29 +7,32 @@ export const singleTypes = []
 import landingPage_Collection from './collectionTypes/landingPage_Collection'
 import team_Collection from './collectionTypes/team_Collection'
 
-export const collectionTypes = [
-  landingPage_Collection,
-  team_Collection,
-]
+export const collectionTypes = [landingPage_Collection, team_Collection]
 
 // Components
 import cta from './components/cta'
 import seo from './components/seo'
 import Content from '../components/Content'
-import CaseStudy, { CaseStudy_Item } from './components/CaseStudy'
-import Comparison, { Comparison_TableHeader, Comparison_TableItems } from './components/Comparison'
-import Features, { Features_Item } from './components/Features'
+import CaseStudy, {CaseStudy_Item} from './components/CaseStudy'
+import Comparison, {Comparison_TableHeader, Comparison_TableItems} from './components/Comparison'
+import Features, {Features_Item} from './components/Features'
 import StatsGrid from './components/StatsGrid'
-import ListWithIconAndCta, { ListWithIconAndCta_Item } from './components/ListWithIconAndCta'
-import Reviews, { Reviews_Item } from './components/Reviews'
-import FloatingTilesAndImages, { FloatingTilesAndImages_Images, FloatingTilesAndImages_List } from './components/FloatingTilesAndImages'
-import Faq, { Faq_List } from './components/Faq'
+import ListWithIconAndCta, {ListWithIconAndCta_Item} from './components/ListWithIconAndCta'
+import Reviews, {Reviews_Item} from './components/Reviews'
+import FloatingTilesAndImages, {
+  FloatingTilesAndImages_Images,
+  FloatingTilesAndImages_List,
+} from './components/FloatingTilesAndImages'
+import Faq, {Faq_List} from './components/Faq'
 import Contact from './components/Contact'
-import Steps, { Steps_Timeline } from './components/Steps'
+import Steps, {Steps_Timeline} from './components/Steps'
 import Team from './components/Team'
 import PersonIntroduction from './components/PersonIntroduction'
-import FloatingItems, { FloatingItems_List } from './components/FloatingItems'
+import FloatingItems, {FloatingItems_List} from './components/FloatingItems'
 import HeroApplication from './components/HeroApplication'
+import LoanCalculations from './components/LoanCalculations/LoanCalculations'
+import JDG from './components/LoanCalculations/JDG'
+import SPH from './components/LoanCalculations/SPH'
 
 export const schemaTypes = [
   ...singleTypes,
@@ -64,4 +67,7 @@ export const schemaTypes = [
   FloatingItems,
   FloatingItems_List,
   HeroApplication,
+  LoanCalculations,
+  JDG,
+  SPH,
 ]
