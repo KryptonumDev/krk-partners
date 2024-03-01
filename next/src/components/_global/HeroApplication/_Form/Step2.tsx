@@ -15,11 +15,12 @@ import Error from '@/components/ui/Error';
 import { checkLandAndMortgageRegister } from '@/utils/check-land-and-mortgage-register';
 
 const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }: Step2Props) => {
+  const [isMortgageProperlySet, setIsMortgageProperlySet] = useState(false);
   const [digit, setDigit] = useState('');
 
   const handleDigitChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const value = event.target.value.replace(/\D/g, '');
-    setValue('checkDigit', value);
+    setValue('landRegister_CheckDigit', value);
     setDigit(value);
   };
 
@@ -34,9 +35,13 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
     setValue('legal_all', isAllChecked, { shouldValidate: true });
   }, [isAllChecked]);
 
-  const landAndMortgageRegister = watch(['courtId', 'registerNumber', 'checkDigit']);
+  const landAndMortgageRegister = watch([
+    'landRegister_CourtId',
+    'landRegister_RegisterNumber',
+    'landRegister_CheckDigit',
+  ]);
 
-  function validateRegister() {
+  useEffect(() => {
     const mappedLandAndMortgageRegister: string[] = [];
     landAndMortgageRegister.map((input) => {
       if (regex.hasLetters.test(input)) {
@@ -45,8 +50,8 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         mappedLandAndMortgageRegister.push(input);
       }
     });
-    return checkLandAndMortgageRegister(mappedLandAndMortgageRegister);
-  }
+    setIsMortgageProperlySet(checkLandAndMortgageRegister(mappedLandAndMortgageRegister));
+  }, [landAndMortgageRegister]);
 
   return (
     <div
@@ -116,7 +121,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         </div>
         <Select
           label=''
-          register={register('courtId', {
+          register={register('landRegister_CourtId', {
             required: { value: true, message: 'Identyfikator sądu jest wymagany' },
           })}
           options={landRegisterList}
@@ -126,7 +131,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         <span>/</span>
         <Input
           label=''
-          register={register('registerNumber', {
+          register={register('landRegister_RegisterNumber', {
             required: { value: true, message: 'Numer księgi wieczystej jest wymagany' },
             pattern: { value: regex.registerNumber, message: 'Niepoprawny numer księgi wieczystej' },
           })}
@@ -138,9 +143,8 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         <span>/</span>
         <Input
           label=''
-          register={register('checkDigit', {
+          register={register('landRegister_CheckDigit', {
             required: { value: true, message: 'Cyfra kontrolna jest wymagana' },
-            validate: () => validateRegister() || 'Niepoprawna cyfra kontrolna',
           })}
           onChange={(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => handleDigitChange(event)}
           value={digit}
@@ -149,9 +153,10 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
           inputMode='numeric'
           maxLength={1}
         />
-        <Error error={errors['courtId']?.message?.toString()} />
-        <Error error={errors['registerNumber']?.message?.toString()} />
-        <Error error={errors['checkDigit']?.message?.toString()} />
+        <Error error={errors['landdRegister_CourtId']?.message?.toString()} />
+        <Error error={errors['landRegister_RegisterNumber']?.message?.toString()} />
+        <Error error={errors['landRegister_CheckDigit']?.message?.toString()} />
+        <Error error={!isMortgageProperlySet ? 'Niepoprawnie wypełnione dane' : ''} />
       </div>
       <div className={styles.legal}>
         <Checkbox
