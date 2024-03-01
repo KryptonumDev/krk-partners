@@ -1,19 +1,19 @@
 'use client';
 import { useState } from 'react';
 import { useForm, type FieldValues } from 'react-hook-form';
-import styles from '../HeroApplication.module.scss';
+import styles from './ApplicationForm.module.scss';
 import Steps from './Steps';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Loading from './Loading';
 import FormError from './FormError';
 import type { FormStatusType } from '@/global/types';
-import type { CalculationProps, FormProps } from '../HeroApplication.types';
+import type { CalculationProps, FormProps } from './ApplicationForm.types';
 import FormSuccess from './FormSuccess';
 
 const steps = ['Pożyczka', 'Informacje', 'Propozycja'];
 
-const Form = ({ email, contactPerson }: FormProps) => {
+const ApplicationForm = ({ email, contactPerson }: FormProps) => {
   const [status, setStatus] = useState<FormStatusType>({ sending: false });
   const [step, setStep] = useState(1);
   const [calculation, setCalculation] = useState<CalculationProps | null>(null);
@@ -87,4 +87,4 @@ const Form = ({ email, contactPerson }: FormProps) => {
   );
 };
 
-export default Form;
+export default ApplicationForm;

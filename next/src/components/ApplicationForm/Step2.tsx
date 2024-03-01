@@ -4,13 +4,13 @@ import Button from '@/components/ui/Button';
 import Checkbox from '@/components/ui/Checkbox';
 import Input from '@/components/ui/Input';
 import Select from '@/components/ui/Select';
-import styles from '../HeroApplication.module.scss';
+import styles from './ApplicationForm.module.scss';
 import { regex } from '@/global/constants';
 import { formatPhoneNumber } from '@/utils/format-phone-number';
 import { isValidateNip } from '@/utils/is-validate-nip';
 import { formatToOnlyDigits } from '@/utils/format-to-only-digits';
 import { landRegisterList } from './land-register-list';
-import { Step2Props } from '../HeroApplication.types';
+import { Step2Props } from './ApplicationForm.types';
 import Error from '@/components/ui/Error';
 import { checkLandAndMortgageRegister } from '@/utils/check-land-and-mortgage-register';
 

@@ -1,7 +1,7 @@
 import Copy from '@/components/ui/Copy';
 import Button from '@/components/ui/Button';
-import styles from '../HeroApplication.module.scss';
-import type { FormErrorProps } from '../HeroApplication.types';
+import styles from './ApplicationForm.module.scss';
+import type { FormErrorProps } from './ApplicationForm.types';
 
 const FormError = ({ email, setStatus }: FormErrorProps) => {
   return (
