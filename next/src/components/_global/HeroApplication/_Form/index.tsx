@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useForm, type FieldValues } from 'react-hook-form';
 import styles from '../HeroApplication.module.scss';
 import Steps from './Steps';
@@ -14,6 +14,7 @@ import FormSuccess from './FormSuccess';
 const steps = ['Pożyczka', 'Informacje', 'Propozycja'];
 
 const Form = ({ email, contactPerson }: FormProps) => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<FormStatusType>({ sending: false });
   const [step, setStep] = useState(1);
   const [calculation, setCalculation] = useState<CalculationProps | null>(null);
@@ -26,6 +27,8 @@ const Form = ({ email, contactPerson }: FormProps) => {
     watch,
     trigger,
   } = useForm({ mode: 'onTouched' });
+
+  const formRefOffset = formRef.current ? formRef.current?.offsetTop - 134 : undefined;
 
   const onSubmit = async (data: FieldValues) => {
     setStatus({ sending: true });
@@ -41,11 +44,14 @@ const Form = ({ email, contactPerson }: FormProps) => {
         setCalculation({ comission, totalInterest, earlyPaymentFee, total });
         setStatus({ sending: false, success: true });
         reset();
+        scrollTo({ top: formRefOffset, behavior: 'smooth' });
       } else {
         setStatus({ sending: false, success: false });
+        scrollTo({ top: formRefOffset, behavior: 'smooth' });
       }
     } catch {
       setStatus({ sending: false, success: false });
+      scrollTo({ top: formRefOffset, behavior: 'smooth' });
     }
   };
 
@@ -53,6 +59,7 @@ const Form = ({ email, contactPerson }: FormProps) => {
     <form
       className={styles['Form']}
       onSubmit={handleSubmit(onSubmit)}
+      ref={formRef}
     >
       <Steps
         currentStep={step}
