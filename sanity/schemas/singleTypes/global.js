@@ -1,6 +1,6 @@
 export default {
   name: 'global',
-	title: 'Globalne',
+  title: 'Globalne',
   type: 'document',
   icon: () => '🌍',
   fields: [
@@ -14,6 +14,10 @@ export default {
       name: 'tel',
       type: 'string',
       title: 'Numer telefonu',
+    },
+    {
+      name: 'CookieConsent',
+      type: 'CookieConsent',
     },
     {
       name: 'seo',
