@@ -41,8 +41,8 @@ const ApplicationForm = ({ email, contactPerson, isAboveTheFold }: FormProps) =>
       });
       const responseData = await response.json();
       if (response.ok && responseData.success) {
-        const { comission, totalInterest, earlyPaymentFee, total } = responseData.calculation;
-        setCalculation({ comission, totalInterest, earlyPaymentFee, total });
+        const { comission, comissionMultiplier, totalInterest, earlyPaymentFee, total } = responseData.calculation;
+        setCalculation({ comission, comissionMultiplier, totalInterest, earlyPaymentFee, total });
         setStatus({ sending: false, success: true });
         reset();
         scrollTo({ top: formRefOffset, behavior: 'smooth' });

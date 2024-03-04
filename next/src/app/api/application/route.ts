@@ -9,8 +9,9 @@ const resend = new Resend(process.env.RESEND_API_TOKEN);
 
 type LoanCalculationResult = {
   comission: string;
+  comissionMultiplier: number;
   totalInterest: string;
-  earlyPaymentFee: string;
+  earlyPaymentFee?: string;
   total: string;
 };
 
@@ -53,13 +54,14 @@ const emailBody = (
   nip: string,
   landRegister: string,
   companyType: string,
+  contactPerson: ContactPersonType,
   calculatedLoan: {
     comission: string;
+    comissionMultiplier: number;
     totalInterest: string;
-    earlyPaymentFee: string;
+    earlyPaymentFee?: string;
     total: string;
-  },
-  contactPerson: ContactPersonType
+  }
 ) => `
   ${greeting}, ${fullName},
   <p>Dziękujemy za wysłanie zapytania w sprawie pożyczki pod zastaw nieruchomości.</p>
@@ -67,18 +69,21 @@ const emailBody = (
   <p><b>Wypełnione dane:</b></p>
   <p>Kwota pożyczki: <b>${loanAmount}</b> zł</p>
   <p>Okres finansowania (w miesiącach): <b>${fundingPeriod}</b></p>
-  <p>Numer telefonu: <b>${tel}</b></p>
+  <p>Numer telefonu: <b><a href='tel:${tel}'>${tel}</a></b></p>
   <p>NIP: <b>${nip}</b></p>
   <p>Numer księgi wieczystej: <b>${landRegister}</b></p>
   <p>Rodzaj działalności: <b>${companyType}</b></p>
   <br />
   <p><b><em>Wstępna propozycja:</em></b></p>
   <p>Wstępna propozycja wyceny dla Ciebie to <b>${calculatedLoan.total}</b> zł</p>
-  <p>Prowizja za udzielenie pożyczki: <b>${calculatedLoan.comission}</b> zł (12.5% rocznie)</p>
+  <p>Prowizja za udzielenie pożyczki: <b>${calculatedLoan.comission}</b> zł (${
+  calculatedLoan.comissionMultiplier
+}% rocznie)</p>
   <p>Odsetki w okresie finansowania: <b>${calculatedLoan.totalInterest}</b> zł</p>
   ${
-    calculatedLoan.earlyPaymentFee &&
-    `<p>Opłata za wcześniejszą spłatę: <b>${calculatedLoan.earlyPaymentFee}</b> zł</p>`
+    !!calculatedLoan.earlyPaymentFee
+      ? `<p>Opłata za wcześniejszą spłatę: <b>${calculatedLoan.earlyPaymentFee}</b> zł</p>`
+      : ''
   }
   <br />
   <p>W ciągu następnego dnia roboczego skontaktuje się z Tobą aby porozmawiać o szczegółach propozycji oraz omówić dalsze kroki w procesie pożyczkowym.</p>
@@ -154,8 +159,8 @@ export async function POST(request: Request) {
     nip,
     landRegister,
     companyType,
-    calculatedLoan as LoanCalculationResult,
-    contactPerson
+    contactPerson,
+    calculatedLoan as LoanCalculationResult
   );
 
   try {

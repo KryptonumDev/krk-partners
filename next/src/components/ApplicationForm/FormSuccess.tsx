@@ -3,7 +3,14 @@ import styles from './ApplicationForm.module.scss';
 import type { CalculationProps } from './ApplicationForm.types';
 import Img from '@/components/ui/image';
 
-const FormSuccess = ({ comission, totalInterest, earlyPaymentFee, total, contactPerson }: CalculationProps) => {
+const FormSuccess = ({
+  comission,
+  comissionMultiplier,
+  totalInterest,
+  earlyPaymentFee,
+  total,
+  contactPerson,
+}: CalculationProps) => {
   return (
     <div className={styles['FormSuccess']}>
       <h3>
@@ -17,7 +24,7 @@ const FormSuccess = ({ comission, totalInterest, earlyPaymentFee, total, contact
             <strong>{comission}</strong>&nbsp;zł
           </p>
           <p>
-            <strong>12,50</strong>% rocznie
+            <strong>{comissionMultiplier}</strong>% rocznie
           </p>
         </div>
       </div>

@@ -16,6 +16,7 @@ export type FormProps = {
 
 export type CalculationProps = {
   comission: string;
+  comissionMultiplier: number;
   totalInterest: string;
   earlyPaymentFee?: string;
   total: string;
