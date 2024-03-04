@@ -113,11 +113,11 @@ export async function calculateLoan(fundingPeriod: number, amount: string, compa
   }
 
   function calculateComission(multiplier: number, amount: number, months: number) {
-    return Math.ceil((months / 12) * multiplier * amount * 100) / 10000;
+    return Math.ceil(Math.ceil((months / 12) * multiplier * amount * 100) / 100) / 100;
   }
 
   function calculateInterest(multiplier: number, amount: number, months: number) {
-    return Math.ceil((months / 12) * multiplier * amount * 100) / 10000;
+    return Math.ceil(Math.ceil((months / 12) * multiplier * amount * 100) / 100) / 100;
   }
 
   function performAdditionalCalculations(multiplier: number, comission: number, interest: number) {
