@@ -82,6 +82,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
           required: { value: true, message: 'Numer telefonu jest wymagany' },
           pattern: { value: regex.tel, message: 'Nieprawidłowy numer telefonu' },
           onChange: (e) => formatPhoneNumber(e),
+          onBlur: (e) => setValue('tel', e.target.value.trim(), { shouldValidate: true }),
         })}
         errors={errors}
       />
