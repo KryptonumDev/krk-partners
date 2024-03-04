@@ -16,6 +16,7 @@
     }
     .paragraph {
       font-size: clamp(calc(20rem / 16), calc(24vw / 7.68), calc(24rem / 16));
+      letter-spacing: -0.015em;
     }
     margin-bottom: clamp(32px, calc(64vw / 7.68), 80px);
   }
