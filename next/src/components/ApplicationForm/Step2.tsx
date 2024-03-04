@@ -76,6 +76,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
       <Input
         label='Telefon'
         type='tel'
+        maxLength={15}
         placeholder='_  _  _  -  _  _  _  -  _  _  _'
         register={register('tel', {
           required: { value: true, message: 'Numer telefonu jest wymagany' },
