@@ -88,6 +88,7 @@ export async function calculateLoan(fundingPeriod: number, amount: string, compa
     const totalInterest = interest + additionalCalculations;
     return {
       comission: formatNumberToSpaces(comission),
+      comissionMultiplier: comissionMultiplier,
       totalInterest: formatNumberToSpaces(totalInterest),
       total: formatNumberToSpaces(amount + comission + totalInterest),
     };
@@ -104,6 +105,7 @@ export async function calculateLoan(fundingPeriod: number, amount: string, compa
     const earlyPaymentFee = calculateEarlyPaymentFee(amount, months);
     return {
       comission: formatNumberToSpaces(comission),
+      comissionMultiplier: comissionMultiplier,
       totalInterest: formatNumberToSpaces(interest),
       earlyPaymentFee: formatNumberToSpaces(earlyPaymentFee),
       total: formatNumberToSpaces(interest + comission + earlyPaymentFee + amount),
