@@ -34,6 +34,7 @@ export default {
       name: 'cta_Paragraph',
       type: 'markdown',
       title: 'Paragraf',
+      description: 'Umieść zmienną: `${date}`, aby pokazać datę 6 dni roboczych od dnia dzisiejszego',
       validation: Rule => Rule.required(),
       fieldset: 'cta',
     },
