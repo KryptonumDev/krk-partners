@@ -56,6 +56,7 @@ const HeroApplication = async ({
         <ApplicationForm
           email={email}
           contactPerson={contactPerson}
+          isAboveTheFold={true}
         />
       </div>
     </section>

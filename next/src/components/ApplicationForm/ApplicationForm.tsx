@@ -13,7 +13,7 @@ import FormSuccess from './FormSuccess';
 
 const steps = ['Pożyczka', 'Informacje', 'Propozycja'];
 
-const ApplicationForm = ({ email, contactPerson }: FormProps) => {
+const ApplicationForm = ({ email, contactPerson, isAboveTheFold }: FormProps) => {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<FormStatusType>({ sending: false });
   const [step, setStep] = useState(1);
@@ -71,6 +71,7 @@ const ApplicationForm = ({ email, contactPerson }: FormProps) => {
         form={{ register, setValue, errors, trigger }}
         setStep={setStep}
         style={{ display: status?.success !== undefined ? 'none' : step !== 1 ? 'none' : undefined }}
+        isAboveTheFold={isAboveTheFold}
       />
       <Step2
         form={{ register, setValue, errors, watch }}
