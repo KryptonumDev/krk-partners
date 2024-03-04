@@ -34,6 +34,7 @@
         gap: clamp(16px, calc(24vw / 7.68), 32px);
         grid-template-areas: 'item1' 'item2' 'item3' 'item4';
         .item {
+          height: max-content;
           padding: clamp(12px, calc(16vw / 7.68), 16px) clamp(12px, calc(20vw / 7.68), 20px);
           display: grid;
           gap: 12px;
@@ -130,7 +131,7 @@
     }
   }
   .ctaBox {
-    padding: 16px clamp(16px, calc(32vw / 7.68), 48px);
+    padding: clamp(16px, calc(32vw / 7.68), 32px) clamp(16px, calc(32vw / 7.68), 48px);
     max-width: calc(794rem / 16);
     margin: 0 auto;
     border-radius: 200px;
