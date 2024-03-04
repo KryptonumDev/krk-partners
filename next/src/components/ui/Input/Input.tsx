@@ -10,7 +10,7 @@ const Input = ({ register, label, errors, textarea = false, ...props }: Props) =
       aria-invalid={!!errors[register.name]}
     >
       <p>
-        <span dangerouslySetInnerHTML={{ __html: label }} />
+        {label && <span dangerouslySetInnerHTML={{ __html: label }} />}
         <Error error={errors[register.name]?.message?.toString()} />
       </p>
       {textarea ? (

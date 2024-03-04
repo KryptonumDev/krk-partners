@@ -14,7 +14,7 @@ const List = ({ list }: ListProps) => {
   const [opened, setOpened] = useState(0);
   const handleClick = (e: React.MouseEvent<HTMLElement>, i: number) => {
     e.preventDefault();
-    setOpened(i);
+    setOpened(i === opened ? -1 : i);
   };
 
   return (
@@ -27,7 +27,7 @@ const List = ({ list }: ListProps) => {
         >
           <summary
             onClick={(e) => handleClick(e, i)}
-            tabIndex={opened === i ? -1 : 0}
+            tabIndex={0}
           >
             <div className={styles.indicator}>
               <span></span>

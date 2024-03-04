@@ -2,9 +2,10 @@
   font-size: calc(14rem / 16);
   color: var(--primary-800);
   > p {
-    &:not(:empty) {
-      margin: 0 6px 4px;
+    &:empty {
+      display: none;
     }
+    margin: 0 6px 4px;
     display: flex;
     justify-content: space-between;
     align-items: center;

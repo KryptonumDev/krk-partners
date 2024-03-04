@@ -135,7 +135,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
             pattern: { value: regex.registerNumber, message: 'Niepoprawny numer księgi wieczystej' },
           })}
           errors={errors}
-          placeholder='_  _  _  _  _  _  _  _'
+          placeholder='_ _ _ _ _ _ _ _'
           maxLength={8}
           inputMode='numeric'
         />

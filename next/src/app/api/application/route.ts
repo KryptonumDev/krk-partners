@@ -23,6 +23,30 @@ type RequestProps = {
   legal4: boolean;
 };
 
+const currentHour = new Date().getHours();
+const greeting =
+  (currentHour >= 18 && currentHour <= 23) || (currentHour >= 0 && currentHour < 3) ? 'Dobry wieczór' : 'Dzień dobry';
+
+const body = (fullName: string, loanAmount: string) => `
+  ${greeting}, ${fullName},
+  <p>Dziękujemy za wysłanie zapytania w sprawie pożyczki pod zastaw nieruchomości.</p>
+  <br />
+  <p><b><em>Wstępna propozycja:</em></b></p>
+  <p>Wnioskowana kwota: <b>${loanAmount}</b> zł</p>
+  <p>Adres e-mail: <b>${email}</b></p>
+  <p>${message.trim()}</p>
+  <br />
+  <br />
+  <p><em>Wyrażono zgodnę na politykę prywatności</em></p>
+`;
+
+const body = `<p>Adres e-mail: <b>${email}</b></p>
+<p>${message.trim()}</p>
+<br />
+<br />
+<p><em>Wyrażono zgodnę na politykę prywatności</em></p>
+`;
+
 export async function POST(request: Request) {
   const {
     loanAmount,

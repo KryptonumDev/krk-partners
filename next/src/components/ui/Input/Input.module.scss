@@ -2,6 +2,9 @@
   font-size: calc(14rem / 16);
   color: var(--primary-900);
   > p {
+    &:empty {
+      display: none;
+    }
     margin: 0 6px 4px;
     display: flex;
     justify-content: space-between;
