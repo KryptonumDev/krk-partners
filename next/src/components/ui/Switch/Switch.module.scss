@@ -1,0 +1,43 @@
+.Switch {
+  width: 60px;
+  height: 34px;
+  border-radius: 42px;
+  background-color: var(--neutral-100);
+  border: 1px solid var(--neutral-500);
+  padding: 3px;
+  cursor: pointer;
+  input {
+    position: absolute;
+    opacity: 0;
+  }
+  transition: background-color 0.5s var(--easing), border-color 0.5s var(--easing);
+  .dot {
+    width: 26px;
+    height: 26px;
+    background-color: rgba(55, 101, 120, 0.5);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    transition: transform 0.5s var(--easing), background-color 0.5s var(--easing);
+    .tick {
+      stroke-dasharray: 18;
+      stroke-dashoffset: 18;
+      transition: stroke-dashoffset 0.5s var(--easing);
+    }
+  }
+  &:hover,
+  &:has(input:focus-visible) {
+    border-color: var(--secondary-500);
+    background-color: var(--neutral-300);
+  }
+  &:has(input:checked) {
+    background-color: var(--secondary-500);
+    .dot {
+      transform: translate(26px);
+      background-color: rgba(255, 255, 255, 0.5);
+      .tick {
+        stroke-dashoffset: 0;
+      }
+    }
+  }
+}
