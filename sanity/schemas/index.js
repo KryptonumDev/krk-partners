@@ -7,7 +7,10 @@ export const singleTypes = []
 import landingPage_Collection from './collectionTypes/landingPage_Collection'
 import team_Collection from './collectionTypes/team_Collection'
 
-export const collectionTypes = [landingPage_Collection, team_Collection]
+export const collectionTypes = [
+  landingPage_Collection,
+  team_Collection
+]
 
 // Components
 import cta from './components/cta'

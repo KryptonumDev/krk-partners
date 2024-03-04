@@ -3,7 +3,6 @@ import { deskTool } from 'sanity/desk'
 import { visionTool } from '@sanity/vision'
 import { singleTypes, collectionTypes, schemaTypes } from './schemas'
 import { media } from 'sanity-plugin-media'
-
 import { markdownSchema } from 'sanity-plugin-markdown'
 import { CustomMarkdownInput } from './components/Markdown'
 import { ExternalLinks } from './components/ExternalLinks'

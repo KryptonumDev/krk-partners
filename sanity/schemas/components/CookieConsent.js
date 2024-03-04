@@ -30,12 +30,7 @@ export default {
     },
     {
       name: 'details',
-      type: 'array',
-      of: [
-        {
-          type: 'CookieConsent_Details'
-        },
-      ],
+      type: 'CookieConsent_Details',
       title: 'Szczegóły',
       validation: Rule => Rule.required(),
       fieldset: 'details'
@@ -86,37 +81,125 @@ export default {
 export const CookieConsent_Details = {
   name: "CookieConsent_Details",
   type: "object",
+  title: 'Szczegóły',
   fields: [
     {
-      name: 'isNeccessary',
-      type: 'boolean',
-      title: 'Czy jest niezbędne?',
-      validation: Rule => Rule.required(),
-      initialValue: false,
-    },
-    {
-      name: 'title',
-      type: 'string',
-      title: 'Tytuł',
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'description',
-      type: 'text',
-      rows: 5,
-      title: 'Opis',
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'list',
+      name: 'necessary',
       type: 'array',
       of: [
         {
           type: 'CookieConsent_Details_List'
-        }
+        },
       ],
       title: 'Lista',
       validation: Rule => Rule.required(),
+      fieldset: 'necessary',
+    },
+    {
+      name: 'necessary_Description',
+      type: 'text',
+      rows: 5,
+      title: 'Opis',
+      validation: Rule => Rule.required(),
+      fieldset: 'necessary',
+    },
+    {
+      name: 'statistical',
+      type: 'array',
+      of: [
+        {
+          type: 'CookieConsent_Details_List'
+        },
+      ],
+      title: 'Lista',
+      fieldset: 'statistical',
+    },
+    {
+      name: 'statistical_Description',
+      type: 'text',
+      rows: 5,
+      title: 'Opis',
+      validation: Rule => Rule.required(),
+      fieldset: 'statistical',
+    },
+    {
+      name: 'marketing',
+      type: 'array',
+      of: [
+        {
+          type: 'CookieConsent_Details_List'
+        },
+      ],
+      title: 'Lista',
+      fieldset: 'marketing',
+    },
+    {
+      name: 'marketing_Description',
+      type: 'text',
+      rows: 5,
+      title: 'Opis',
+      validation: Rule => Rule.required(),
+      fieldset: 'marketing',
+    },
+    {
+      name: 'preferences',
+      type: 'array',
+      of: [
+        {
+          type: 'CookieConsent_Details_List'
+        },
+      ],
+      title: 'Lista',
+      fieldset: 'preferences',
+    },
+    {
+      name: 'preferences_Description',
+      type: 'text',
+      rows: 5,
+      title: 'Opis',
+      validation: Rule => Rule.required(),
+      fieldset: 'preferences',
+    },
+    {
+      name: 'unclassified',
+      type: 'array',
+      of: [
+        {
+          type: 'CookieConsent_Details_List'
+        },
+      ],
+      title: 'Lista',
+      fieldset: 'unclassified',
+    },
+    {
+      name: 'unclassified_Description',
+      type: 'text',
+      rows: 5,
+      title: 'Opis',
+      validation: Rule => Rule.required(),
+      fieldset: 'unclassified',
+    },
+  ],
+  fieldsets: [
+    {
+      name: 'necessary',
+      title: 'Niezbędne',
+    },
+    {
+      name: 'statistical',
+      title: 'Statystyka',
+    },
+    {
+      name: 'marketing',
+      title: 'Marketing',
+    },
+    {
+      name: 'preferences',
+      title: 'Preferencje',
+    },
+    {
+      name: 'unclassified',
+      title: 'Nieklasyfikowane',
     },
   ],
   preview: {
