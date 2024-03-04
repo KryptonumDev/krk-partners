@@ -145,6 +145,7 @@ h1,
   font-family: var(--font-cinzel);
   font-weight: 500;
   line-height: 150%;
+  letter-spacing: 0.05em;
   + * {
     margin-top: clamp(8px, calc(12vw / 7.68), 12px);
   }
