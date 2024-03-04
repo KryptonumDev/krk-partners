@@ -10,4 +10,5 @@ export type Props = {
   maxValue: number;
   options: number[];
   errors: FieldErrors;
+  checkedDefault?: number | null;
 };

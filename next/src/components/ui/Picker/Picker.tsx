@@ -5,9 +5,9 @@ import styles from './Picker.module.scss';
 import { formatToOnlyDigits } from '@/utils/format-to-only-digits';
 import type { Props } from './Picker.types';
 
-const Picker = ({ label, register, errors, setValue, minValue, maxValue, options }: Props) => {
+const Picker = ({ label, register, errors, setValue, minValue, maxValue, checkedDefault, options }: Props) => {
   const input = useRef<HTMLInputElement>(null);
-  const [checkedOption, setCheckedOption] = useState<number | null>(null);
+  const [checkedOption, setCheckedOption] = useState<number | null>(checkedDefault || null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(register.name, formatToOnlyDigits(e), { shouldValidate: true });
@@ -27,6 +27,7 @@ const Picker = ({ label, register, errors, setValue, minValue, maxValue, options
         type='hidden'
         {...register}
         name={register.name}
+        {...(checkedDefault && { defaultValue: checkedDefault })}
       />
       <div className={styles.options}>
         {options.map((option, i) => (
