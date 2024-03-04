@@ -7,9 +7,9 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import Loading from './Loading';
 import FormError from './FormError';
+import FormSuccess from './FormSuccess';
 import type { FormStatusType } from '@/global/types';
 import type { CalculationProps, FormProps } from './ApplicationForm.types';
-import FormSuccess from './FormSuccess';
 
 const steps = ['Pożyczka', 'Informacje', 'Propozycja'];
 
@@ -32,6 +32,7 @@ const ApplicationForm = ({ email, contactPerson, isAboveTheFold }: FormProps) =>
 
   const onSubmit = async (data: FieldValues) => {
     setStatus({ sending: true });
+    data.contactPerson = contactPerson;
     try {
       const response = await fetch('/api/application', {
         method: 'POST',
