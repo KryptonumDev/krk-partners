@@ -1,12 +1,15 @@
+const title = 'Szybka aplikacja wniosku z formularzem'
+const icon = '⚡️';
+
 export default {
   name: 'QuickApplication',
-  title: 'Szybka aplikacja',
+  title: title,
   type: 'object',
-  icon: () => '🚀',
+  icon: () => icon,
   fields: [
     {
       name: 'heading',
-      type: 'string',
+      type: 'markdown',
       title: 'Nagłówek',
       validation: (Rule) => Rule.required(),
     },
@@ -26,9 +29,9 @@ export default {
     select: {
       heading: 'heading',
     },
-    prepare({heading}) {
+    prepare({ heading }) {
       return {
-        title: `[Szybka aplikacja] - ${heading}`,
+        title: `[${title}] - ${heading}`,
         icon: () => icon,
       }
     },
