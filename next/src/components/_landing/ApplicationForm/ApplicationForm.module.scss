@@ -127,16 +127,6 @@
       grid-column: 6/1;
     }
     label {
-      // position: relative;
-      // &:nth-of-type(1) {
-      //   &::before {
-      //     content: '_ _ _ _ _ _ _ _';
-      //     font-size: 1rem;
-      //     position: absolute;
-      //     bottom: 10.5px;
-      //     left: 9px;
-      //   }
-      // }
       &:last-of-type {
         input {
           text-align: center;

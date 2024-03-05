@@ -134,6 +134,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
           register={register('landRegister_RegisterNumber', {
             required: { value: true, message: 'Numer księgi wieczystej jest wymagany' },
             pattern: { value: regex.registerNumber, message: 'Niepoprawny numer księgi wieczystej' },
+            onChange: (e) => formatToOnlyDigits(e),
           })}
           errors={errors}
           placeholder='_ _ _ _ _ _ _ _'
