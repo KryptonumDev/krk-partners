@@ -37,7 +37,6 @@ import LoanCalculations from './components/LoanCalculations/LoanCalculations'
 import JDG from './components/LoanCalculations/JDG'
 import SPH from './components/LoanCalculations/SPH'
 import CookieConsent, { CookieConsent_Details, CookieConsent_Details_List, CookieConsent_Details_List_Cookies } from './components/CookieConsent'
-import QuickApplication from './components/QuickApplication'
 
 export const schemaTypes = [
   ...singleTypes,
@@ -79,5 +78,4 @@ export const schemaTypes = [
   CookieConsent_Details,
   CookieConsent_Details_List,
   CookieConsent_Details_List_Cookies,
-  QuickApplication,
 ]

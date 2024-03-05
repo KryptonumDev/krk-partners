@@ -17,6 +17,5 @@ export default {
     {type: 'Team'},
     {type: 'PersonIntroduction'},
     {type: 'FloatingItems'},
-    {type: 'QuickApplication'},
   ],
 }
