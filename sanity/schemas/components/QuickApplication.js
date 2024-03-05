@@ -11,18 +11,16 @@ export default {
       name: 'heading',
       type: 'markdown',
       title: 'Nagłówek',
-      validation: (Rule) => Rule.required(),
+      validation: Rule => Rule.required(),
     },
     {
       name: 'list',
       type: 'array',
-      of: [
-        {
-          type: 'string',
-        },
-      ],
+      of: [{
+        type: 'string',
+      }],
       title: 'Lista',
-      validation: (Rule) => Rule.required(),
+      validation: Rule => Rule.required(),
     },
   ],
   preview: {
@@ -31,7 +29,7 @@ export default {
     },
     prepare({ heading }) {
       return {
-        title: `[${title}] - ${heading}`,
+        title: `[${title}] - ${removeMarkdown(heading)}`,
         icon: () => icon,
       }
     },
