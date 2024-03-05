@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </noscript>
         )}
         {children}
-        <CookieConsent />
+        {isProduction && <CookieConsent />}
       </body>
     </html>
   );
