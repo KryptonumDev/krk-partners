@@ -5,7 +5,7 @@ import Picker from '@/components/ui/Picker';
 import type { Step1Props } from './ApplicationForm.types';
 import Button from '@/components/ui/Button';
 
-const Step1 = ({ form: { register, setValue, errors, trigger }, setStep, isAboveTheFold, ...props }: Step1Props) => {
+const Step1 = ({ form: { register, setValue, errors, trigger }, setStep, ...props }: Step1Props) => {
   const handleNextStep = async () => {
     const isValid = await trigger(['loanAmount', 'fundingPeriod']);
     if (isValid) setStep(2);
@@ -47,7 +47,7 @@ const Step1 = ({ form: { register, setValue, errors, trigger }, setStep, isAbove
         options={[6, 12, 24]}
         minValue={1}
         maxValue={24}
-        checkedDefault={isAboveTheFold ? 6 : null}
+        checkedDefault={6}
       />
       <Button
         type='button'

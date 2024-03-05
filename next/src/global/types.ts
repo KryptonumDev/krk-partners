@@ -41,6 +41,9 @@ export type LandingPageQueryProps = {
     content: ComponentProps[];
     contactPerson?: ContactPersonType;
   } & generateMetadataProps;
+  global: {
+    email: string;
+  };
   firstLanding: {
     slug: string;
   };

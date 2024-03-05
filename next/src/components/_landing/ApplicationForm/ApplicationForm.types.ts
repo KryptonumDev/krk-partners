@@ -9,9 +9,8 @@ import type {
 } from 'react-hook-form';
 
 export type FormProps = {
-  email: string;
+  globalEmail: string;
   contactPerson?: ContactPersonType;
-  isAboveTheFold?: boolean;
 };
 
 export type CalculationProps = {
@@ -37,7 +36,6 @@ export type Step1Props = {
     trigger: UseFormTrigger<FieldValues>;
   };
   setStep: React.Dispatch<React.SetStateAction<number>>;
-  isAboveTheFold?: boolean;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export type Step2Props = {

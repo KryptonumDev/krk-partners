@@ -10,6 +10,7 @@ import { Img_Query } from '@/components/ui/image';
 const LandingPage = async ({ params: { slug } }: { params: { slug: string } }) => {
   const {
     landingPage: { content, name, contactPerson },
+    global: { email },
   } = await query(slug);
 
   return (
@@ -26,6 +27,7 @@ const LandingPage = async ({ params: { slug } }: { params: { slug: string } }) =
       <Components
         data={content}
         contactPerson={contactPerson}
+        globalEmail={email}
       />
     </>
   );
@@ -64,6 +66,9 @@ const query = async (slug: string): Promise<LandingPageQueryProps> => {
             tel,
             email,
           },
+        },
+        "global": *[_id == "global"][0]{
+          email,
         },
         "firstLanding": *[_type == "landingPage_Collection"][0] {
           'slug': slug.current,

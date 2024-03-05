@@ -13,7 +13,7 @@ import type { CalculationProps, FormProps } from './ApplicationForm.types';
 
 const steps = ['Pożyczka', 'Informacje', 'Propozycja'];
 
-const ApplicationForm = ({ email, contactPerson, isAboveTheFold }: FormProps) => {
+const ApplicationForm = ({ globalEmail, contactPerson }: FormProps) => {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<FormStatusType>({ sending: false });
   const [step, setStep] = useState(1);
@@ -72,7 +72,6 @@ const ApplicationForm = ({ email, contactPerson, isAboveTheFold }: FormProps) =>
         form={{ register, setValue, errors, trigger }}
         setStep={setStep}
         style={{ display: status?.success !== undefined ? 'none' : step !== 1 ? 'none' : undefined }}
-        isAboveTheFold={isAboveTheFold}
       />
       <Step2
         form={{ register, setValue, errors, watch }}
@@ -82,7 +81,7 @@ const ApplicationForm = ({ email, contactPerson, isAboveTheFold }: FormProps) =>
       {status?.success !== undefined &&
         (!status.success || calculation == null ? (
           <FormError
-            email={email}
+            globalEmail={globalEmail}
             setStatus={setStatus}
           />
         ) : (

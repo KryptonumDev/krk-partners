@@ -19,4 +19,5 @@ export type Props = {
   form_Heading: string;
   form_Features: string[];
   contactPerson?: ContactPersonType;
+  globalEmail: string;
 };

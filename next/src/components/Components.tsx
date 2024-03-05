@@ -42,7 +42,15 @@ type ComponentMap = {
 
 export type ComponentProps = ComponentMap[keyof ComponentMap] & { _type: string };
 
-const Components = ({ data, contactPerson }: { data: ComponentProps[]; contactPerson?: ContactPersonType }) => {
+const Components = ({
+  data,
+  contactPerson,
+  globalEmail,
+}: {
+  data: ComponentProps[];
+  contactPerson?: ContactPersonType;
+  globalEmail: string;
+}) => {
   return data?.map((item, index) => {
     const componentType = item._type as keyof ComponentMap;
     const componentMap: Record<string, React.ReactNode> = {
@@ -50,6 +58,7 @@ const Components = ({ data, contactPerson }: { data: ComponentProps[]; contactPe
         <HeroApplication
           {...(item as HeroApplicationProps)}
           contactPerson={contactPerson}
+          globalEmail={globalEmail}
         />
       ),
       CaseStudy: <CaseStudy {...(item as CaseStudyProps)} />,

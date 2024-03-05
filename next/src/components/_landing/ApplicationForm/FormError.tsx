@@ -3,7 +3,7 @@ import Button from '@/components/ui/Button';
 import styles from './ApplicationForm.module.scss';
 import type { FormErrorProps } from './ApplicationForm.types';
 
-const FormError = ({ email, setStatus }: FormErrorProps) => {
+const FormError = ({ globalEmail, setStatus }: FormErrorProps) => {
   return (
     <div className={styles['FormError']}>
       <ErrorIcon />
@@ -19,7 +19,7 @@ const FormError = ({ email, setStatus }: FormErrorProps) => {
         <p>Jeśli problem się powtarza skontaktuj się z nami mailowo</p>
         <Copy
           type='mail'
-          text={email}
+          text={globalEmail}
         />
       </div>
     </div>
