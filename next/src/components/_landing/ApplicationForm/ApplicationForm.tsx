@@ -61,6 +61,7 @@ const ApplicationForm = ({ globalEmail, contactPerson }: FormProps) => {
       className={styles['Form']}
       onSubmit={handleSubmit(onSubmit)}
       ref={formRef}
+      id='wniosek'
     >
       <Steps
         currentStep={step}
