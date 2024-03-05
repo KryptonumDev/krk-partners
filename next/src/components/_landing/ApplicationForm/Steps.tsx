@@ -19,7 +19,7 @@ const Steps = ({ steps, currentStep, setStep, ...props }: StepsProps) => {
           onClick={() => setStep(i + 1)}
           aria-current={currentStep === i + 1}
           data-active={currentStep >= i + 1}
-          disabled={currentStep <= i + 1}
+          disabled={currentStep === i + 1 || i === 2}
         >
           {step}
         </button>
