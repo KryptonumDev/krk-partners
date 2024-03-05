@@ -13,7 +13,7 @@ const resend = new Resend(process.env.RESEND_API_TOKEN);
 
 const emailData = {
   from: 'biuro@krk-partners.pl',
-  to: 'bogumil@kryptonum.eu', // TODO: change emailData.to
+  to: 'm.rebiasz@krk-partners.pl',
 };
 
 export async function POST(request: Request) {

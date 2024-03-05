@@ -67,7 +67,7 @@ const emailBody = (
   <p>Dziękujemy za wysłanie zapytania w sprawie pożyczki pod zastaw nieruchomości.</p>
   <br />
   <p><b>Wypełnione dane:</b></p>
-  <p>Kwota pożyczki: <b>${loanAmount}</b> zł</p>
+  <p>Kwota pożyczki: <b>${loanAmount} zł</b></p>
   <p>Okres finansowania (w miesiącach): <b>${fundingPeriod}</b></p>
   <p>Numer telefonu: <b><a href='tel:${tel}'>${tel}</a></b></p>
   <p>NIP: <b>${nip}</b></p>
@@ -75,11 +75,11 @@ const emailBody = (
   <p>Rodzaj działalności: <b>${companyType}</b></p>
   <br />
   <p><b><em>Wstępna propozycja:</em></b></p>
-  <p>Wstępna propozycja wyceny dla Ciebie to <b>${calculatedLoan.total}</b> zł</p>
-  <p>Prowizja za udzielenie pożyczki: <b>${calculatedLoan.comission}</b> zł (${
+  <p>Wstępna propozycja wyceny dla Ciebie to: <b>${calculatedLoan.total} zł</b></p>
+  <p>Prowizja za udzielenie pożyczki: <b>${calculatedLoan.comission} zł</b> (${
   calculatedLoan.comissionMultiplier
 }% rocznie)</p>
-  <p>Odsetki w okresie finansowania: <b>${calculatedLoan.totalInterest}</b> zł</p>
+  <p>Odsetki w okresie finansowania: <b>${calculatedLoan.totalInterest} zł</b></p>
   ${
     !!calculatedLoan.earlyPaymentFee
       ? `<p>Opłata za wcześniejszą spłatę: <b>${calculatedLoan.earlyPaymentFee}</b> zł</p>`
