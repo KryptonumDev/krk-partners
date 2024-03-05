@@ -2,13 +2,14 @@ import Script from 'next/script';
 import '@/global/global.scss';
 import { locale, themeColor } from '@/global/constants';
 import { lato, cinzel } from '@/global/fonts';
+import CookieConsent from '@/components/_global/CookieConsent';
 import type { Viewport } from 'next';
-
-const isProduction = process.env.NODE_ENV === 'production';
 
 export const viewport: Viewport = {
   themeColor: themeColor,
 };
+
+const isProduction = process.env.NODE_ENV !== 'production';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -31,14 +32,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <noscript>
             <iframe
               src='https://www.googletagmanager.com/ns.html?id=GTM-T3N838XB'
-              height='0'
-              width='0'
-              style={{ display: 'none', visibility: 'hidden' }}
+              style={{ width: 0, height: 0, display: 'none', visibility: 'hidden' }}
             ></iframe>
           </noscript>
         )}
         {children}
-        {/* <CookieConsent /> */}
+        <CookieConsent />
       </body>
     </html>
   );
