@@ -3,7 +3,6 @@ import Button from '@/components/ui/Button';
 import Img from '@/components/ui/image';
 import styles from './FloatingTilesAndImages.module.scss';
 import type { Props } from './FloatingTilesAndImages.types';
-import Images from './_Images';
 
 const FloatingTilesAndImages = ({
   heading,
@@ -15,16 +14,6 @@ const FloatingTilesAndImages = ({
   ctaPrompt,
   cta,
 }: Props) => {
-  const renderedImages = images.map(({ img, name }) => ({
-    img: (
-      <Img
-        data={img}
-        sizes='250px'
-      />
-    ),
-    name,
-  }));
-
   return (
     <section className={styles['FloatingTilesAndImages']}>
       <div className={styles.column}>
@@ -56,7 +45,20 @@ const FloatingTilesAndImages = ({
           </div>
         </div>
       </div>
-      <Images images={renderedImages} />
+      <div className={styles.images}>
+        {images.map(({ img, name }, i) => (
+          <div
+            className={styles.item}
+            key={i}
+          >
+            <Img
+              data={img}
+              sizes='250px'
+            />
+            <p>{name}</p>
+          </div>
+        ))}
+      </div>
       <div className={styles.ctaBox}>
         <Markdown className={styles.ctaPrompt}>{ctaPrompt}</Markdown>
         <Button data={cta} />

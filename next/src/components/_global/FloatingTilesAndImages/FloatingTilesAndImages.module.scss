@@ -98,12 +98,10 @@
       margin-right: calc(var(--pageMargin) * -1);
       padding: 0 var(--pageMargin);
     }
-    overflow: hidden;
-    .transform {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 12px;
-    }
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    overflow: auto;
     .item {
       border-radius: 16px;
       overflow: hidden;
