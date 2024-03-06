@@ -184,9 +184,17 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
               >
                 przetwarzanie moich danych osobowych
               </Link>
-              &nbsp;podanych we wniosku o udzielenie pożyczki przez spółki z wymienione w pkt 2 klauzuli informacyjnej
-              w celu dokonania przez nie oceny mojej sytuacji majątkowej pod kątem możliwości udzielenia pożyczki przez
-              jedną ze spółek.
+              &nbsp;podanych we wniosku o udzielenie pożyczki&nbsp;
+              <Link
+                className='link'
+                href='https://krk-partners.pl/klauzula-informacyjna#:~:text=2,cel%C3%B3w'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                przez spółki wymienione w pkt 2 klauzuli informacyjnej
+              </Link>
+              &nbsp;w celu dokonania przez nie oceny mojej sytuacji majątkowej pod kątem możliwości udzielenia pożyczki
+              przez jedną ze spółek.
             </>
           }
           register={register('legal1', {
