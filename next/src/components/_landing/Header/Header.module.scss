@@ -3,7 +3,6 @@
   top: 0;
   background-color: var(--neutral-100);
   z-index: 10;
-  height: clamp(56px, calc(104vw / 7.68), 104px);
   padding: clamp(24px, calc(34vw / 7.68), 34px) clamp(16px, calc(80vw / 7.68), 80px)
     clamp(10px, calc(16vw / 7.68), 18px);
   text-align: center;
