@@ -13,7 +13,7 @@
     .item {
       counter-increment: counter;
       display: grid;
-      grid-template-columns: 144px 1fr;
+      grid-template-columns: 182px 1fr;
       align-items: center;
       gap: 32px;
       .name {
@@ -96,7 +96,7 @@
     .progressbar {
       position: absolute;
       top: 24px;
-      left: 160px;
+      left: 198px;
       width: 1px;
       height: calc(100% - 48px);
       background-color: var(--neutral-300);
