@@ -18,7 +18,7 @@ const Tiles = ({
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'end start'],
+    offset: ['start start', 'end start'],
   });
   const progress = useTransform(scrollYProgress, [0, 1], [0, 64]);
   const progressReversed = useTransform(scrollYProgress, [0, 1], [64, 0]);
