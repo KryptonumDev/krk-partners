@@ -78,7 +78,8 @@ export const ListWithIconAndCta_Item = {
     },
     {
       name: 'title',
-      type: 'string',
+      type: 'text',
+      rows: 5,
       title: 'Tytuł',
       validation: Rule => Rule.required(),
     },
