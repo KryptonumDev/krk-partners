@@ -6,10 +6,10 @@ import { formatToOnlyDigits } from '@/utils/format-to-only-digits';
 import { formatNumberToSpaces } from '@/utils/format-number-to-spaces';
 import type { Props } from './Slider.types';
 
-const Slider = ({ label, register, minValue, maxValue, errors, setValue }: Props) => {
+const Slider = ({ label, register, defaultValue, minValue, maxValue, errors, setValue }: Props) => {
   const [sliderState, setSliderState] = useState({
-    value: minValue,
-    percentage: 0,
+    value: defaultValue || minValue,
+    percentage: Math.max(0, Math.min((((defaultValue || minValue) - minValue) / (maxValue - minValue)) * 100, 100)),
   });
 
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {

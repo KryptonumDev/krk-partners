@@ -30,6 +30,7 @@ const Step1 = ({ form: { register, setValue, errors, trigger }, setStep, ...prop
           },
         })}
         setValue={setValue}
+        defaultValue={750000}
         errors={errors}
         minValue={200000}
         maxValue={5000000}

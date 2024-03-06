@@ -8,5 +8,6 @@ export type Props = {
   setValue: UseFormSetValue<FieldValues>;
   minValue: number;
   maxValue: number;
+  defaultValue?: number;
   errors: FieldErrors;
 };
