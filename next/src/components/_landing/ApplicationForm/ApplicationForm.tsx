@@ -26,7 +26,7 @@ const ApplicationForm = ({ globalEmail, contactPerson }: FormProps) => {
     formState: { errors },
     watch,
     trigger,
-  } = useForm({ mode: 'onBlur' });
+  } = useForm({ mode: 'onTouched' });
 
   const formRefOffset = formRef.current ? formRef.current?.offsetTop - 134 : undefined;
 
