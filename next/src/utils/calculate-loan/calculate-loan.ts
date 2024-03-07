@@ -113,20 +113,20 @@ export async function calculateLoan(fundingPeriod: number, amount: string, compa
   }
 
   function calculateComission(multiplier: number, amount: number, months: number) {
-    return Math.ceil(Math.ceil((months / 12) * multiplier * amount * 100) / 100) / 100;
+    return Math.round(Math.round((months / 12) * multiplier * amount * 100) / 100) / 100;
   }
 
   function calculateInterest(multiplier: number, amount: number, months: number) {
-    return Math.ceil(Math.ceil((months / 12) * multiplier * amount * 100) / 100) / 100;
+    return Math.round(Math.round((months / 12) * multiplier * amount * 100) / 100) / 100;
   }
 
   function performAdditionalCalculations(multiplier: number, comission: number, interest: number) {
-    return Math.ceil(multiplier * (comission + interest) * 100) / 100;
+    return Math.round(multiplier * (comission + interest) * 100) / 100;
   }
 
   function calculateEarlyPaymentFee(amount: number, months: number) {
     if (months < 12) {
-      return Math.ceil(earlyPaymentFeeMultiplier * amount * 100) / 100;
+      return Math.round(earlyPaymentFeeMultiplier * amount * 100) / 100;
     }
     return 0;
   }
