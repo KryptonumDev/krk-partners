@@ -1,5 +1,4 @@
-import { CtaType, ImgType } from '@/global/types';
-import React from 'react';
+import type { CtaType, ImgType } from '@/global/types';
 
 export type Props = {
   heading: string;
