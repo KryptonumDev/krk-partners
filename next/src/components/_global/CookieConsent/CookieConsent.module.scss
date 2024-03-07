@@ -114,6 +114,7 @@
   overflow: auto;
   padding: 0 clamp(16px, calc(32vw / 7.68), 32px);
   margin: 0 calc(clamp(16px, calc(32vw / 7.68), 32px) * -1);
+  overscroll-behavior: contain;
 }
 
 .Tab0,
