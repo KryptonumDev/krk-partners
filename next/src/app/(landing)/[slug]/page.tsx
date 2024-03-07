@@ -79,11 +79,11 @@ const query = async (slug: string): Promise<LandingPageQueryProps> => {
     isDraftMode: draftMode().isEnabled,
   });
   !data.landingPage && redirect(data.firstLanding.slug);
-  return data as LandingPageQueryProps;
+  return data;
 };
 
-export async function generateStaticParams(): Promise<generateStaticParamsProps[]> {
-  const data: generateStaticParamsProps[] = await sanityFetch({
+export async function generateStaticParams(): Promise<generateStaticParamsProps> {
+  const data = await sanityFetch<generateStaticParamsProps>({
     query: /* groq */ `
       *[_type == "landingPage_Collection"] {
         'slug': slug.current,
