@@ -71,7 +71,7 @@ export default {
     },
     prepare({ heading }) {
       return {
-        title: `[${title}] - ${removeMarkdown(heading)}`,
+        title: `[${icon} ${title}] - ${removeMarkdown(heading)}`,
         icon: () => icon
       }
     }
@@ -92,7 +92,6 @@ export const CookieConsent_Details = {
         },
       ],
       title: 'Lista',
-      validation: Rule => Rule.required(),
       fieldset: 'necessary',
     },
     {
