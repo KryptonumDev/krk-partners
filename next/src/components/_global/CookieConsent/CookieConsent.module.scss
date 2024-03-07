@@ -20,11 +20,11 @@
     border-radius: 16px;
     background-color: var(--neutral-100);
     box-shadow: -14px -5px 15px 0px rgba(127, 168, 210, 0.09), -31px -12px 20px 0px rgba(127, 168, 210, 0.05);
-    overflow: auto;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
   }
 
   .tabs {
-    grid-area: switcher;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: clamp(24px, calc(32vw / 7.68), 32px);
@@ -108,6 +108,12 @@
       }
     }
   }
+}
+
+.Tab {
+  overflow: auto;
+  padding: 0 clamp(16px, calc(32vw / 7.68), 32px);
+  margin: 0 calc(clamp(16px, calc(32vw / 7.68), 32px) * -1);
 }
 
 .Tab0,

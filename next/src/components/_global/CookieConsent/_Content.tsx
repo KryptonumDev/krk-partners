@@ -14,7 +14,7 @@ declare global {
 }
 
 function gtag(...args: any) {
-  window.dataLayer.push(args);
+  window.dataLayer?.push(args);
 }
 
 const cookieObjectKeys = ['preferences', 'statistics', 'marketing'];
@@ -151,14 +151,14 @@ const Content = ({
         ))}
       </div>
       <div
-        className={styles['Tab0']}
+        className={`${styles['Tab']} ${styles['Tab0']}`}
         style={{ display: activeTab !== 0 ? 'none' : undefined }}
       >
         <h2 className='h3'>{consent_Heading}</h2>
         <p className={styles.paragraph}>{consent_Paragraph}</p>
       </div>
       <div
-        className={styles['Tab1']}
+        className={`${styles['Tab']} ${styles['Tab1']}`}
         style={{ display: activeTab !== 1 ? 'none' : undefined }}
       >
         <div className={styles.item}>
@@ -315,7 +315,7 @@ const Content = ({
         </div>
       </div>
       <div
-        className={styles['Tab2']}
+        className={`${styles['Tab']} ${styles['Tab2']}`}
         style={{ display: activeTab !== 2 ? 'none' : undefined }}
       >
         <h2 className='h3'>{info_Heading}</h2>
