@@ -224,6 +224,12 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
           errors={errors}
         />
       </div>
+      <p>
+        Administratorem danych osobowych jest Grupa Monument Fund, spółka akcyjna z siedzibą w Krakowie, ul. Lipska
+        6/U18, 30-721 Kraków, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego przez Sąd Rejonowy dla
+        Krakowa-Śródmieścia w Krakowie XI Wydział Gospodarczy KRS pod numerem KRS 0000640924, NIP 6762515007 - można z
+        całymi danymi lub tylko pełna nazwa grupy
+      </p>
       <Button
         disabled={status?.sending}
         type='submit'
