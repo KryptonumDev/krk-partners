@@ -36,19 +36,19 @@ const Step1 = ({ form: { register, setValue, errors, trigger }, setStep, ...prop
         maxValue={5000000}
       />
       <Picker
-        label='Okres finansowania w miesiącach (min. 1 max 24)'
+        label='Okres finansowania w miesiącach (min. 1 max. 36)'
         register={register('fundingPeriod', {
           required: { value: true, message: 'Okres finansowania jest wymagany' },
           min: { value: 1, message: 'Minimalnie 1 miesiąc' },
-          max: { value: 24, message: 'Maksymalnie 24 miesiące' },
+          max: { value: 36, message: 'Maksymalnie 36 miesiące' },
           valueAsNumber: true,
         })}
         setValue={setValue}
         errors={errors}
-        options={[6, 12, 24]}
+        options={[6, 12, 24, 36]}
         minValue={1}
-        maxValue={24}
-        checkedDefault={6}
+        maxValue={36}
+        checkedDefault={24}
       />
       <Button
         type='button'
