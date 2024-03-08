@@ -225,10 +225,17 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         />
       </div>
       <p>
-        Administratorem danych osobowych jest Grupa Monument Fund, spółka akcyjna z siedzibą w Krakowie, ul. Lipska
-        6/U18, 30-721 Kraków, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego przez Sąd Rejonowy dla
-        Krakowa-Śródmieścia w Krakowie XI Wydział Gospodarczy KRS pod numerem KRS 0000640924, NIP 6762515007 - można z
-        całymi danymi lub tylko pełna nazwa grupy
+        Administratorem danych osobowych jest KRK Partners z siedzibą w Krakowie. Dane osobowe wprowadzone do formularza
+        kontaktowego przetwarzane są w celu identyfikacji nadawcy wiadomości oraz obsługi złożonego zapytania.
+        Informacje dotyczące zasad przetwarzania danych osobowych przez Administratora znajdziesz w{' '}
+        <Link
+          className='link'
+          href='https://krk-partners.pl/polityka-prywatnosci'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          polityce prywatności.
+        </Link>
       </p>
       <Button
         disabled={status?.sending}
