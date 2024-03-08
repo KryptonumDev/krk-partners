@@ -9,6 +9,8 @@ export async function POST(request: NextRequest) {
   const authorizationHeader = request.headers.get('Authorization');
   const { tag } = (await request.json()) as RequestType;
 
+  console.log(tag);
+
   if (authorizationHeader !== `Bearer ${process.env.SANITY_REVALIDATE_TOKEN}`) {
     return new Response('Unauthorized', { status: 401 });
   }
