@@ -49,6 +49,7 @@ export async function getCalculationData() {
         }
       }
     `,
+    tags: ['landingPage_Collection'],
   });
   return data;
 }

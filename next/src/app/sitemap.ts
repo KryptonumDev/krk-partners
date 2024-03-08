@@ -29,6 +29,7 @@ const query = async (): Promise<FetchProps> => {
         }
       }
     `,
+    tags: ['landingPage_Collection'],
   });
   return data as FetchProps;
 };

@@ -66,7 +66,7 @@ const query = async (slug: string): Promise<LandingPageQueryProps> => {
             email,
           },
         },
-        "global": *[_id == "global"][0]{
+        "global": *[_type == "global"][0]{
           email,
         },
         "firstLanding": *[_type == "landingPage_Collection"][0] {
@@ -75,6 +75,7 @@ const query = async (slug: string): Promise<LandingPageQueryProps> => {
       }
     `,
     params: { slug },
+    tags: ['landingPage_Collection', 'global'],
   });
   !data.landingPage && redirect(data.firstLanding.slug);
   return data;
@@ -87,6 +88,7 @@ export async function generateStaticParams(): Promise<generateStaticParamsProps>
         'slug': slug.current,
       }
     `,
+    tags: ['landingPage'],
   });
 
   return data.map(({ slug }) => ({

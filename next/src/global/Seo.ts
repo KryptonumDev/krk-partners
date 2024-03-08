@@ -56,13 +56,14 @@ const Seo = async ({ title, description, path, ...props }: SeoProps): Promise<Me
 };
 
 const query = async (): Promise<QueryProps> => {
-  const data = await sanityFetch({
+  const data = await sanityFetch<QueryProps>({
     query: /* groq */ `
-      *[_id == "global"][0] {
+      *[_type == "global"][0] {
         robotsIndex,
         "og_Img": seo.og_Img.asset -> url+"?w=1200"
       }
     `,
+    tags: ['global'],
   });
   return data as QueryProps;
 };

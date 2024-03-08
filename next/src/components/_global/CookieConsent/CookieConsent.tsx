@@ -43,7 +43,7 @@ const TabActiveIcon = (
 const query = async () => {
   return await sanityFetch<QueryType>({
     query: /* groq */ `
-      *[_id == "global"][0]{
+      *[_type == "global"][0]{
         CookieConsent {
           consent_Heading,
           consent_Paragraph,
@@ -104,5 +104,6 @@ const query = async () => {
         }
       }
     `,
+    tags: ['global'],
   });
 };

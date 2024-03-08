@@ -6,7 +6,7 @@ import { requestAsyncStorage } from 'next/dist/client/components/request-async-s
 const projectId = process.env.SANITY_PROJECT_ID;
 const token = process.env.SANITY_API_TOKEN;
 const dataset = 'production';
-const apiVersion = '2024-03-05';
+const apiVersion = '2024-03-08';
 
 const client = createClient({
   projectId,
@@ -18,9 +18,11 @@ const client = createClient({
 
 export default async function sanityFetch<QueryResponse>({
   query,
+  tags,
   params = {},
 }: {
   query: string;
+  tags: string[];
   params?: QueryParams;
 }): Promise<QueryResponse> {
   const isDraftMode = requestAsyncStorage.getStore() ? draftMode().isEnabled : false;
@@ -34,7 +36,7 @@ export default async function sanityFetch<QueryResponse>({
     }),
     cache: isDraftMode ? 'no-cache' : 'default',
     next: {
-      tags: ['sanity'],
+      tags: tags,
     },
   });
 }
