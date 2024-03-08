@@ -3,6 +3,8 @@ import { revalidateTag } from 'next/cache';
 
 export async function POST(request: NextRequest) {
   const authorizationHeader = request.headers.get('Authorization');
+  const data = await request.json();
+  console.log(data);
 
   if (authorizationHeader !== `Bearer ${process.env.SANITY_REVALIDATE_TOKEN}`) {
     return new Response('Unauthorized', { status: 401 });
