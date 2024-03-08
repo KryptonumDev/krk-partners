@@ -7,7 +7,8 @@
     "next/core-web-vitals",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
   ],
   "overrides": [
     {
@@ -31,6 +32,10 @@
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "react/react-in-jsx-scope": "off",
-    "no-unused-vars": "error"
+    "no-unused-vars": "error",
+    "no-irregular-whitespace": [
+      "error",
+      { "skipStrings": true, "skipComments": false, "skipRegExps": false, "skipTemplates": true, "skipJSXText": true }
+    ]
   }
 }

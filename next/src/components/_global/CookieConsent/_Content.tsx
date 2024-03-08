@@ -9,11 +9,11 @@ import { setCookie } from '@/utils/set-cookie';
 
 declare global {
   interface Window {
-    dataLayer: any[];
+    dataLayer: unknown[];
   }
 }
 
-function gtag(...args: any) {
+function gtag(...args: unknown[]) {
   window.dataLayer?.push(args);
 }
 
@@ -75,9 +75,11 @@ const Content = ({
   }, []);
 
   const acceptAll = () => {
-    const cookieValue: { [key in (typeof cookieObjectKeys)[number]]: 'denied' | 'granted' } = {};
-    cookieObjectKeys.forEach((name) => (cookieValue[name] = 'granted'));
-    setCookie('CookieConsent', JSON.stringify(cookieValue), 365);
+    const cookies: CookiesObject = cookieObjectKeys.reduce((acc, name) => {
+      acc[name as keyof CookiesObject] = 'granted';
+      return acc;
+    }, {} as CookiesObject);
+    setCookie('CookieConsent', JSON.stringify(cookies), 365);
     gtag('consent', 'update', {
       ad_personalization: 'granted',
       ad_storage: 'granted',
@@ -92,9 +94,11 @@ const Content = ({
   };
 
   const rejectAll = () => {
-    const cookieValue: { [key in (typeof cookieObjectKeys)[number]]: 'denied' | 'granted' } = {};
-    cookieObjectKeys.forEach((name) => (cookieValue[name] = 'denied'));
-    setCookie('CookieConsent', JSON.stringify(cookieValue), 365);
+    const cookies: CookiesObject = cookieObjectKeys.reduce((acc, name) => {
+      acc[name as keyof CookiesObject] = 'denied';
+      return acc;
+    }, {} as CookiesObject);
+    setCookie('CookieConsent', JSON.stringify(cookies), 365);
     gtag('consent', 'update', {
       ad_personalization: 'denied',
       ad_storage: 'denied',

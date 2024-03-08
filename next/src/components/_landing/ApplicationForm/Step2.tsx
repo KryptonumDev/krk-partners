@@ -31,7 +31,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
 
   useEffect(() => {
     setValue('legal_all', isAllChecked, { shouldValidate: true });
-  }, [isAllChecked]);
+  }, [setValue, isAllChecked]);
 
   const landAndMortgageRegister = watch([
     'landRegister_CourtId',

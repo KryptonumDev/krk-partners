@@ -1,12 +1,4 @@
-import type { ContactPersonType, FormStatusType, ImgType } from '@/global/types';
-import type {
-  FieldErrors,
-  FieldValues,
-  UseFormRegister,
-  UseFormSetValue,
-  UseFormTrigger,
-  UseFormWatch,
-} from 'react-hook-form';
+import type { ContactPersonType, ImgType } from '@/global/types';
 
 export type Props = {
   heading: string;

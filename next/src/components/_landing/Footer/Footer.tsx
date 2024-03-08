@@ -9,7 +9,7 @@ const Footer = () => {
           href='https://kryptonum.eu/pl'
           aria-label='Kryptonum'
           target='_blank'
-          rel='noopener'
+          rel='noopener noreferrer'
         >
           <KryptonumLogo />
         </a>

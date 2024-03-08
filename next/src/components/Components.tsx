@@ -51,7 +51,7 @@ const Components = ({
   contactPerson?: ContactPersonType;
   globalEmail: string;
 }) => {
-  return data?.map((item, index) => {
+  return data?.map((item) => {
     const componentType = item._type as keyof ComponentMap;
     const componentMap: Record<string, React.ReactNode> = {
       HeroApplication: (

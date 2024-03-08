@@ -11,7 +11,7 @@ const getParagraph = (isSuccess: boolean) =>
   isSuccess
     ? 'Odpowiedzi od nas możesz oczekiwać na mailu w ciągu 2 godzin'
     : 'Prawdopodobnie jest to chwilowy błąd. Spróbuj ponownie teraz, lub za jakiś czas.';
-
+// tst ffdf
 const FormState = ({
   isSuccess,
   setStatus,
