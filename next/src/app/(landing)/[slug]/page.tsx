@@ -1,4 +1,3 @@
-import { draftMode } from 'next/headers';
 import { redirect } from 'next/navigation';
 import sanityFetch from '@/utils/sanity.fetch';
 import Seo, { Seo_Query } from '@/global/Seo';
@@ -76,7 +75,6 @@ const query = async (slug: string): Promise<LandingPageQueryProps> => {
       }
     `,
     params: { slug },
-    isDraftMode: draftMode().isEnabled,
   });
   !data.landingPage && redirect(data.firstLanding.slug);
   return data;
