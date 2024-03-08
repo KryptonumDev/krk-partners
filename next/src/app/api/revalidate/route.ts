@@ -2,12 +2,12 @@ import { NextRequest } from 'next/server';
 import { revalidateTag } from 'next/cache';
 
 type RequestType = {
-  type: string;
+  tag: string;
 };
 
 export async function POST(request: NextRequest) {
   const authorizationHeader = request.headers.get('Authorization');
-  const { type: tag } = (await request.json()) as RequestType;
+  const { tag } = (await request.json()) as RequestType;
 
   if (authorizationHeader !== `Bearer ${process.env.SANITY_REVALIDATE_TOKEN}`) {
     return new Response('Unauthorized', { status: 401 });
