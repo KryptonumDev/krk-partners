@@ -36,13 +36,18 @@ export default async function sanityFetch<QueryResponse>({
       token: token,
       perspective: 'previewDrafts',
     }),
-    cache: isDraftMode ? 'no-cache' : 'default',
-    next: {
-      ...(tags
-        ? { tags: tags }
-        : {
-            revalidate: NEXT_REVALIDATE,
-          }),
-    },
+    ...(isDraftMode
+      ? {
+          cache: 'no-cache',
+        }
+      : {
+          next: {
+            ...(tags
+              ? { tags: tags }
+              : {
+                  revalidate: NEXT_REVALIDATE,
+                }),
+          },
+        }),
   });
 }
