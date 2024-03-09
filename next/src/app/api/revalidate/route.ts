@@ -22,7 +22,9 @@ export async function POST(request: NextRequest) {
 
   if (tag) {
     revalidateTag(tag);
-    if (references) references.forEach((ref) => console.log(ref));
+    if (references.length > 0) {
+      references.forEach((tag) => revalidateTag(tag));
+    }
     return Response.json({ revalidated: true, now: Date.now() });
   } else {
     return Response.json({ revalidated: false, now: Date.now() });
