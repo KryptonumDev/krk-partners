@@ -65,7 +65,7 @@ const query = async (): Promise<QueryProps> => {
     `,
     tags: ['global'],
   });
-  return data as QueryProps;
+  return data;
 };
 
 export default Seo;

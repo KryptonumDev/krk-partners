@@ -1,16 +1,23 @@
 import { NextRequest } from 'next/server';
 import { revalidateTag } from 'next/cache';
+import sanityFetch from '@/utils/sanity.fetch';
 
 type RequestType = {
   tag: string;
+  id?: string;
+};
+type QueryType = {
+  references: string[];
 };
 
-export async function POST(request: NextRequest) {
+export async function GET(request: NextRequest) {
   const authorizationHeader = request.headers.get('Authorization');
-  const test = (await request.json()) as RequestType;
+  const { tag, id } = (await request.json()) as RequestType;
 
-  console.log(test);
-  return;
+  const references = await query(tag, id);
+
+  console.log(references);
+  return new Response('Unauthorized', { status: 401 });
 
   // if (authorizationHeader !== `Bearer ${process.env.SANITY_REVALIDATE_TOKEN}`) {
   //   return new Response('Unauthorized', { status: 401 });
@@ -23,3 +30,15 @@ export async function POST(request: NextRequest) {
   //   return Response.json({ revalidated: false, now: Date.now() });
   // }
 }
+
+const query = async (tag: string, id?: string): Promise<QueryType> => {
+  let queryHeader = `*[_type == "${tag}"]`;
+  if (id) queryHeader = `*[_type == "${tag}"] && _id == "${id}"`;
+  return await sanityFetch<QueryType>({
+    query: /* groq */ `
+      ${queryHeader}{
+        "references": *[references(^._id)]._type,
+      }
+    `,
+  });
+};
