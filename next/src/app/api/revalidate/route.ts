@@ -10,7 +10,7 @@ type QueryType = {
   references: string[];
 };
 
-export async function GET(request: NextRequest) {
+export async function POST(request: NextRequest) {
   const authorizationHeader = request.headers.get('Authorization');
   const { tag, id } = (await request.json()) as RequestType;
 
