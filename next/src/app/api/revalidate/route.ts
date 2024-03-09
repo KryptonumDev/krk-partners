@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
 
 const query = async (tag: string, id?: string): Promise<QueryType> => {
   let queryHeader = `*[_type == "${tag}"]`;
-  if (id) queryHeader = `*[_type == "${tag}"] && _id == "${id}"]`;
+  if (id) queryHeader = `*[_type == "${tag}" && _id == "${id}"]`;
   return await sanityFetch<QueryType>({
     query: /* groq */ `
       ${queryHeader}{
