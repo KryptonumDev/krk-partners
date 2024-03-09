@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
   console.log(tag, references);
   if (tag) {
     revalidateTag(tag);
-    if (references.length > 0) {
+    if (references?.length > 0) {
       references.forEach((tag) => revalidateTag(tag));
     }
     return Response.json({ revalidated: true, now: Date.now() });
@@ -33,8 +33,8 @@ export async function POST(request: NextRequest) {
 }
 
 const query = async (tag: string, id?: string): Promise<QueryType> => {
-  let queryHeader = `*[_type == "${tag}"]`;
-  if (id) queryHeader = `*[_type == "${tag}" && _id == "${id}"]`;
+  let queryHeader = `*[_type == "${tag}"][0]`;
+  if (id) queryHeader = `*[_type == "${tag}" && _id == "${id}"][0]`;
   return await sanityFetch<QueryType>({
     query: /* groq */ `
       ${queryHeader}{
