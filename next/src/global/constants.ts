@@ -20,7 +20,7 @@ export const locale: string = 'pl';
  * Global declaration of domain name of the website. Be aware of the protocol and www or non-www prefix.
  * @constant
  */
-export const domain: string = 'https://krk-partners.pl';
+export const domain: string = 'https://lpnew.krk-partners.pl';
 
 /**
  * Global declaration of regex.
