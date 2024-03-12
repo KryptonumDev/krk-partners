@@ -11,8 +11,8 @@ type FetchProps = {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { landings } = await query();
   const sitemap = [
-    ...landings.map((route) => ({
-      url: `${domain}/${route}`,
+    ...landings.map(({ slug }) => ({
+      url: `${domain}/${slug}`,
       lastModified: new Date(),
     })),
   ];
@@ -21,7 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 }
 
 const query = async (): Promise<FetchProps> => {
-  const data = await sanityFetch({
+  return await sanityFetch<FetchProps>({
     query: /* groq */ `
       {
         'landings': *[_type == 'landingPage_Collection'] {
@@ -31,5 +31,4 @@ const query = async (): Promise<FetchProps> => {
     `,
     tags: ['landingPage_Collection'],
   });
-  return data as FetchProps;
 };
