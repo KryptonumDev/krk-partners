@@ -69,7 +69,13 @@ const Content = ({
         security_storage: 'granted',
         wait_for_update: 2500,
       });
-      setShowBanner(true);
+      window.addEventListener(
+        'scroll',
+        () => {
+          setShowBanner(true);
+        },
+        { once: true }
+      );
     }
     gtag('set', 'ads_data_redaction', true);
   }, []);
