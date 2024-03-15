@@ -15,8 +15,6 @@ import Error from '@/components/ui/Error';
 import { checkLandAndMortgageRegister } from '@/utils/check-land-and-mortgage-register';
 
 const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }: Step2Props) => {
-  const [isMortgageProperlySet, setIsMortgageProperlySet] = useState(false);
-
   const handleDigitChange = (event: SyntheticEvent) => {
     const value = (event.target as HTMLInputElement).value.replace(/\D/g, '');
     setValue('landRegister_CheckDigit', value), { shouldValidate: true };
@@ -36,20 +34,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
   const landAndMortgageRegister = watch([
     'landRegister_CourtId',
     'landRegister_RegisterNumber',
-    'landRegister_CheckDigit',
   ]);
-
-  useEffect(() => {
-    const mappedLandAndMortgageRegister: string[] = [];
-    landAndMortgageRegister.map((input) => {
-      if (regex.hasLetters.test(input)) {
-        mappedLandAndMortgageRegister.push(input?.substring(0, 4));
-      } else if (input) {
-        mappedLandAndMortgageRegister.push(input);
-      }
-    });
-    setIsMortgageProperlySet(checkLandAndMortgageRegister(mappedLandAndMortgageRegister));
-  }, [landAndMortgageRegister]);
 
   return (
     <div
@@ -147,6 +132,8 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
           register={register('landRegister_CheckDigit', {
             required: { value: true, message: 'Cyfra kontrolna jest wymagana' },
             onChange: (event: SyntheticEvent) => handleDigitChange(event),
+            validate: (value) =>
+              checkLandAndMortgageRegister(landAndMortgageRegister, value) || 'Niepoprawnie wypełnione dane',
           })}
           errors={errors}
           placeholder='_'
@@ -155,15 +142,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         />
         <Error error={errors['landdRegister_CourtId']?.message?.toString()} />
         <Error error={errors['landRegister_RegisterNumber']?.message?.toString()} />
-        <Error
-          error={
-            errors['landRegister_CheckDigit']?.message?.toString()
-              ? errors['landRegister_CheckDigit']?.message?.toString()
-              : !isMortgageProperlySet
-              ? 'Niepoprawnie wypełnione dane'
-              : undefined
-          }
-        />
+        <Error error={errors['landRegister_CheckDigit']?.message?.toString()} />
       </div>
       <div className={styles.legal}>
         <Checkbox

@@ -1,4 +1,16 @@
-export function checkLandAndMortgageRegister(data: string[]) {
+import { regex } from '@/global/constants';
+
+export function checkLandAndMortgageRegister(data: string[], value: string) {
+  const mappedLandAndMortgageRegister: string[] = [];
+  data.map((input) => {
+    if (regex.hasLetters.test(input)) {
+      mappedLandAndMortgageRegister.push(input?.substring(0, 4));
+    } else if (input) {
+      mappedLandAndMortgageRegister.push(input);
+    }
+  });
+  mappedLandAndMortgageRegister.push(value);
+
   const letterValues = [
     '0',
     '1',
@@ -36,11 +48,11 @@ export function checkLandAndMortgageRegister(data: string[]) {
     'Z',
   ];
 
-  if (data.length < 3 || data[0] == undefined) return true;
+  if (mappedLandAndMortgageRegister.length < 3 || mappedLandAndMortgageRegister[0] == undefined) return true;
 
-  const dataToVerify = `${data[0]}${data[1]}`;
+  const dataToVerify = `${mappedLandAndMortgageRegister[0]}${mappedLandAndMortgageRegister[1]}`;
 
-  return validateData(dataToVerify, data[2] as string);
+  return validateData(dataToVerify, mappedLandAndMortgageRegister[2] as string);
 
   function getLetterValue(letter: string) {
     for (let j = 0; j < letterValues.length; j++) {
