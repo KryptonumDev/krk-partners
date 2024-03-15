@@ -3,17 +3,13 @@ import { useRef, useState } from 'react';
 import { useForm, type FieldValues } from 'react-hook-form';
 import styles from './ApplicationForm.module.scss';
 import Steps from './Steps';
+import Step1 from './Step1';
+import Step2 from './Step2';
 import Loading from './Loading';
 import FormError from './FormError';
 import FormSuccess from './FormSuccess';
 import type { FormStatusType } from '@/global/types';
 import type { CalculationProps, FormProps } from './ApplicationForm.types';
-import dynamic from 'next/dynamic';
-import Step1 from './Step1'
-
-const Step2 = dynamic(() => import('./Step2'), {
-  ssr: false,
-})
 
 const steps = ['Pożyczka', 'Informacje', 'Propozycja'];
 
