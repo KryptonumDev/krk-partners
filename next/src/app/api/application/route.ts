@@ -120,6 +120,7 @@ export async function POST(request: Request) {
   }: RequestProps = await request.json();
 
   const isValidate =
+    landRegister_CourtId !== null ||
     regex.email.test(email) ||
     regex.registerNumber.test(landRegister_RegisterNumber) ||
     regex.tel.test(tel) ||
