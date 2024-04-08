@@ -26,9 +26,16 @@ export const domain: string = 'https://lp.krk-partners.pl';
  * Global declaration of regex.
  * @constant
  */
-export const regex: Record<string, RegExp> = {
+export const regex: {
+  email: RegExp;
+  tel: RegExp;
+  string: RegExp;
+  registerNumber: RegExp;
+  checkDigit: RegExp;
+  hasLetters: RegExp;
+} = {
   email: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-  tel: /^(?:\+(?:\d{1,3}))?(?:[ -]?\(?\d{1,4}\)?[ -]?(\d\s?){8,})$/,
+  tel: /^(?:\+(?:\d{1,3}))?(?:[ -]?\(?\d{1,4}\)?[ -]?\d{1,5}[ -]?\d{1,5}[ -]?\d{1,6})$/,
   string: /^(?!\s+$)(.*?)\s*$/,
   registerNumber: /^[0-9]{8}$/,
   checkDigit: /^[0-9]{1}$/,
