@@ -8,4 +8,5 @@ export type Props = {
   errors: FieldErrors;
   options: string[];
   setErrorsUnder?: boolean;
+  selectedOption: string;
 } & React.SelectHTMLAttributes<HTMLSelectElement>;

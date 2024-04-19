@@ -15,9 +15,25 @@ import Error from '@/components/ui/Error';
 import { checkLandAndMortgageRegister } from '@/utils/check-land-and-mortgage-register';
 
 const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }: Step2Props) => {
+  const [landRegisterOption, setLandRegisterOption] = useState('');
+
+  const [companyTypeOption, setCompanyTypeOption] = useState('Spółka z.o.o');
+
   const handleDigitChange = (event: SyntheticEvent) => {
     const value = (event.target as HTMLInputElement).value.replace(/\D/g, '');
     setValue('landRegister_CheckDigit', value), { shouldValidate: true };
+  };
+
+  const handleCompanyTypeChange = (event: SyntheticEvent) => {
+    const value = (event.target as HTMLInputElement).value;
+    setCompanyTypeOption(value);
+    setValue('companyType', value), { shouldValidate: true };
+  };
+
+  const handleCourtChange = (event: SyntheticEvent) => {
+    const value = (event.target as HTMLInputElement).value;
+    setLandRegisterOption(value);
+    setValue('landRegister_CourtId', value), { shouldValidate: true };
   };
 
   const checkAll = (checked: boolean) => {
@@ -31,10 +47,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
     setValue('legal_all', isAllChecked, { shouldValidate: true });
   }, [setValue, isAllChecked]);
 
-  const landAndMortgageRegister = watch([
-    'landRegister_CourtId',
-    'landRegister_RegisterNumber',
-  ]);
+  const landAndMortgageRegister = watch(['landRegister_CourtId', 'landRegister_RegisterNumber']);
 
   return (
     <div
@@ -85,8 +98,8 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         label='Rodzaj działaności'
         register={register('companyType', {
           required: { value: true, message: 'Rodzaj działaności jest wymagany' },
+          onChange: (e) => handleCompanyTypeChange(e),
         })}
-        defaultValue={'Spółka z.o.o'}
         options={[
           'Spółka z.o.o',
           'Jednoosobowa działalność gospodarcza',
@@ -97,6 +110,7 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
           'Spółka komandytowa',
           'Spółka komandytowo-akcyjna',
         ]}
+        selectedOption={companyTypeOption}
         errors={errors}
       />
       <div className={styles.register}>
@@ -108,8 +122,10 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
           label=''
           register={register('landRegister_CourtId', {
             required: { value: true, message: 'Identyfikator sądu jest wymagany' },
+            onChange: (e) => handleCourtChange(e),
           })}
           options={landRegisterList}
+          selectedOption={landRegisterOption}
           errors={errors}
           setErrorsUnder={true}
         />
