@@ -4,9 +4,8 @@ import Error from '@/components/ui/Error';
 import styles from './Select.module.scss';
 import type { Props } from './Select.types';
 
-const Select = ({ register, label, errors, options, defaultValue }: Props) => {
+const Select = ({ register, label, errors, options, defaultValue, selectedOption }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [option, setOption] = useState(defaultValue);
 
   const handleClick = () => setTimeout(() => (document.activeElement as HTMLElement)?.blur(), 0);
 
@@ -40,7 +39,7 @@ const Select = ({ register, label, errors, options, defaultValue }: Props) => {
         className={styles.select}
         tabIndex={-1}
       >
-        <p>{option}</p>
+        <p>{selectedOption}</p>
         <DropdownIcon className={styles.DropdownIcon} />
         <div className={styles.options}>
           {options.map((option, i) => (
@@ -49,10 +48,9 @@ const Select = ({ register, label, errors, options, defaultValue }: Props) => {
               onMouseUp={handleClick}
             >
               <input
-                defaultChecked={defaultValue === option}
+                defaultChecked={selectedOption === option}
                 type='radio'
                 {...register}
-                onChange={() => setOption(option)}
                 name={register.name}
                 value={option}
               />
