@@ -81,15 +81,15 @@ const emailBody = (
 }% rocznie)</p>
   <p>Odsetki w okresie finansowania: <b>${calculatedLoan.totalInterest} zł</b></p>
   ${
-    !!calculatedLoan.earlyPaymentFee
-      ? `<p>Opłata za wcześniejszą spłatę: <b>${calculatedLoan.earlyPaymentFee}</b> zł</p>`
-      : ''
-  }
+  calculatedLoan.earlyPaymentFee
+    ? `<p>Opłata za wcześniejszą spłatę: <b>${calculatedLoan.earlyPaymentFee}</b> zł</p>`
+    : ''
+}
   <br />
   <p>W ciągu następnego dnia roboczego skontaktuje się z Tobą aby porozmawiać o szczegółach propozycji oraz omówić dalsze kroki w procesie pożyczkowym.</p>
   <p>Aby uzyskać dodatkowe informację skontaktuj się z nami telefonicznie pod numerem <a href='tel:${
-    contactPerson.tel
-  }'>${contactPerson.tel}</a> Pn-Pt w godzinach 08:00 – 16:00.</p>
+  contactPerson.tel
+}'>${contactPerson.tel}</a> Pn-Pt w godzinach 08:00 – 16:00.</p>
   <br />
   <p>Pozdrawiam,</p>
   <p>${contactPerson.name}</p>
@@ -185,7 +185,7 @@ export async function POST(request: Request) {
       await resend.emails.send({
         from: emailData.from,
         to: email,
-        subject: `Twój wniosek został pomyślnie przesłany | KRK Partners`,
+        subject: 'Twój wniosek został pomyślnie przesłany | KRK Partners',
         html: renderedEmailBody,
         text: removeHtmlTags(renderedEmailBody),
       });

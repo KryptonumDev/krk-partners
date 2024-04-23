@@ -9,7 +9,7 @@ import { setCookie } from '@/utils/set-cookie';
 
 declare global {
   interface Window {
-    dataLayer: unknown[];
+    dataLayer?: unknown[];
   }
 }
 

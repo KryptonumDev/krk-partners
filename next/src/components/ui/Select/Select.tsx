@@ -1,10 +1,10 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Error from '@/components/ui/Error';
 import styles from './Select.module.scss';
 import type { Props } from './Select.types';
 
-const Select = ({ register, label, errors, options, defaultValue, selectedOption }: Props) => {
+const Select = ({ register, label, errors, options, selectedOption }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleClick = () => setTimeout(() => (document.activeElement as HTMLElement)?.blur(), 0);

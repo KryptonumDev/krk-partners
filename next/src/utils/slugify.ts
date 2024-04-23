@@ -25,7 +25,7 @@ export const slugify = (text: string) => {
     { to: 'x', from: '[ẍ]' },
     { to: 'y', from: '[ÝŶŸỲỴỶỸ]' },
     { to: 'z', from: '[ŹŻŽ]' },
-    { to: '-', from: `[·/_,:;']` },
+    { to: '-', from: '[·/_,:;\']' },
   ];
   sets.forEach(({ from, to }) => {
     text = text.replace(new RegExp(from, 'gi'), to);
