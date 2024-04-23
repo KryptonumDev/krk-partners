@@ -2,16 +2,10 @@
 import { useEffect, useState } from 'react';
 import styles from './CookieConsent.module.scss';
 import Button from '@/components/ui/Button';
-import type { ContentProps } from './CookieConsent.types';
 import Switch from '@/components/ui/Switch';
 import { getCookie } from '@/utils/get-cookie';
 import { setCookie } from '@/utils/set-cookie';
-
-declare global {
-  interface Window {
-    dataLayer?: unknown[];
-  }
-}
+import type { ContentProps } from './CookieConsent.types';
 
 function gtag(...args: unknown[]) {
   window.dataLayer?.push(args);
