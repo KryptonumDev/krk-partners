@@ -1,5 +1,6 @@
 'use client';
 import { useRef, useState } from 'react';
+import { sendGTMEvent } from '@next/third-parties/google';
 import { useForm, type FieldValues } from 'react-hook-form';
 import styles from './ApplicationForm.module.scss';
 import Steps from './Steps';
@@ -44,6 +45,7 @@ const ApplicationForm = ({ globalEmail, contactPerson }: FormProps) => {
         const { comission, comissionMultiplier, totalInterest, earlyPaymentFee, total } = responseData.calculation;
         setCalculation({ comission, comissionMultiplier, totalInterest, earlyPaymentFee, total });
         setStatus({ sending: false, success: true });
+        sendGTMEvent({ event: 'Form_Sent' });
         reset();
         scrollTo({ top: formRefOffset, behavior: 'smooth' });
       } else {
