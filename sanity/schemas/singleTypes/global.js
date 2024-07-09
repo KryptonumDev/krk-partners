@@ -14,6 +14,7 @@ export default {
       name: 'tel',
       type: 'string',
       title: 'Numer telefonu',
+      validation: Rule => Rule.required(),
     },
     {
       name: 'CookieConsent',
