@@ -4,21 +4,6 @@ export default {
   type: 'object',
   fields: [
     {
-      name: 'theme',
-      type: 'string',
-      title: 'Rodzaj przycisku',
-      options: {
-        list: [
-          { title: "Główny", value: "primary" },
-          { title: "Dodatkowy", value: "secondary" },
-        ],
-        layout: 'radio',
-        direction: "horizontal"
-      },
-      validation: (Rule) => Rule.required(),
-      initialValue: 'primary',
-    },
-    {
       name: 'text',
       type: 'string',
       title: 'Tekst',

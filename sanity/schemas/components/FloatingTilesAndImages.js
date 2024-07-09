@@ -25,6 +25,11 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'paragraphCta',
+      type: 'cta',
+      title: 'Wezwanie do działania (opcjonalnie)',
+    },
+    {
       name: 'list_Paragraph',
       type: 'string',
       title: 'Paragraf',
