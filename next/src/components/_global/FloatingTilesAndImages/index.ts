@@ -11,6 +11,9 @@ export const FloatingTilesAndImages_Query = `
     subheading,
     paragraph,
     list_Paragraph,
+    paragraphCta {
+      ${Button_Query}
+    },
     list[] {
       icon {
         ${Img_Query}

@@ -5,16 +5,16 @@ import type { CtaType } from '@/global/types';
 
 type ButtonProps = (
   | {
-      data: CtaType;
-      href?: never;
-      children?: never;
-    }
+    data: CtaType;
+    href?: never;
+    children?: never;
+  }
   | {
-      data?: never;
-      href?: CtaType['href'];
-      children: CtaType['text'];
-      disabled?: boolean;
-    }
+    data?: never;
+    href?: CtaType['href'];
+    children: CtaType['text'];
+    disabled?: boolean;
+  }
 ) &
   React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement>;
@@ -64,7 +64,6 @@ const ArrowIcon = () => (
 export default Button;
 
 export const Button_Query = `
-  theme,
   text,
   href,
 `;

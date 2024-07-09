@@ -5,6 +5,7 @@ export type Props = {
   subheading: string;
   paragraph: string;
   list_Paragraph: string;
+  paragraphCta?: CtaType;
   list: {
     icon: ImgType;
     list: string[];

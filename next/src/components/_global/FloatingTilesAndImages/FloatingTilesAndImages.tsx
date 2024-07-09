@@ -8,6 +8,7 @@ const FloatingTilesAndImages = ({
   heading,
   subheading,
   paragraph,
+  paragraphCta,
   list_Paragraph,
   list,
   images,
@@ -21,6 +22,9 @@ const FloatingTilesAndImages = ({
           <h2>{heading}</h2>
           <Markdown.h3>{subheading}</Markdown.h3>
           <Markdown>{paragraph}</Markdown>
+          {paragraphCta && (
+            <Button data={paragraphCta} className={styles.cta} />
+          )}
         </header>
         <div className={styles.list}>
           <p>{list_Paragraph}</p>
