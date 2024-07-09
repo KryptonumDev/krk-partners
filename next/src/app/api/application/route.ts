@@ -101,6 +101,7 @@ const emailBody = (
 `;
 
 export async function POST(request: Request) {
+  const client_ip_address = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip');
   const {
     loanAmount,
     fundingPeriod,
@@ -147,6 +148,7 @@ export async function POST(request: Request) {
           NIP: nip,
           'Numer księgi wieczystej': landRegister,
           'Rodzaj działalności': companyType,
+          'Address IP': client_ip_address,
         },
       },
     ],
