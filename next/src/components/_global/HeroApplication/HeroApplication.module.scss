@@ -49,6 +49,7 @@
     max-width: calc(608rem / 16);
     border-radius: 16px;
     background: var(--primary--300, #edf0f2);
+    color: var(--neutral-700, #333436);
     padding: clamp(16px, calc(24vw / 7.68), 24px);
     @media (max-width: 499px) {
       margin: 0 calc(var(--pageMargin) * -1);
