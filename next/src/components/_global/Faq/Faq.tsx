@@ -10,7 +10,7 @@ const Faq = ({ heading, subheading, list }: Props) => {
   }));
 
   return (
-    <section className={styles['Faq']}>
+    <section className={styles['Faq']} id='faq'>
       <header>
         <h2>{heading}</h2>
         <Markdown.h3>{subheading}</Markdown.h3>

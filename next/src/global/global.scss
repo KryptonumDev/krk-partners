@@ -37,11 +37,16 @@
 }
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 152px;
+}
+html,
+body {
+  overflow-x: clip;
 }
 body {
+  overflow: clip;
   -webkit-tap-highlight-color: transparent;
   min-width: 320px;
-  overflow-x: hidden;
   font-family: 'Lato', serif;
   background-color: var(--neutral-100);
   color: var(--neutral-600);

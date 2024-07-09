@@ -15,7 +15,7 @@ const FloatingTilesAndImages = ({
   cta,
 }: Props) => {
   return (
-    <section className={styles['FloatingTilesAndImages']}>
+    <section className={styles['FloatingTilesAndImages']} id='oferta'>
       <div className={styles.column}>
         <header>
           <h2>{heading}</h2>

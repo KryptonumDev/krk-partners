@@ -48,7 +48,7 @@ const CaseStudy = ({ heading, subheading, list }: Props) => {
   }));
 
   return (
-    <section className={styles['CaseStudy']}>
+    <section className={styles['CaseStudy']} id='branze'>
       <header>
         <Markdown.h2>{heading}</Markdown.h2>
         <Markdown.h3>{subheading}</Markdown.h3>

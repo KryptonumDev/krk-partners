@@ -1,24 +1,81 @@
-import Link from 'next/link';
 import styles from './Header.module.scss';
+import sanityFetch from '@/utils/sanity.fetch';
+import Navigation from './_Navigation';
+import type { QueryProps } from './Header.types';
 
-const Header = () => {
+export default async function Header() {
+  const { email, tel } = await query();
+
   return (
-    <header className={styles['Header']}>
-      <nav>
-        <Link
-          href='.'
-          aria-label='Strona główna'
-        >
-          <KrkPartnersLogo />
-        </Link>
-      </nav>
-    </header>
+    <>
+      <div className={styles['Header']}>
+        <aside>
+          <div className="max-width">
+            <a href={`mailto:${email}`}>
+              <EmailIcon />
+              <span>{email}</span>
+            </a>
+            <a href={`tel:${tel}`}>
+              <TelIcon />
+              <span>{tel}</span>
+            </a>
+          </div>
+        </aside>
+        <Navigation KrkPartnersLogo={KrkPartnersLogo} />
+      </div>
+    </>
   );
+}
+
+const query = async (): Promise<QueryProps> => {
+  return await sanityFetch<QueryProps>({
+    query: /* groq */ `
+      *[_type == "global"][0] {
+        email,
+        tel,
+      }
+    `,
+    tags: ['global'],
+  });
 };
 
-export default Header;
-
-const KrkPartnersLogo = () => (
+const EmailIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={20}
+    height={20}
+    fill="none"
+  >
+    <path
+      fill="#376578"
+      d="M11.833 2.5H8.167c-3.457 0-5.186 0-6.26 1.098S.833 6.464.833 10s0 5.303 1.074 6.402C2.981 17.5 4.71 17.5 8.167 17.5h3.666c3.457 0 5.186 0 6.26-1.098s1.074-2.867 1.074-6.402 0-5.303-1.074-6.402C17.019 2.5 15.29 2.5 11.833 2.5"
+      opacity={0.5}
+    />
+    <path
+      fill="#376578"
+      d="M15.94 6.695a.687.687 0 1 0-.88-1.056l-1.979 1.649c-.855.713-1.449 1.206-1.95 1.528-.486.312-.815.417-1.13.417-.317 0-.646-.105-1.131-.417-.502-.322-1.096-.815-1.95-1.528l-1.98-1.65a.688.688 0 0 0-.88 1.057l2.013 1.678c.813.677 1.471 1.226 2.053 1.6.605.389 1.195.635 1.874.635.68 0 1.27-.246 1.875-.635.58-.374 1.24-.923 2.052-1.6z"
+    />
+  </svg>
+);
+const TelIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={20}
+    height={20}
+    fill="none"
+  >
+    <path
+      fill="#376578"
+      d="M10.043 1.667c1.4 0 2.51 0 3.377.119.893.122 1.616.38 2.187.96s.823 1.315.943 2.224c.117.883.117 2.012.117 3.436v3.188c0 1.425 0 2.554-.117 3.437-.12.908-.373 1.644-.943 2.224s-1.294.838-2.187.96c-.868.119-1.977.119-3.377.119h-.086c-1.4 0-2.51 0-3.377-.119-.894-.122-1.617-.38-2.187-.96s-.823-1.316-.943-2.224c-.117-.883-.117-2.012-.117-3.437V8.406c0-1.424 0-2.553.117-3.436.12-.909.373-1.644.943-2.225.57-.58 1.293-.837 2.187-.96.868-.118 1.977-.118 3.377-.118z"
+      opacity={0.5}
+    />
+    <path
+      fill="#376578"
+      d="M7.143 15.426c0-.321.256-.581.571-.581h4.572c.315 0 .571.26.571.581a.576.576 0 0 1-.571.581H7.714a.576.576 0 0 1-.571-.581"
+    />
+  </svg>
+);
+const KrkPartnersLogo = (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     width={80}

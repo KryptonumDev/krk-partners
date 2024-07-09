@@ -5,7 +5,7 @@ import Img from '@/components/ui/image';
 
 const Reviews = ({ heading, subheading, list }: Props) => {
   return (
-    <section className={`${styles['Reviews']} sec-wo-margin`}>
+    <section className={`${styles['Reviews']} sec-wo-margin`} id='opinie'>
       <header>
         <h2>{heading}</h2>
         <Markdown.h3>{subheading}</Markdown.h3>

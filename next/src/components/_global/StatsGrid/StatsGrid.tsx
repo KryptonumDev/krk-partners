@@ -56,7 +56,7 @@ const StatsGrid = ({
   };
 
   return (
-    <section className={styles['StatsGrid']}>
+    <section className={styles['StatsGrid']} id='o-nas'>
       <header>
         <h2>{heading}</h2>
         <Markdown.h3>{subheading}</Markdown.h3>
