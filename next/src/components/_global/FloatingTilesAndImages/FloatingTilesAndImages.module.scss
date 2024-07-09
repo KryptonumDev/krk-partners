@@ -108,6 +108,7 @@
       flex-grow: 1;
       flex-shrink: 0;
       position: relative;
+      min-width: 132px;
       min-height: 222px;
       display: flex;
       flex-direction: column;
@@ -120,7 +121,7 @@
       }
       p {
         position: relative;
-        padding: 64px 12px 16px;
+        padding: 64px 24px 16px;
         background: linear-gradient(180deg, rgba(23, 23, 25, 0), #171719);
         font-size: 1rem;
         color: var(--neutral-100);
@@ -133,7 +134,11 @@
     max-width: calc(794rem / 16);
     margin: 0 auto;
     border-radius: 200px;
-    background: var(--neutral-200);
+    background: var(--neutral-800, #171719);
+    color: var(--neutral-400, #dfe1e5);
+    strong {
+      color: var(--neutral-100, #fff);
+    }
     display: grid;
     align-items: center;
     gap: 24px;
