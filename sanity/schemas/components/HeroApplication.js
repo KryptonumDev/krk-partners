@@ -28,6 +28,30 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'rating_Value',
+      type: 'number',
+      options: {
+        list: [1, 2, 3, 4, 5],
+      },
+      title: 'Ocena (skala 1-5)',
+      fieldset: 'testimonial',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'rating_Count',
+      type: 'number',
+      title: 'Ilość opinii',
+      fieldset: 'testimonial',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'rating_Link',
+      type: 'string',
+      title: 'Link do opinii',
+      fieldset: 'testimonial',
+      validation: Rule => Rule.required(),
+    },
+    {
       name: 'testimonial_Img',
       type: 'image',
       title: 'Zdjęcie',
