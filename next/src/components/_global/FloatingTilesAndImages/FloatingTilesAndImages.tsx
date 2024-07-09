@@ -3,6 +3,7 @@ import Button from '@/components/ui/Button';
 import Img from '@/components/ui/image';
 import styles from './FloatingTilesAndImages.module.scss';
 import type { Props } from './FloatingTilesAndImages.types';
+import Link from 'next/link';
 
 const FloatingTilesAndImages = ({
   heading,
@@ -23,7 +24,9 @@ const FloatingTilesAndImages = ({
           <Markdown.h3>{subheading}</Markdown.h3>
           <Markdown>{paragraph}</Markdown>
           {paragraphCta && (
-            <Button data={paragraphCta} className={styles.cta} />
+            <Link href={paragraphCta.href} className={`link ${styles.cta}`}>
+              {paragraphCta.text}
+            </Link>
           )}
         </header>
         <div className={styles.list}>

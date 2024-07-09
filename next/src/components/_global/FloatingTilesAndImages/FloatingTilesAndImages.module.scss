@@ -19,6 +19,7 @@
         margin-bottom: clamp(16px, calc(24vw / 7.68), 24px);
       }
       .cta {
+        display: inline-block;
         margin-top: clamp(28px, calc(32vw / 7.68), 48px);
       }
     }
