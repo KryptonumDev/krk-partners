@@ -17,6 +17,12 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'position',
+      type: 'markdown',
+      title: 'Stanowisko',
+      validation: Rule => Rule.required(),
+    },
+    {
       name: 'tel',
       type: 'string',
       title: 'Telefon (opcjonalnie)',
