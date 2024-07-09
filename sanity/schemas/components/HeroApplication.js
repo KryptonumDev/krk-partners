@@ -30,12 +30,9 @@ export default {
     {
       name: 'rating_Value',
       type: 'number',
-      options: {
-        list: [1, 2, 3, 4, 5],
-      },
       title: 'Ocena (skala 1-5)',
       fieldset: 'testimonial',
-      validation: Rule => Rule.required(),
+      validation: Rule => Rule.required().min(1).max(5).precision(1),
     },
     {
       name: 'rating_Count',
