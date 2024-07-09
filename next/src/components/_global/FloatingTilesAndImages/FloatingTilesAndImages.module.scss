@@ -130,7 +130,7 @@
     }
   }
   .ctaBox {
-    padding: clamp(16px, calc(32vw / 7.68), 32px) clamp(16px, calc(32vw / 7.68), 48px);
+    padding: 16px clamp(16px, calc(32vw / 7.68), 48px);
     max-width: calc(794rem / 16);
     margin: 0 auto;
     border-radius: 200px;
@@ -144,7 +144,7 @@
     gap: 24px;
     @media (min-width: 1000px) {
       grid-template-columns: 1fr auto;
-      padding-right: 24px;
+      padding-right: 16px;
     }
     @media (max-width: 999px) {
       border-radius: 4px;
