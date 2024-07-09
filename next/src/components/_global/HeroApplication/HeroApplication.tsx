@@ -1,8 +1,8 @@
 import Markdown from '@/components/ui/markdown';
 import styles from './HeroApplication.module.scss';
-import type { Props } from './HeroApplication.types';
 import Img from '@/components/ui/image';
 import ApplicationForm from '@/components/_landing/ApplicationForm';
+import type { Props } from './HeroApplication.types';
 
 const HeroApplication = async ({
   heading,

@@ -46,6 +46,14 @@
     }
   }
   .application {
+    max-width: calc(608rem / 16);
+    border-radius: 16px;
+    background: var(--primary--300, #edf0f2);
+    padding: clamp(16px, calc(24vw / 7.68), 24px);
+    @media (max-width: 499px) {
+      margin: 0 calc(var(--pageMargin) * -1);
+      border-radius: 0;
+    }
     .introduction {
       margin-bottom: 32px;
       h2 {
@@ -56,9 +64,7 @@
         list-style-type: none;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        @media (min-width: 750px) {
-          grid-template-columns: 1fr 1fr 1fr;
-        }
+        max-width: calc(405rem / 16);
         gap: 12px;
         li {
           display: grid;
