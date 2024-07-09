@@ -6,15 +6,20 @@ import type { Props } from './Team.types';
 const Team = ({ list, heading, block1_Heading, block1_Paragraph, block2_Heading, block2_Paragraph }: Props) => {
   return (
     <section className={styles['Team']}>
-      <div className={styles.list}>
-        {list.map(({ img }, i) => (
-          <Img
-            key={i}
-            data={img}
-            sizes=''
-          />
+      <ul className={styles.list}>
+        {list.map(({ img, name, position }, i) => (
+          <li key={i} className={styles.item}>
+            <Img
+              data={img}
+              sizes='148px'
+            />
+            <div>
+              <h3>{name}</h3>
+              <Markdown className={styles.paragraph}>{position}</Markdown>
+            </div>
+          </li>
         ))}
-      </div>
+      </ul>
       <div className={styles.column}>
         <header>
           <Markdown.h2 className='h3'>{heading}</Markdown.h2>

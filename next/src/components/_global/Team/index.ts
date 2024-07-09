@@ -10,6 +10,8 @@ export const Team_Query = `
       img {
         ${Img_Query}
       },
+      name,
+      position,
     },
     heading,
     block1_Heading,

@@ -3,6 +3,8 @@ import type { ImgType } from '@/global/types';
 export type Props = {
   list: {
     img: ImgType;
+    name: string;
+    position: string;
   }[];
   heading: string;
   block1_Heading: string;
