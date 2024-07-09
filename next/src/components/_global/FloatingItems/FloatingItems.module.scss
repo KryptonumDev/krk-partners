@@ -74,18 +74,12 @@
       }
       padding: 4px 16px 4px 4px;
       border-radius: 48px;
-      background-color: var(--neutral-200);
       display: inline-grid;
       grid-template-columns: auto 1fr;
       align-items: center;
       gap: 12px;
       font-size: 1rem;
-      &[data-highlighted='false'] {
-        box-shadow: 0px 11px 11px 0px rgba(127, 168, 210, 0.09), 0px 25px 15px 0px rgba(127, 168, 210, 0.05);
-      }
       &[data-highlighted='true'] {
-        background-color: var(--neutral-800);
-        color: var(--neutral-200);
         .icon {
           background-color: var(--neutral-700);
         }
