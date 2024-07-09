@@ -7,9 +7,8 @@ import { getCookie } from '@/utils/get-cookie';
 import { setCookie } from '@/utils/set-cookie';
 import type { ContentProps } from './CookieConsent.types';
 
-function gtag(...args: unknown[]) {
-  window.dataLayer?.push(args);
-}
+// eslint-disable-next-line prefer-rest-params
+const gtag: Gtag.Gtag = function () { window.dataLayer?.push(arguments); };
 
 const cookieObjectKeys = ['preferences', 'statistics', 'marketing'];
 
