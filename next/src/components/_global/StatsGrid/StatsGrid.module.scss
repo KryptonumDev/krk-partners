@@ -70,8 +70,8 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      width: clamp(96px, calc(144vw / 7.68), 144px);
-      height: clamp(96px, calc(144vw / 7.68), 144px);
+      width: clamp(96px, calc(108vw / 7.68), 144px);
+      height: clamp(96px, calc(108vw / 7.68), 144px);
       display: grid;
       place-items: center;
       border-radius: 50%;
@@ -79,16 +79,11 @@
         -10.5px -3.75px 11.25px 0px rgba(127, 168, 210, 0.09), -23.25px -9px 15px 0px rgba(127, 168, 210, 0.05),
         -41.25px -15.75px 17.25px 0px rgba(127, 168, 210, 0.01), -63.75px -24.75px 19.5px 0px rgba(127, 168, 210, 0);
       img {
-        width: clamp(60px, calc(80vw / 7.68), 80px);
+        width: 55%;
         height: auto;
       }
       transform: translate(-50%, -50%);
       transition: transform 0.5s var(--easing);
-    }
-    &:hover {
-      .logo {
-        transform: translate(-50%, -50%) scale(0.82);
-      }
     }
   }
 }
