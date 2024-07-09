@@ -25,6 +25,20 @@
     .testimonial {
       padding: clamp(16px, calc(20vw / 7.68), 20px) clamp(16px, calc(24vw / 7.68), 24px);
       border-top: 1px dashed var(--neutral-300);
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+        > div {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+        a {
+          color: #2e445a;
+        }
+      }
       .person {
         display: grid;
         grid-template-columns: auto 1fr auto;

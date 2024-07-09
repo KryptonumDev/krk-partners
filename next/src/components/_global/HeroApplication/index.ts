@@ -9,6 +9,9 @@ export const HeroApplication_Query = `
     heading,
     subheading,
     paragraph,
+    rating_Value,
+    rating_Count,
+    rating_Link,
     testimonial_Img {
       ${Img_Query}
     },
