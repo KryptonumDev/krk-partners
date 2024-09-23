@@ -111,11 +111,6 @@
     gap: 2px 8px;
     .label {
       grid-column: 6/1;
-      p {
-        &:last-child {
-          font-size: calc(12rem / 16);
-        }
-      }
       margin-bottom: 4px;
     }
     > label span[data-error],

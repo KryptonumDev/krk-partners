@@ -32,9 +32,9 @@ type RequestProps = {
   tel: string;
   nip: string;
   companyType: string;
-  landRegister_CourtId: string;
-  landRegister_RegisterNumber: string;
-  landRegister_CheckDigit: string;
+  landRegister_CourtId?: string;
+  landRegister_RegisterNumber?: string;
+  landRegister_CheckDigit?: string;
   legal1: boolean;
   legal2: boolean;
   legal3: boolean;
@@ -46,13 +46,23 @@ const currentHour = new Date().getHours();
 const greeting =
   (currentHour >= 18 && currentHour <= 23) || (currentHour >= 0 && currentHour < 3) ? 'Dobry wieczór' : 'Dzień dobry';
 
-const emailBody = (
+const emailBody = ({
+  fullName,
+  loanAmount,
+  fundingPeriod,
+  tel,
+  nip,
+  landRegister,
+  companyType,
+  contactPerson,
+  calculatedLoan,
+}: {
   fullName: string,
   loanAmount: string,
   fundingPeriod: number,
   tel: string,
   nip: string,
-  landRegister: string,
+  landRegister?: string,
   companyType: string,
   contactPerson: ContactPersonType,
   calculatedLoan: {
@@ -62,7 +72,7 @@ const emailBody = (
     earlyPaymentFee?: string;
     total: string;
   }
-) => `
+}) => `
   ${greeting}, ${fullName},
   <p>Dziękujemy za wysłanie zapytania w sprawie pożyczki pod zastaw nieruchomości.</p>
   <br />
@@ -76,19 +86,16 @@ const emailBody = (
   <br />
   <p><b><em>Wstępna propozycja:</em></b></p>
   <p>Wstępna propozycja wyceny dla Ciebie to: <b>${calculatedLoan.total} zł</b></p>
-  <p>Prowizja za udzielenie pożyczki: <b>${calculatedLoan.comission} zł</b> (${
-  calculatedLoan.comissionMultiplier
+  <p>Prowizja za udzielenie pożyczki: <b>${calculatedLoan.comission} zł</b> (${calculatedLoan.comissionMultiplier
 }% rocznie)</p>
   <p>Odsetki w okresie finansowania: <b>${calculatedLoan.totalInterest} zł</b></p>
-  ${
-  calculatedLoan.earlyPaymentFee
+  ${calculatedLoan.earlyPaymentFee
     ? `<p>Opłata za wcześniejszą spłatę: <b>${calculatedLoan.earlyPaymentFee}</b> zł</p>`
     : ''
 }
   <br />
   <p>W ciągu następnego dnia roboczego skontaktuje się z Tobą aby porozmawiać o szczegółach propozycji oraz omówić dalsze kroki w procesie pożyczkowym.</p>
-  <p>Aby uzyskać dodatkowe informację skontaktuj się z nami telefonicznie pod numerem <a href='tel:${
-  contactPerson.tel
+  <p>Aby uzyskać dodatkowe informację skontaktuj się z nami telefonicznie pod numerem <a href='tel:${contactPerson.tel
 }'>${contactPerson.tel}</a> Pn-Pt w godzinach 08:00 – 16:00.</p>
   <br />
   <p>Pozdrawiam,</p>
@@ -121,16 +128,17 @@ export async function POST(request: Request) {
   }: RequestProps = await request.json();
 
   const isValidate =
-    landRegister_CourtId !== null ||
     regex.email.test(email) ||
-    regex.registerNumber.test(landRegister_RegisterNumber) ||
     regex.tel.test(tel) ||
     legal1 ||
     legal2 ||
     legal3 ||
     legal4;
 
-  const landRegister = `${landRegister_CourtId} / ${landRegister_RegisterNumber} / ${landRegister_CheckDigit}`;
+  const landRegister =
+    landRegister_CourtId && landRegister_RegisterNumber && landRegister_CheckDigit
+      ? `${landRegister_CourtId} / ${landRegister_RegisterNumber} / ${landRegister_CheckDigit}`
+      : '--- Nie podano ---';
 
   if (!isValidate) return NextResponse.json({ success: false }, { status: 422 });
 
@@ -154,7 +162,7 @@ export async function POST(request: Request) {
     ],
   };
 
-  const renderedEmailBody = emailBody(
+  const renderedEmailBody = emailBody({
     fullName,
     loanAmount,
     fundingPeriod,
@@ -163,8 +171,8 @@ export async function POST(request: Request) {
     landRegister,
     companyType,
     contactPerson,
-    calculatedLoan as LoanCalculationResult
-  );
+    calculatedLoan: calculatedLoan as LoanCalculationResult,
+  });
 
   try {
     const response = await fetch(`https://api.airtable.com/v0/${airtableData.baseId}/${airtableData.tableId}`, {

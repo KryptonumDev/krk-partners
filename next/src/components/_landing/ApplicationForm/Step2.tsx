@@ -115,13 +115,11 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
       />
       <div className={styles.register}>
         <div className={styles.label}>
-          <p>Numer księgi wieczystej</p>
-          <p>Potrzebujemy tej informacji, aby wyliczyć pożyczkę</p>
+          <p>Numer księgi wieczystej (opcjonalnie)</p>
         </div>
         <Select
           label=''
           register={register('landRegister_CourtId', {
-            required: { value: true, message: 'Identyfikator sądu jest wymagany' },
             onChange: (e) => handleCourtChange(e),
           })}
           options={landRegisterList}
@@ -133,7 +131,6 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         <Input
           label=''
           register={register('landRegister_RegisterNumber', {
-            required: { value: true, message: 'Numer księgi wieczystej jest wymagany' },
             pattern: { value: regex.registerNumber, message: 'Niepoprawny numer księgi wieczystej' },
             onChange: (e) => formatToOnlyDigits(e),
           })}
@@ -146,7 +143,6 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         <Input
           label=''
           register={register('landRegister_CheckDigit', {
-            required: { value: true, message: 'Cyfra kontrolna jest wymagana' },
             onChange: (event: SyntheticEvent) => handleDigitChange(event),
             validate: (value) =>
               checkLandAndMortgageRegister(landAndMortgageRegister, value) || 'Niepoprawnie wypełnione dane',
@@ -199,23 +195,17 @@ const Step2 = ({ form: { register, setValue, errors, watch }, status, ...props }
         />
         <Checkbox
           label='Wyrażam zgodę na przetwarzanie moich danych osobowych podanych we wniosku pożyczkowym w celu otrzymywania materiałów o charakterze marketingowym i informacji handlowych. Administratorem danych osobowych jest każda ze spółek wymienionych w pkt 2 klauzuli informacyjnej. Podstawą przetwarzania jest Pana/i zgoda (art. 6 ust. 1 lit. a) RODO).'
-          register={register('legal2', {
-            required: { value: true, message: 'Zgoda jest wymagana' },
-          })}
+          register={register('legal2')}
           errors={errors}
         />
         <Checkbox
           label='Wyrażam zgodę na otrzymywanie informacji handlowych przesyłanych przez każdą ze spółek wymienionych w pkt 2 klauzuli informacyjnej zgodnie z art. 10 ustawy z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną.'
-          register={register('legal3', {
-            required: { value: true, message: 'Zgoda jest wymagana' },
-          })}
+          register={register('legal3')}
           errors={errors}
         />
         <Checkbox
           label='Wyrażam zgodę na przekazywanie treści marketingowych przez każdą ze spółek wymienionych w pkt 2 klauzuli informacyjnej za pośrednictwem moich urządzeń telekomunikacyjnych, w szczególności takich jak telefon czy smartfon, zgodnie z art. 172 ust. 1 ustawy z dnia 16 lipca 2004 r. Prawo telekomunikacyjne.'
-          register={register('legal4', {
-            required: { value: true, message: 'Zgoda jest wymagana' },
-          })}
+          register={register('legal4')}
           errors={errors}
         />
       </div>
